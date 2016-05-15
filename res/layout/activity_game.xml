@@ -11,6 +11,8 @@
     tools:context="com.alexkaz.game2048.GameActivity">
 
     <LinearLayout
+        android:id="@+id/transparentBlackPanel"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/transparent_black">
