@@ -2,6 +2,7 @@ package com.alexkaz.game2048;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.view.MotionEvent;
 import android.view.View;
 
 import com.alexkaz.game2048.gamelogic.CellManager;
@@ -9,7 +10,7 @@ import com.alexkaz.game2048.gamelogic.CellManager;
 import java.io.File;
 import java.io.IOException;
 
-public class GameFieldView extends View {
+public class GameFieldView extends View implements View.OnTouchListener {
 
     private GameActivity context;
     private CellManager cellManager;
@@ -24,13 +25,12 @@ public class GameFieldView extends View {
 
     //Методи
     private void setOwnParam(){
-
+        setOnTouchListener(this);
     }
 
     private void initComp(){
         cellManager = new CellManager(context);
     }
-
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -59,5 +59,12 @@ public class GameFieldView extends View {
 
     public void setCellManager(CellManager cellManager) {
         this.cellManager = cellManager;
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+
+
+        return false;
     }
 }
