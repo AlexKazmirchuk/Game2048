@@ -1,4 +1,4 @@
-package com.alexkaz.game2048.raws;
+package com.alexkaz.game2048.gamelogic;
 
 public enum Direction {
     UP,

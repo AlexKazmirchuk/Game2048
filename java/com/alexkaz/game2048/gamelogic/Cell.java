@@ -1,14 +1,10 @@
-package com.alexkaz.game2048.raws;
+package com.alexkaz.game2048.gamelogic;
 
 //import javax.imageio.ImageIO;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
 import com.alexkaz.game2048.GameActivity;
-
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 
 public class Cell {
 
