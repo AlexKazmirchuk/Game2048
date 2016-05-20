@@ -94,9 +94,12 @@
         </GridLayout>
 
         <FrameLayout
+            android:id="@+id/gameFieldWrapper"
             android:layout_width="match_parent"
             android:layout_height="270dp"
-            android:background="@drawable/gamefield_bg"></FrameLayout>
+            android:background="@drawable/gamefield_bg">
+
+        </FrameLayout>
 
     </LinearLayout>
 
