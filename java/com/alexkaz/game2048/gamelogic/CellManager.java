@@ -63,11 +63,11 @@ public class CellManager {
     }
 
 
-    //TODO передавати enumeration , поправити switch
-    public void moveCells(char direction){
+
+    public void moveCells(Direction direction){
 
         switch (direction){
-            case 'w':{
+            case UP:{
 
                 moveAllUp(cells);
                 System.out.println(scores);
@@ -77,7 +77,7 @@ public class CellManager {
                 }
                 break;
             }
-            case 's':{
+            case DOWN:{
 //                System.out.println("всі донизу");
                 moveAllDown(cells);
                 System.out.println(scores);
@@ -86,7 +86,7 @@ public class CellManager {
                 }
                 break;
             }
-            case 'a':{
+            case LEFT:{
 //                System.out.println("всі вліво");
                 moveAllLeft(cells);
                 System.out.println(scores);
@@ -95,7 +95,7 @@ public class CellManager {
                 }
                 break;
             }
-            case 'd':{
+            case RIGHT:{
 //                System.out.println("всі вправо");
                 moveAllRight(cells);
                 System.out.println(scores);
