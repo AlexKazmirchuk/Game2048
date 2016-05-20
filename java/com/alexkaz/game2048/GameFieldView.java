@@ -56,5 +56,6 @@ public class GameFieldView extends View {
 
     public void moveCells(Direction direction){
         cellManager.moveCells(direction);
+        invalidate();
     }
 }
