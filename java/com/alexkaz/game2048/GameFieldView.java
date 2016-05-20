@@ -1,16 +1,13 @@
 package com.alexkaz.game2048;
 
-import android.content.Context;
 import android.graphics.Canvas;
-import android.view.MotionEvent;
 import android.view.View;
 
 import com.alexkaz.game2048.gamelogic.CellManager;
+import com.alexkaz.game2048.gamelogic.Direction;
 
-import java.io.File;
-import java.io.IOException;
 
-public class GameFieldView extends View implements View.OnTouchListener {
+public class GameFieldView extends View {
 
     private GameActivity context;
     private CellManager cellManager;
@@ -25,7 +22,6 @@ public class GameFieldView extends View implements View.OnTouchListener {
 
     //Методи
     private void setOwnParam(){
-        setOnTouchListener(this);
     }
 
     private void initComp(){
@@ -57,14 +53,8 @@ public class GameFieldView extends View implements View.OnTouchListener {
         return cellManager;
     }
 
-    public void setCellManager(CellManager cellManager) {
-        this.cellManager = cellManager;
-    }
 
-    @Override
-    public boolean onTouch(View v, MotionEvent event) {
-
-
-        return false;
+    public void moveCells(Direction direction){
+        cellManager.moveCells(direction);
     }
 }
