@@ -11,6 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.alexkaz.game2048.gamelogic.Direction;
+
 public class GameActivity extends AppCompatActivity {
 
     private GestureDetector gestureDetector;
@@ -54,12 +56,16 @@ public class GameActivity extends AppCompatActivity {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 try {
                     if (detector.isSwipeDown(e1, e2, velocityY)) {
+                        gameFieldView.moveCells(Direction.DOWN);
                         showToast("Down Swipe");
                     } else if (detector.isSwipeUp(e1, e2, velocityY)) {
+                        gameFieldView.moveCells(Direction.UP);
                         showToast("Up Swipe");
                     }else if (detector.isSwipeLeft(e1, e2, velocityX)) {
+                        gameFieldView.moveCells(Direction.LEFT);
                         showToast("Left Swipe");
                     } else if (detector.isSwipeRight(e1, e2, velocityX)) {
+                        gameFieldView.moveCells(Direction.RIGHT);
                         showToast("Right Swipe");
                     }
                 } catch (Exception e) {} //for now, ignore
