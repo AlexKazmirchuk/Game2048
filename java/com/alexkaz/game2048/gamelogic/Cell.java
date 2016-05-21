@@ -4,6 +4,7 @@ package com.alexkaz.game2048.gamelogic;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Paint;
 
 import com.alexkaz.game2048.GameActivity;
 import com.alexkaz.game2048.R;
@@ -14,20 +15,32 @@ public class Cell {
     //Свойства
     private int id;
     private Bitmap skinImage;
-    public int posX;
-    public int posY;
-    private Canvas g;
+    public int x,y;
     private GameActivity context;
 
+    private boolean locker = true;
+
+    private int posX, posY;
+
+    private int sizeX ;
+    private int borderX ;
+    private int pivotX ;
+
+    private int sizeY ;
+    private int borderY ;
+    private int pivotY ;
+
     //Конструктор
-    public Cell(GameActivity context, int posX, int posY){
+    public Cell(GameActivity context, int x, int y){
         this.context = context;
-        this.posX = posX;
-        this.posY = posY;
+        this.x = x;
+        this.y = y;
         this.id = 0;
 
         selectSkinFromRes(this.id);
     }
+
+    // Методи
 
     //Метод для вибору картинки з папки drawable
     private void selectSkinFromRes(int id) {
@@ -71,16 +84,48 @@ public class Cell {
         }
     }
 
-    // Методи
     public void draw(Canvas g){
         selectSkinFromRes(this.id);
 
+        if (locker){
+            getSizes(g.getHeight(),g.getWidth());
+            locker = false;
+        }
+        skinImage = Bitmap.createScaledBitmap(skinImage,sizeX,sizeY,false);
+        g.drawBitmap(skinImage, this.posX, this.posY,new Paint());
+
+    }
+
+    private void getSizes(int height, int width) {
+
+        float fHeight = height;
+        float fWidth = width;
+
+        float fxSize = (fWidth/400)*88;
+        float fxBorder = (fWidth/400)*7;
+        float fxPivot = (fWidth/400)*10;
+
+        float fySize = (fHeight/400)*88;
+        float fyBorder = (fHeight/400)*7;
+        float fyPivot = (fHeight/400)*10;
+
+        sizeX = (int) fxSize;
+        borderX = (int) fxBorder;
+        pivotX = (int) fxPivot;
+
+        sizeY = (int) fySize;
+        borderY = (int) fyBorder;
+        pivotY = (int) fyPivot;
+
+        this.posX = (sizeX*x) + borderX*x + pivotX;
+        this.posY = (sizeY*y) + borderY*y + pivotY;
+
+        selectSkinFromRes(this.id);
     }
 
     public void setId(int id){
         this.id = id;
     }
-
 
     public int getId() {
         return id;
