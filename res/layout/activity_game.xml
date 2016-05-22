@@ -59,13 +59,12 @@
                 android:layout_row="0"
                 android:layout_column="0" />
 
-            <ImageView
+            <ImageButton
                 android:layout_width="85dp"
                 android:layout_height="42dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginLeft="5dp"
-                android:padding="2dp"
-                android:src="@drawable/menu_btn_bg"
+                android:background="@drawable/menu_btn_bg"
                 android:id="@+id/imageView"
                 android:layout_row="0"
                 android:layout_column="1" />
