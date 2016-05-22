@@ -57,16 +57,12 @@ public class GameActivity extends AppCompatActivity {
                 try {
                     if (detector.isSwipeDown(e1, e2, velocityY)) {
                         gameFieldView.moveCells(Direction.DOWN);
-                        showToast("Down Swipe");
                     } else if (detector.isSwipeUp(e1, e2, velocityY)) {
                         gameFieldView.moveCells(Direction.UP);
-                        showToast("Up Swipe");
                     }else if (detector.isSwipeLeft(e1, e2, velocityX)) {
                         gameFieldView.moveCells(Direction.LEFT);
-                        showToast("Left Swipe");
                     } else if (detector.isSwipeRight(e1, e2, velocityX)) {
                         gameFieldView.moveCells(Direction.RIGHT);
-                        showToast("Right Swipe");
                     }
                 } catch (Exception e) {} //for now, ignore
                 return false;
