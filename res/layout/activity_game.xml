@@ -64,7 +64,7 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="11dp"
                 android:layout_marginLeft="5dp"
-                android:background="@drawable/menu_btn_bg"
+                android:background="@drawable/menu_btn_selector"
                 android:id="@+id/imageView"
                 android:layout_row="0"
                 android:layout_column="1" />
