@@ -7,8 +7,8 @@ public class SwipeDetector {
 
     private int swipe_distance;
     private int swipe_velocity;
-    private static final int SWIPE_MIN_DISTANCE = 120;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+    private static final int SWIPE_MIN_DISTANCE = 30;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 100;
 
     public SwipeDetector(int distance, int velocity) {
         super();
