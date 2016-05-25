@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity
+            android:theme="@style/AppTheme.Trans"
             android:name=".MenuActivity"
             android:screenOrientation="portrait">
         </activity>
