@@ -44,6 +44,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
+                android:onClick="onClickBtn"
                 android:id="@+id/resumeBtn"
                 android:layout_gravity="center_horizontal" />
 
@@ -62,6 +63,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
+                android:onClick="onClickBtn"
                 android:id="@+id/restartBtn"
                 android:layout_gravity="center_horizontal" />
 
@@ -80,6 +82,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
+                android:onClick="onClickBtn"
                 android:id="@+id/modeBtn"
                 android:layout_gravity="center_horizontal" />
 
@@ -98,6 +101,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
+                android:onClick="onClickBtn"
                 android:id="@+id/musicBtn"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
