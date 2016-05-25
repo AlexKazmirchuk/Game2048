@@ -3,6 +3,7 @@ package com.alexkaz.game2048;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 public class GamePreferences {
 
@@ -22,18 +23,23 @@ public class GamePreferences {
 
     private void createPrefs() {
         editor = preferences.edit();
-        editor.putBoolean(MUSIC_SWICH,true);
-        editor.putInt(MODE_SWICH,0);
-        editor.putInt(BEST_SCORES,0);
-        editor.commit();
+        if (!preferences.contains(MUSIC_SWICH)){
+            editor.putBoolean(MUSIC_SWICH,true);
+            editor.putInt(MODE_SWICH,0);
+            editor.putInt(BEST_SCORES,0);
+            editor.commit();
+        }
+
     }
 
     public boolean getMusicPrefs(){
+        Log.d("prefs","зчитано : " + String.valueOf(preferences.getBoolean(MUSIC_SWICH,true)));
         return preferences.getBoolean(MUSIC_SWICH,true);
     }
 
     public void setMusicPrefs(boolean bool){
         editor.putBoolean(MUSIC_SWICH,bool);
+        Log.d("prefs","збережено" + bool);
         editor.commit();
     }
 
