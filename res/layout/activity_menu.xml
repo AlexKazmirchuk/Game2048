@@ -44,7 +44,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
-                android:id="@+id/button"
+                android:id="@+id/resumeBtn"
                 android:layout_gravity="center_horizontal" />
 
             <Button
@@ -62,7 +62,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
-                android:id="@+id/button2"
+                android:id="@+id/restartBtn"
                 android:layout_gravity="center_horizontal" />
 
             <Button
@@ -80,7 +80,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
-                android:id="@+id/button3"
+                android:id="@+id/modeBtn"
                 android:layout_gravity="center_horizontal" />
 
             <Button
@@ -98,7 +98,7 @@
                 android:shadowDy="5"
                 android:shadowRadius="5"
 
-                android:id="@+id/button4"
+                android:id="@+id/musicBtn"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
 
