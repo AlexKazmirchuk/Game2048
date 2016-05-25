@@ -27,7 +27,11 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     private void readPrefs() {
-
+        if (gamePreferences.getMusicPrefs()){
+            musicBtn.setText("Music:on");
+        }else {
+            musicBtn.setText("Music:off");
+        }
     }
 
     public void onClickBtn(View view) {
@@ -49,8 +53,6 @@ public class MenuActivity extends AppCompatActivity {
                     ((Button)view).setText("Music:on");
                     gamePreferences.setMusicPrefs(true);
                 }
-
-
                 break;
         }
     }
