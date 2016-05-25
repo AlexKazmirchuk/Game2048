@@ -8,12 +8,26 @@ import android.widget.Button;
 public class MenuActivity extends AppCompatActivity {
 
     private GamePreferences gamePreferences;
+    private Button resumeBtn, restartBtn, modeBtn, musicBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        initComps();
         gamePreferences = new GamePreferences(this);
+        readPrefs();
+    }
+
+    private void initComps() {
+        resumeBtn = (Button)findViewById(R.id.resumeBtn);
+        restartBtn = (Button)findViewById(R.id.restartBtn);
+        modeBtn = (Button)findViewById(R.id.modeBtn);
+        musicBtn = (Button)findViewById(R.id.musicBtn);
+    }
+
+    private void readPrefs() {
+
     }
 
     public void onClickBtn(View view) {
