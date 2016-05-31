@@ -55,7 +55,7 @@
                 android:layout_marginStart="9dp"
                 android:layout_marginTop="11dp"
                 android:gravity="center_horizontal|center_vertical"
-                android:id="@+id/textView"
+                android:id="@+id/txtScores"
                 android:layout_row="0"
                 android:layout_column="0" />
 
@@ -88,7 +88,7 @@
                 android:layout_marginTop="6dp"
                 android:gravity="center_horizontal|center_vertical"
                 android:layout_columnSpan="2"
-                android:id="@+id/textView2"
+                android:id="@+id/txtBestScores"
                 android:layout_row="1"
                 android:layout_column="0" />
         </GridLayout>

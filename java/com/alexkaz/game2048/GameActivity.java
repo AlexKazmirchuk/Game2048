@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alexkaz.game2048.gamelogic.Direction;
@@ -17,8 +18,10 @@ import com.alexkaz.game2048.gamelogic.Direction;
 public class GameActivity extends AppCompatActivity {
 
     private GestureDetector gestureDetector;
+    private GamePreferences gamePreferences;
     private FrameLayout gameFieldWrapper;
     private GameFieldView gameFieldView;
+    private TextView txtScores, txtBestScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,12 @@ public class GameActivity extends AppCompatActivity {
 
     private void initComp(){
         gestureDetector = initGestureDetector();
+        gamePreferences = new GamePreferences(this);
 
         gameFieldWrapper = (FrameLayout) findViewById(R.id.gameFieldWrapper);
+        txtScores = (TextView) findViewById(R.id.txtScores);
+        txtBestScores = (TextView) findViewById(R.id.txtBestScores);
+
         gameFieldView = new GameFieldView(this);
         gameFieldWrapper.addView(gameFieldView, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 
@@ -78,5 +85,19 @@ public class GameActivity extends AppCompatActivity {
     public void onClickMenuBtn(View view) {
         Intent intent = new Intent(this,MenuActivity.class);
         startActivity(intent);
+    }
+
+    public void setScores(int points){
+        txtScores.setText("SCORES:" + points);
+        setBestScores(points);
+    }
+
+    private void setBestScores(int points){
+        int bestScores = gamePreferences.getBestScores();
+
+        if(points>bestScores){
+            txtBestScores.setText("BEST SCORES:" + points);
+            gamePreferences.setBestScores(points);
+        }
     }
 }
