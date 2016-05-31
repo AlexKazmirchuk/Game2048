@@ -29,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
 
         initComp();
-
+        readPrefs();
     }
 
     private void initComp(){
@@ -54,6 +54,12 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View arg0) {
             }
         });
+    }
+
+    private void readPrefs() {
+        int bestScores = gamePreferences.getBestScores();
+        txtScores.setText("SCORES:0");
+        txtBestScores.setText("BEST SCORES:" + bestScores);
     }
 
     private GestureDetector initGestureDetector() {
