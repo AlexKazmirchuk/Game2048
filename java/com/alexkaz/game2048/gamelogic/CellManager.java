@@ -112,7 +112,7 @@ public class CellManager {
             isFull[1] = 0;
             isFull[2] = 0;
             isFull[3] = 0;
-
+            context.setScores(scores);
         }
         else {
             key = true;
