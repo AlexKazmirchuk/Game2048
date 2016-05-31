@@ -20,8 +20,13 @@
         <activity
             android:name=".MenuActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Trans"/>
-        <activity android:name=".WinActivity"
+            android:theme="@style/AppTheme.Trans" />
+        <activity
+            android:name=".WinActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Trans" />
+        <activity
+            android:name=".LoseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Trans"/>
     </application>
