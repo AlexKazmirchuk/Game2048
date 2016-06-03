@@ -1,5 +1,6 @@
 package com.alexkaz.game2048;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.view.View;
 
@@ -11,6 +12,7 @@ public class GameFieldView extends View {
 
     private GameActivity context;
     private CellManager cellManager;
+    public static final String SCORES_VALUE = "scoresValue";
 
     public GameFieldView(GameActivity context) {
         super(context);
@@ -36,17 +38,24 @@ public class GameFieldView extends View {
             cellManager.draw(canvas);
         }
         else {
-            System.out.println("Ви програли!!!!!!!!!!!!");
-/*            try {
-                Image lose = ImageIO.read(new File("src/res/YouLose.png"));
-                g.drawImage(lose, 0, 0, null);
-            } catch (IOException ex) {
-                System.out.println("не знайдено");
-            }*/
+////            System.out.println("Ви програли!!!!!!!!!!!!");
+//            try {
+//                Image lose = ImageIO.read(new File("src/res/YouLose.png"));
+//                g.drawImage(lose, 0, 0, null);
+//            } catch (IOException ex) {
+//                System.out.println("не знайдено");
+//            }
+            showLoseActivity(cellManager.getScores());
         }
 
 
 
+    }
+
+    private void showLoseActivity(int scores) {
+        Intent intent = new Intent(context,LoseActivity.class);
+        intent.putExtra(SCORES_VALUE,scores);
+        context.startActivity(intent);
     }
 
     public CellManager getCellManager() {

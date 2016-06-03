@@ -42,6 +42,10 @@ public class CellManager {
 
     }
 
+    public int getScores() {
+        return scores;
+    }
+
     public void draw(Canvas g){
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j <cells[i].length ; j++) {
