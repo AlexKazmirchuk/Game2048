@@ -46,6 +46,7 @@ public class GameFieldView extends View {
 //                System.out.println("не знайдено");
 //            }
             showLoseActivity(cellManager.getScores());
+            cellManager.startNewGame();
         }
 
 

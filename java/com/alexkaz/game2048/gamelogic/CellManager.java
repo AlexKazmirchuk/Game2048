@@ -283,6 +283,13 @@ public class CellManager {
         return line;
     }
 
+    public void startNewGame(){
+        this.lose = false;
+        this.key = false;
+        initComp();
+        this.scores = 0;
+        this.isFull = new int[]{0,0,0,0};
+    }
 
 
 }
