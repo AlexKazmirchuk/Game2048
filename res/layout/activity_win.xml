@@ -74,6 +74,7 @@
                 android:background="@drawable/win_image_bg"/>
 
             <TextView
+                android:id="@+id/winTxtScores"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
 
@@ -100,6 +101,7 @@
 
 
         <Button
+            android:id="@+id/winOkBtn"
             android:layout_width="130dp"
             android:layout_height="50dp"
 
@@ -115,6 +117,7 @@
             android:layout_gravity="center_horizontal"
             android:text="OK"
             android:background="@drawable/win_ok_btn_bg"
+            android:onClick="onOk"
             />
 
     </LinearLayout>
