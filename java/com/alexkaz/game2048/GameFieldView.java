@@ -13,6 +13,7 @@ public class GameFieldView extends View {
     private GameActivity context;
     private CellManager cellManager;
     public static final String SCORES_VALUE = "scoresValue";
+    private boolean isWinActivityShowed  = true;
 
     public GameFieldView(GameActivity context) {
         super(context);
@@ -36,6 +37,11 @@ public class GameFieldView extends View {
         //TODO
         if (!getCellManager().lose){
             cellManager.draw(canvas);
+            if(32 == cellManager.getTheLargestNumber() && isWinActivityShowed){
+                showWinActivity(cellManager.getScores());
+                isWinActivityShowed = false;
+            }
+
         }
         else {
 ////            System.out.println("Ви програли!!!!!!!!!!!!");
@@ -55,6 +61,12 @@ public class GameFieldView extends View {
 
     private void showLoseActivity(int scores) {
         Intent intent = new Intent(context,LoseActivity.class);
+        intent.putExtra(SCORES_VALUE,scores);
+        context.startActivity(intent);
+    }
+
+    private void showWinActivity(int scores){
+        Intent intent = new Intent(context,WinActivity.class);
         intent.putExtra(SCORES_VALUE,scores);
         context.startActivity(intent);
     }
