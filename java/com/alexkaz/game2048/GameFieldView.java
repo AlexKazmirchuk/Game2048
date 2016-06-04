@@ -44,6 +44,7 @@ public class GameFieldView extends View {
 
         }
         else {
+            showLoseActivity(cellManager.getScores());
             cellManager.startNewGame();
             cellManager.draw(canvas);
 ////            System.out.println("Ви програли!!!!!!!!!!!!");
@@ -53,7 +54,7 @@ public class GameFieldView extends View {
 //            } catch (IOException ex) {
 //                System.out.println("не знайдено");
 //            }
-            showLoseActivity(cellManager.getScores());
+
 
         }
 
