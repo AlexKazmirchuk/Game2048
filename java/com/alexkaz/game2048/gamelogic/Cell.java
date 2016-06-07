@@ -8,6 +8,8 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.Rect;
+import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 
@@ -109,8 +111,34 @@ public class Cell {
         Paint p = new Paint();
         p.setColor(colors[0]);
         g.drawRect(posX,posY,posX+sizeY-10,posY+sizeY-10,p);
-        p.setColor(Color.CYAN);
-        g.drawText(String.valueOf(this.id),posX+30,posY+30,p);
+
+        float mTextWidth, mTextHeight;
+        String text = String.valueOf(this.id);
+        Rect mTextBoundRect = new Rect();
+        float width, height,centerX, centerY;
+
+        width = sizeX-10;
+        height = sizeY-10;
+        centerX = posX + width/2;
+        centerY = posY + height/2;
+
+        if(this.id > 0){
+            p.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+            p.setTextSize(55.0f);
+            p.setStyle(Paint.Style.FILL);
+            p.getTextBounds(text, 0, text.length(), mTextBoundRect);
+//            mTextWidth = p.measureText(text);
+            mTextWidth = mTextBoundRect.width();
+            mTextHeight = mTextBoundRect.height();
+
+            p.setColor(Color.parseColor("#741111"));
+            g.drawText(text,(centerX - (mTextWidth / 2f))-4,(centerY + (mTextHeight /2f))+1,p);
+            g.drawText(text,(centerX - (mTextWidth / 2f))-3,(centerY + (mTextHeight /2f))+2,p);
+            g.drawText(text,(centerX - (mTextWidth / 2f))-2,(centerY + (mTextHeight /2f))+3,p);
+            g.drawText(text,(centerX - (mTextWidth / 2f))-1,(centerY + (mTextHeight /2f))+4,p);
+            p.setColor(Color.parseColor("#fa1515"));
+            g.drawText(text,(centerX - (mTextWidth / 2f))-5,(centerY + (mTextHeight /2f)),p);
+        }
     }
 
     private void drawRightRomb(Canvas g){
