@@ -124,11 +124,10 @@ public class Cell {
 
         if(this.id > 0){
             p.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            p.setTextSize(55.0f);
+            p.setTextSize(resizeText(text.length()));
             p.setStyle(Paint.Style.FILL);
             p.getTextBounds(text, 0, text.length(), mTextBoundRect);
-//            mTextWidth = p.measureText(text);
-            mTextWidth = mTextBoundRect.width();
+            mTextWidth = p.measureText(text);
             mTextHeight = mTextBoundRect.height();
 
             p.setColor(Color.parseColor("#741111"));
@@ -259,6 +258,19 @@ public class Cell {
 
         this.posX = (sizeX*x) + borderX*x + pivotX;
         this.posY = (sizeY*y) + borderY*y + pivotY;
+    }
+
+    private float resizeText(int textLength){
+        if (textLength>0){
+            if(textLength == 3){
+                return 35.0f;
+            } else if (textLength == 4){
+                return 29.0f;
+            } else {
+                return 55.0f;
+            }
+        }
+        return 55.0f;
     }
 
     public void setId(int id){
