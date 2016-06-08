@@ -97,6 +97,8 @@
             android:id="@+id/gameFieldWrapper"
             android:layout_width="match_parent"
             android:layout_height="270dp"
+            android:paddingBottom="3dp"
+            android:paddingRight="3dp"
             android:background="@drawable/gamefield_bg">
 
         </FrameLayout>

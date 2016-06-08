@@ -7,17 +7,18 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import com.alexkaz.game2048.GameActivity;
 import com.alexkaz.game2048.R;
 
 public class Cell {
 
+
+    public static final int SIDE_SPACE_X = 5;
+    public static final int SIDE_SPACE_Y = 5;
 
     //Свойства
     private int id;
@@ -29,7 +30,7 @@ public class Cell {
     private boolean locker = true;
 
     private int posX, posY;
-    private int shear = 10,shearR = 0;
+    private int shear = 7,shearR = 0;
 
     private int sizeX ;
     private int borderX ;
@@ -110,15 +111,15 @@ public class Cell {
     private void drawRect(Canvas g){
         Paint p = new Paint();
         p.setColor(colors[0]);
-        g.drawRect(posX,posY,posX+sizeY-10,posY+sizeY-10,p);
+        g.drawRect(posX,posY,posX+sizeX - SIDE_SPACE_X,posY+sizeY - SIDE_SPACE_Y,p);
 
         float mTextWidth, mTextHeight;
         String text = String.valueOf(this.id);
         Rect mTextBoundRect = new Rect();
         float width, height,centerX, centerY;
 
-        width = sizeX-10;
-        height = sizeY-10;
+        width = sizeX;
+        height = sizeY;
         centerX = posX + width/2;
         centerY = posY + height/2;
 
@@ -131,12 +132,12 @@ public class Cell {
             mTextHeight = mTextBoundRect.height();
 
             p.setColor(Color.parseColor("#741111"));
-            g.drawText(text,(centerX - (mTextWidth / 2f))-4,(centerY + (mTextHeight /2f))+1,p);
-            g.drawText(text,(centerX - (mTextWidth / 2f))-3,(centerY + (mTextHeight /2f))+2,p);
-            g.drawText(text,(centerX - (mTextWidth / 2f))-2,(centerY + (mTextHeight /2f))+3,p);
-            g.drawText(text,(centerX - (mTextWidth / 2f))-1,(centerY + (mTextHeight /2f))+4,p);
+            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 1,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 1, p);
+            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 2,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 2, p);
+            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 3,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 3, p);
+            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 4,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 4, p);
             p.setColor(Color.parseColor("#fa1515"));
-            g.drawText(text,(centerX - (mTextWidth / 2f))-5,(centerY + (mTextHeight /2f)),p);
+            g.drawText(text,(centerX - (mTextWidth/2f)) - SIDE_SPACE_X,(centerY + (mTextHeight/2f))-SIDE_SPACE_Y,p);
         }
     }
 
@@ -144,11 +145,11 @@ public class Cell {
         Paint p = new Paint();
         p.setColor(colors[1]);
         Path path = new Path();
-        path.moveTo(posX + sizeX + shearR-13,posY + shearR);
-        path.lineTo(posX+sizeX+shear-13, posY+shear);
-        path.lineTo(posX+sizeX+shear-13, posY+sizeY+shear-10);
-        path.lineTo(posX+sizeX+shearR-13, posY+sizeY+shearR-10);
-        path.lineTo(posX + sizeX + shearR-13,posY + shearR);
+        path.moveTo(posX + sizeX + shearR - SIDE_SPACE_X, posY + shearR);
+        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+shear);
+        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+sizeY + shear - SIDE_SPACE_Y);
+        path.lineTo(posX+sizeX+shearR - SIDE_SPACE_X, posY+sizeY + shearR - SIDE_SPACE_Y);
+        path.lineTo(posX + sizeX + shearR - SIDE_SPACE_X, posY + shearR);
         g.drawPath(path,p);
     }
 
@@ -156,11 +157,11 @@ public class Cell {
         Paint p = new Paint();
         p.setColor(colors[2]);
         Path path = new Path();
-        path.moveTo(posX+shearR, posY+sizeY+shearR-10);
-        path.lineTo(posX+sizeX+shearR-14, posY+sizeY+shearR-10);
-        path.lineTo(posX+sizeX+shear-14, posY+sizeY+shear-10);
-        path.lineTo(posX+shear, posY+sizeY+shear-10);
-        path.lineTo(posX+shearR, posY+sizeY+shearR-10);
+        path.moveTo(posX+shearR, posY+sizeY+shearR-SIDE_SPACE_Y);
+        path.lineTo(posX+sizeX+shearR- SIDE_SPACE_X, posY+sizeY+shearR-SIDE_SPACE_Y);
+        path.lineTo(posX+sizeX+shear- SIDE_SPACE_X, posY+sizeY+shear-SIDE_SPACE_Y);
+        path.lineTo(posX+shear, posY+sizeY+shear-SIDE_SPACE_Y);
+        path.lineTo(posX+shearR, posY+sizeY+shearR-SIDE_SPACE_Y);
         g.drawPath(path,p);
     }
 
@@ -173,6 +174,8 @@ public class Cell {
     private void setColorFromRes(int id){
         switch (id){
             case 0:
+//                int i = context.getResources().getIdentifier("colorOwnDefault", "color", context.getPackageName());
+//                colors[0] = ContextCompat.getColor(context,i);
                 colors[0] = ContextCompat.getColor(context,R.color.colorOwnDefault);
                 colors[1] = ContextCompat.getColor(context,R.color.colorRightDefault);
                 colors[2] = ContextCompat.getColor(context,R.color.colorBottomDefault);
