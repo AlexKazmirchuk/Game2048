@@ -20,25 +20,25 @@ public class Cell {
     public static final int SIDE_SPACE_X = 5;
     public static final int SIDE_SPACE_Y = 5;
 
+    public static final int SHEAR_MAX = 7;
+
     //Свойства
     private int id;
     private Bitmap skinImage;
     private int[] colors = new int[3];
     public int x,y;
     private GameActivity context;
-
     private boolean locker = true;
 
+    private boolean isFresh = false;
     private int posX, posY;
-    private int shear = 7,shearR = 0;
+    private int shear = 7;
+
+    private int shearR = 0;
 
     private int sizeX ;
-    private int borderX ;
-    private int pivotX ;
 
     private int sizeY ;
-    private int borderY ;
-    private int pivotY ;
 
     //Конструктор
     public Cell(GameActivity context, int x, int y){
@@ -111,7 +111,7 @@ public class Cell {
     private void drawRect(Canvas g){
         Paint p = new Paint();
         p.setColor(colors[0]);
-        g.drawRect(posX,posY,posX+sizeX - SIDE_SPACE_X,posY+sizeY - SIDE_SPACE_Y,p);
+        g.drawRect(posX + shearR,posY + shearR,posX+sizeX - SIDE_SPACE_X + shearR,posY+sizeY - SIDE_SPACE_Y + shearR,p);
 
         float mTextWidth, mTextHeight;
         String text = String.valueOf(this.id);
@@ -240,27 +240,24 @@ public class Cell {
 
     private void getSizes(int height, int width) {
 
-        float fHeight = height;
-        float fWidth = width;
+        float fxSize = ((float) width /400)*88;
+        float fxBorder = ((float) width /400)*10;
+        float fxPivot = ((float) width /400)*10;
 
-        float fxSize = (fWidth/400)*88;
-        float fxBorder = (fWidth/400)*10;
-        float fxPivot = (fWidth/400)*10;
-
-        float fySize = (fHeight/400)*88;
-        float fyBorder = (fHeight/400)*11;
-        float fyPivot = (fHeight/400)*10;
+        float fySize = ((float) height /400)*88;
+        float fyBorder = ((float) height /400)*11;
+        float fyPivot = ((float) height /400)*10;
 
         sizeX = (int) fxSize;
-        borderX = (int) fxBorder;
-        pivotX = (int) fxPivot;
+        int borderX = (int) fxBorder;
+        int pivotX = (int) fxPivot;
 
         sizeY = (int) fySize;
-        borderY = (int) fyBorder;
-        pivotY = (int) fyPivot;
+        int borderY = (int) fyBorder;
+        int pivotY = (int) fyPivot;
 
-        this.posX = (sizeX*x) + borderX*x + pivotX;
-        this.posY = (sizeY*y) + borderY*y + pivotY;
+        this.posX = (sizeX*x) + borderX *x + pivotX;
+        this.posY = (sizeY*y) + borderY *y + pivotY;
     }
 
     private float resizeText(int textLength){
@@ -282,6 +279,22 @@ public class Cell {
 
     public int getId() {
         return id;
+    }
+
+    public int getShearR() {
+        return shearR;
+    }
+
+    public void setShearR(int shearR) {
+        this.shearR = shearR;
+    }
+
+    public boolean isFresh() {
+        return isFresh;
+    }
+
+    public void setFresh(boolean fresh) {
+        isFresh = fresh;
     }
 }
 

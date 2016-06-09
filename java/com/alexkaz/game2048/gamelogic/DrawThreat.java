@@ -57,6 +57,7 @@ public class DrawThreat extends Thread {
             if (elapsedTime > 30){
                 prevTime = now;
                 canvas = null;
+                CellManager.spawnCellAnimation(cellManager.getCells());
                 try{
                     canvas = surfaceHolder.lockCanvas();
                     synchronized (surfaceHolder){

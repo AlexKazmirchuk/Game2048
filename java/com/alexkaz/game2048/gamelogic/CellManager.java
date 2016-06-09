@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class CellManager {
 
+
     //Свойства
     private Cell[][] cells = new Cell[4][4];
     public int scores = 0;
@@ -63,20 +64,15 @@ public class CellManager {
                 }
             }
         }
-
         return false;
     }
-
-
 
     public void moveCells(Direction direction){
 
         switch (direction){
             case UP:{
-
                 moveAllUp(cells);
                 System.out.println(scores);
-
                 if (key){
                     isFull[0] = 1;
                 }
@@ -150,26 +146,19 @@ public class CellManager {
         else{
             spownCell();
         }
-
-
     }
 
-
     private Cell[][] moveAllDown(Cell[][] cells){
-
         for (int i = 0; i <cells.length ; i++) {
             cells[i] = moveLineRight(cells[i]);
         }
-
         return cells;
     }
 
     private Cell[][] moveAllUp(Cell[][] cells){
-
         for (int i = 0; i <cells.length ; i++) {
             cells[i] = moveLineLeft(cells[i]);
         }
-
         return cells;
     }
 
@@ -202,8 +191,6 @@ public class CellManager {
         return cells;
     }
 
-
-
     private Cell[] moveLineRight(Cell[] line){
 
         line = sortLineRight(line);
@@ -235,6 +222,10 @@ public class CellManager {
                 if(j != 0) {
                     if (line[j].getId() == line[j-1].getId()){
                         line[j].setId(line[j].getId() + line[j-1].getId());
+                        if(line[j].getId() > 0){
+                            line[j].setFresh(true);
+                            line[j].setShearR(Cell.SHEAR_MAX);
+                        }
                         scores = scores + line[j].getId();
                         line[j-1].setId(0);
                     }
@@ -243,8 +234,6 @@ public class CellManager {
         }
         return line;
     }
-
-
 
     private Cell[] moveLineLeft(Cell[] line){
 
@@ -276,6 +265,10 @@ public class CellManager {
             if(j != 3) {
                 if (line[j].getId() == line[j+1].getId()){
                     line[j].setId(line[j].getId() + line[j+1].getId());
+                    if(line[j].getId() > 0){
+                        line[j].setFresh(true);
+                        line[j].setShearR(Cell.SHEAR_MAX);
+                    }
                     scores = scores + line[j].getId();
                     line[j+1].setId(0);
                 }
@@ -292,20 +285,35 @@ public class CellManager {
         this.isFull = new int[]{0,0,0,0};
     }
 
-
     public int getTheLargestNumber(){
         int largestNumber = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-
                 if (largestNumber<cells[i][j].getId()){
                     largestNumber = cells[i][j].getId();
                 }
-
             }
         }
         Log.d("largestNumber",String.valueOf(largestNumber));
         return largestNumber;
     }
 
+    public static void spawnCellAnimation(Cell[][] cell){
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                if (cell[i][j].isFresh()){
+                    if (cell[i][j].getShearR() > 0){
+                        cell[i][j].setShearR(cell[i][j].getShearR()-1);
+                    } else {
+                        cell[i][j].setFresh(false);
+                    }
+                }
+            }
+        }
+    }
+
+    public Cell[][] getCells() {
+        return cells;
+    }
 }
