@@ -18,15 +18,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MenuActivity"
+            android:name=".uicomp.MenuActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Trans" />
         <activity
-            android:name=".WinActivity"
+            android:name=".uicomp.WinActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Trans" />
         <activity
-            android:name=".LoseActivity"
+            android:name=".uicomp.LoseActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Trans"/>
     </application>

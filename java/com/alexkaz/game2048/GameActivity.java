@@ -1,19 +1,20 @@
 package com.alexkaz.game2048;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.alexkaz.game2048.controllers.GamePreferences;
+import com.alexkaz.game2048.controllers.SwipeDetector;
 import com.alexkaz.game2048.gamelogic.Direction;
+import com.alexkaz.game2048.gamelogic.GameFieldView;
+import com.alexkaz.game2048.uicomp.MenuActivity;
 
 public class GameActivity extends AppCompatActivity {
 

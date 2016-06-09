@@ -1,11 +1,14 @@
-package com.alexkaz.game2048;
+package com.alexkaz.game2048.gamelogic;
 
 import android.content.Intent;
 import android.graphics.Canvas;
 import android.view.View;
 
+import com.alexkaz.game2048.GameActivity;
 import com.alexkaz.game2048.gamelogic.CellManager;
 import com.alexkaz.game2048.gamelogic.Direction;
+import com.alexkaz.game2048.uicomp.LoseActivity;
+import com.alexkaz.game2048.uicomp.WinActivity;
 
 
 public class GameFieldView extends View {

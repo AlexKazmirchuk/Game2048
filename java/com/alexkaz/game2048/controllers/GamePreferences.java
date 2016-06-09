@@ -1,4 +1,4 @@
-package com.alexkaz.game2048;
+package com.alexkaz.game2048.controllers;
 
 import android.app.Activity;
 import android.content.Context;
