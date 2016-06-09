@@ -14,6 +14,7 @@ import com.alexkaz.game2048.controllers.GamePreferences;
 import com.alexkaz.game2048.controllers.SwipeDetector;
 import com.alexkaz.game2048.gamelogic.Direction;
 import com.alexkaz.game2048.gamelogic.GameFieldView;
+import com.alexkaz.game2048.gamelogic.GameSurfaceView;
 import com.alexkaz.game2048.uicomp.MenuActivity;
 
 public class GameActivity extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class GameActivity extends AppCompatActivity {
     private GestureDetector gestureDetector;
     private GamePreferences gamePreferences;
     private FrameLayout gameFieldWrapper;
-    private GameFieldView gameFieldView;
+    private GameSurfaceView gameSurfaceView;
     private TextView txtScores, txtBestScores;
 
     @Override
@@ -41,17 +42,16 @@ public class GameActivity extends AppCompatActivity {
         txtScores = (TextView) findViewById(R.id.txtScores);
         txtBestScores = (TextView) findViewById(R.id.txtBestScores);
 
-        gameFieldView = new GameFieldView(this);
-        gameFieldWrapper.addView(gameFieldView, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
+        gameSurfaceView = new GameSurfaceView(this);
+        gameFieldWrapper.addView(gameSurfaceView, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
 
-
-        gameFieldView.setOnTouchListener(new View.OnTouchListener() {
+        gameSurfaceView.setOnTouchListener(new View.OnTouchListener() {
             public boolean onTouch(View v, MotionEvent event) {
                 return gestureDetector.onTouchEvent(event);
             }
         });
 
-        gameFieldView.setOnClickListener(new View.OnClickListener() {
+        gameSurfaceView.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
             }
         });
@@ -71,13 +71,13 @@ public class GameActivity extends AppCompatActivity {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 try {
                     if (detector.isSwipeDown(e1, e2, velocityY)) {
-                        gameFieldView.moveCells(Direction.DOWN);
+                        gameSurfaceView.moveCells(Direction.DOWN);
                     } else if (detector.isSwipeUp(e1, e2, velocityY)) {
-                        gameFieldView.moveCells(Direction.UP);
+                        gameSurfaceView.moveCells(Direction.UP);
                     }else if (detector.isSwipeLeft(e1, e2, velocityX)) {
-                        gameFieldView.moveCells(Direction.LEFT);
+                        gameSurfaceView.moveCells(Direction.LEFT);
                     } else if (detector.isSwipeRight(e1, e2, velocityX)) {
-                        gameFieldView.moveCells(Direction.RIGHT);
+                        gameSurfaceView.moveCells(Direction.RIGHT);
                     }
                 } catch (Exception e) {} //for now, ignore
                 return false;

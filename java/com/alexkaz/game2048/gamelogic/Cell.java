@@ -244,11 +244,11 @@ public class Cell {
         float fWidth = width;
 
         float fxSize = (fWidth/400)*88;
-        float fxBorder = (fWidth/400)*7;
+        float fxBorder = (fWidth/400)*10;
         float fxPivot = (fWidth/400)*10;
 
         float fySize = (fHeight/400)*88;
-        float fyBorder = (fHeight/400)*7;
+        float fyBorder = (fHeight/400)*11;
         float fyPivot = (fHeight/400)*10;
 
         sizeX = (int) fxSize;
