@@ -113,32 +113,9 @@ public class Cell {
         p.setColor(colors[0]);
         g.drawRect(posX + shearR,posY + shearR,posX+sizeX - SIDE_SPACE_X + shearR,posY+sizeY - SIDE_SPACE_Y + shearR,p);
 
-        float mTextWidth, mTextHeight;
-        String text = String.valueOf(this.id);
-        Rect mTextBoundRect = new Rect();
-        float width, height,centerX, centerY;
+        drawNumbers(g);
 
-        width = sizeX;
-        height = sizeY;
-        centerX = posX + width/2;
-        centerY = posY + height/2;
 
-        if(this.id > 0){
-            p.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            p.setTextSize(resizeText(text.length()));
-            p.setStyle(Paint.Style.FILL);
-            p.getTextBounds(text, 0, text.length(), mTextBoundRect);
-            mTextWidth = p.measureText(text);
-            mTextHeight = mTextBoundRect.height();
-
-            p.setColor(Color.parseColor("#741111"));
-            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 1,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 1, p);
-            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 2,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 2, p);
-            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 3,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 3, p);
-            g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + 4,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + 4, p);
-            p.setColor(Color.parseColor("#fa1515"));
-            g.drawText(text,(centerX - (mTextWidth/2f)) - SIDE_SPACE_X,(centerY + (mTextHeight/2f))-SIDE_SPACE_Y,p);
-        }
     }
 
     private void drawRightRomb(Canvas g){
@@ -163,6 +140,41 @@ public class Cell {
         path.lineTo(posX+shear, posY+sizeY+shear-SIDE_SPACE_Y);
         path.lineTo(posX+shearR, posY+sizeY+shearR-SIDE_SPACE_Y);
         g.drawPath(path,p);
+    }
+
+    private void drawNumbers(Canvas g){
+        Paint p = new Paint();
+
+        float mTextWidth, mTextHeight;
+        String text = String.valueOf(this.id);
+        Rect mTextBoundRect = new Rect();
+        float width, height,centerX, centerY;
+
+        width = sizeX;
+        height = sizeY;
+        centerX = posX + width/2;
+        centerY = posY + height/2;
+
+        if(this.id > 0){
+            p.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
+            p.setTextSize(resizeText(text.length()));
+            p.setStyle(Paint.Style.FILL);
+            p.setAntiAlias(true);
+            p.getTextBounds(text, 0, text.length(), mTextBoundRect);
+            mTextWidth = p.measureText(text);
+            mTextHeight = mTextBoundRect.height();
+
+            p.setColor(Color.parseColor("#741111"));
+            if (shearR <=5){
+                int a = 0;
+                for (int i = 1; i < (5 - shearR); i++) {
+                    g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + i,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + i, p);
+                    a = i;
+                }
+                p.setColor(Color.parseColor("#fa1515"));
+                g.drawText(text,(centerX - (mTextWidth/2f)) - SIDE_SPACE_X-a+3,(centerY + (mTextHeight/2f))-SIDE_SPACE_Y-a+3,p);
+            }
+        }
     }
 
     private void bitmapDraw(Canvas g){

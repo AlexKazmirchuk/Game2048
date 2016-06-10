@@ -302,12 +302,17 @@ public class CellManager {
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (cell[i][j].isFresh()){
-                    if (cell[i][j].getShearR() > 0){
-                        cell[i][j].setShearR(cell[i][j].getShearR()-1);
-                    } else {
-                        cell[i][j].setFresh(false);
+                if (!(cell[i][j].getId() == 0)){
+                    if (cell[i][j].isFresh()){
+                        if (cell[i][j].getShearR() > 0){
+                            cell[i][j].setShearR(cell[i][j].getShearR()-1);
+                        } else {
+                            cell[i][j].setFresh(false);
+                        }
                     }
+                } else {
+                    cell[i][j].setShearR(0);
+                    cell[i][j].setFresh(false);
                 }
             }
         }
