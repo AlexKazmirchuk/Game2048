@@ -49,4 +49,9 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
             }
         }
     }
+
+    public DrawThreat getDrawThreat() {
+        return drawThreat;
+    }
+
 }

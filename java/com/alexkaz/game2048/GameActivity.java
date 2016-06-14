@@ -16,6 +16,7 @@ import com.alexkaz.game2048.gamelogic.Direction;
 import com.alexkaz.game2048.gamelogic.GameFieldView;
 import com.alexkaz.game2048.gamelogic.GameSurfaceView;
 import com.alexkaz.game2048.uicomp.MenuActivity;
+import com.alexkaz.game2048.uicomp.MenuDialogFragment;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class GameActivity extends AppCompatActivity {
     private FrameLayout gameFieldWrapper;
     private GameSurfaceView gameSurfaceView;
     private TextView txtScores, txtBestScores;
+    private MenuDialogFragment menuDialogFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void initComp(){
+        menuDialogFragment = new MenuDialogFragment();
+
         gestureDetector = initGestureDetector();
         gamePreferences = new GamePreferences(this);
 
@@ -90,8 +94,10 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onClickMenuBtn(View view) {
-        Intent intent = new Intent(this,MenuActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this,MenuActivity.class);
+//        startActivity(intent);
+        menuDialogFragment.show(getFragmentManager(),"menu");
+
     }
 
     public void setScores(int points){
@@ -106,5 +112,9 @@ public class GameActivity extends AppCompatActivity {
             txtBestScores.setText("BEST SCORES:" + points);
             gamePreferences.setBestScores(points);
         }
+    }
+
+    public  void restartGame(){
+        gameSurfaceView.getDrawThreat().getCellManager().startNewGame();
     }
 }

@@ -40,7 +40,7 @@ public class MenuActivity extends AppCompatActivity {
     public void onClickBtn(View view) {
         switch (view.getId()){
             case R.id.resumeBtn:
-
+                finish();
                 break;
             case R.id.restartBtn:
 
