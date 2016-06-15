@@ -17,18 +17,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".uicomp.MenuActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Trans" />
-        <activity
-            android:name=".uicomp.WinActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Trans" />
-        <activity
-            android:name=".uicomp.LoseActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Trans"/>
     </application>
 
 </manifest>

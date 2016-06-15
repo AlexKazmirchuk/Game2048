@@ -1,6 +1,5 @@
 package com.alexkaz.game2048;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -13,9 +12,7 @@ import android.widget.Toast;
 import com.alexkaz.game2048.controllers.GamePreferences;
 import com.alexkaz.game2048.controllers.SwipeDetector;
 import com.alexkaz.game2048.gamelogic.Direction;
-import com.alexkaz.game2048.gamelogic.GameFieldView;
 import com.alexkaz.game2048.gamelogic.GameSurfaceView;
-import com.alexkaz.game2048.uicomp.MenuActivity;
 import com.alexkaz.game2048.uicomp.MenuDialogFragment;
 
 public class GameActivity extends AppCompatActivity {
@@ -94,10 +91,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void onClickMenuBtn(View view) {
-//        Intent intent = new Intent(this,MenuActivity.class);
-//        startActivity(intent);
         menuDialogFragment.show(getFragmentManager(),"menu");
-
     }
 
     public void setScores(int points){

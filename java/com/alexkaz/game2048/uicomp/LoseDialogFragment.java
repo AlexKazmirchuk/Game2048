@@ -4,7 +4,6 @@ import android.app.DialogFragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.alexkaz.game2048.R;
-import com.alexkaz.game2048.gamelogic.GameFieldView;
 
 public class LoseDialogFragment extends DialogFragment implements View.OnClickListener {
 
