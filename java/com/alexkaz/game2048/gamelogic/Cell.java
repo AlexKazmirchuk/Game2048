@@ -24,7 +24,6 @@ public class Cell {
 
     //Свойства
     private int id;
-    private Bitmap skinImage;
     private int[] colors = new int[3];
     public int x,y;
     private GameActivity context;
@@ -50,54 +49,11 @@ public class Cell {
 
     // Методи
 
-    //Метод для вибору картинки з папки drawable
-    private void selectSkinFromRes(int id) {
-        switch (id){
-            case 0:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_default);
-                break;
-            case 2:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_two);
-                break;
-            case 4:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_four);
-                break;
-            case 8:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_eight);
-                break;
-            case 16:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_sixteen);
-                break;
-            case 32:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_thirty_two);
-                break;
-            case 64:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_sixty_four);
-                break;
-            case 128:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_one_hundred_twenty_eight);
-                break;
-            case 256:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_two_hundred_fifty_six);
-                break;
-            case 512:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_five_hundred_twelve);
-                break;
-            case 1024:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_one_thousand_twenty_four);
-                break;
-            case 2048:
-                skinImage = BitmapFactory.decodeResource(context.getResources(), R.drawable.item_two_thousands_forty_eight);
-                break;
-        }
-    }
-
     public void draw(Canvas g){
         if (locker){
             getSizes(g.getHeight(),g.getWidth());
             locker = false;
         }
-//        bitmapDraw(g);
         drawMyCell(g);
     }
 
@@ -114,8 +70,6 @@ public class Cell {
         g.drawRect(posX + shearR,posY + shearR,posX+sizeX - SIDE_SPACE_X + shearR,posY+sizeY - SIDE_SPACE_Y + shearR,p);
 
         drawNumbers(g);
-
-
     }
 
     private void drawRightRomb(Canvas g){
@@ -175,12 +129,6 @@ public class Cell {
                 g.drawText(text,(centerX - (mTextWidth/2f)) - SIDE_SPACE_X-a+3,(centerY + (mTextHeight/2f))-SIDE_SPACE_Y-a+3,p);
             }
         }
-    }
-
-    private void bitmapDraw(Canvas g){
-        selectSkinFromRes(this.id);
-        skinImage = Bitmap.createScaledBitmap(skinImage,sizeX,sizeY,false);
-        g.drawBitmap(skinImage, this.posX, this.posY,new Paint());
     }
 
     private void setColorFromRes(int id){
