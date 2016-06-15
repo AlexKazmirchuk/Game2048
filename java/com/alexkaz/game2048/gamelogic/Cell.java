@@ -184,70 +184,14 @@ public class Cell {
     }
 
     private void setColorFromRes(int id){
-        switch (id){
-            case 0:
-//                int i = context.getResources().getIdentifier("colorOwnDefault", "color", context.getPackageName());
-//                colors[0] = ContextCompat.getColor(context,i);
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwnDefault);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRightDefault);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottomDefault);
-                break;
-            case 2:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn2);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight2);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom2);
-                break;
-            case 4:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn4);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight4);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom4);
-                break;
-            case 8:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn8);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight8);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom8);
-                break;
-            case 16:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn16);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight16);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom16);
-                break;
-            case 32:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn32);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight32);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom32);
-                break;
-            case 64:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn64);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight64);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom64);
-                break;
-            case 128:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn128);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight128);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom128);
-                break;
-            case 256:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn256);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight256);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom256);
-                break;
-            case 512:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn512);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight512);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom512);
-                break;
-            case 1024:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn1024);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight1024);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom1024);
-                break;
-            case 2048:
-                colors[0] = ContextCompat.getColor(context,R.color.colorOwn2048);
-                colors[1] = ContextCompat.getColor(context,R.color.colorRight2048);
-                colors[2] = ContextCompat.getColor(context,R.color.colorBottom2048);
-                break;
-        }
+                int i = context.getResources().getIdentifier("colorOwn" + id, "color", context.getPackageName());
+                colors[0] = ContextCompat.getColor(context,i);
+
+                i = context.getResources().getIdentifier("colorRight" + id, "color", context.getPackageName());
+                colors[1] = ContextCompat.getColor(context,i);
+
+                i = context.getResources().getIdentifier("colorBottom" + id, "color", context.getPackageName());
+                colors[2] = ContextCompat.getColor(context,i);
     }
 
     private void getSizes(int height, int width) {

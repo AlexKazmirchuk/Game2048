@@ -11,6 +11,10 @@
     <color name="colorRightDefault">#1a7174</color>
     <color name="colorBottomDefault">#135a5e</color>
 
+    <color name="colorOwn0">#218a8d</color>
+    <color name="colorRight0">#1a7174</color>
+    <color name="colorBottom0">#135a5e</color>
+
     <color name="colorOwn2">#ffcc80</color>
     <color name="colorRight2">#b88e4f</color>
     <color name="colorBottom2">#7a603a</color>
