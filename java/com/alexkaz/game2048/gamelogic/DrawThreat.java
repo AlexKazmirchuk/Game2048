@@ -1,15 +1,13 @@
 package com.alexkaz.game2048.gamelogic;
 
 
-import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.SurfaceHolder;
 
 import com.alexkaz.game2048.GameActivity;
-import com.alexkaz.game2048.uicomp.LoseActivity;
 import com.alexkaz.game2048.uicomp.LoseDialogFragment;
-import com.alexkaz.game2048.uicomp.WinActivity;
+import com.alexkaz.game2048.uicomp.WinDialogFragment;
 
 public class DrawThreat extends Thread {
 
@@ -29,18 +27,14 @@ public class DrawThreat extends Thread {
         cellManager = new CellManager(context);
     }
 
-    private void showLoseActivity(int scores) {
-//        Intent intent = new Intent(context,LoseActivity.class);
-//        intent.putExtra(SCORES_VALUE,scores);
-//        context.startActivity(intent);
+    private void showLoseDialog(int scores) {
         LoseDialogFragment loseDialogFragment = LoseDialogFragment.newInstance(scores);
         loseDialogFragment.show(context.getFragmentManager(),"loseDialog");
     }
 
-    private void showWinActivity(int scores){
-        Intent intent = new Intent(context,WinActivity.class);
-        intent.putExtra(SCORES_VALUE,scores);
-        context.startActivity(intent);
+    private void showWinDialog(int scores){
+        WinDialogFragment winDialogFragment = WinDialogFragment.newInstance(scores);
+        winDialogFragment.show(context.getFragmentManager(),"loseDialog");
     }
 
     public CellManager getCellManager() {
@@ -85,12 +79,12 @@ public class DrawThreat extends Thread {
         if (!getCellManager().lose){
             cellManager.draw(canvas);
             if(2048 == cellManager.getTheLargestNumber() && isWinActivityShowed){
-                showWinActivity(cellManager.getScores());
+                showWinDialog(cellManager.getScores());
                 isWinActivityShowed = false;
             }
         }
         else {
-            showLoseActivity(cellManager.getScores());
+            showLoseDialog(cellManager.getScores());
             cellManager.startNewGame();
             cellManager.draw(canvas);
         }
