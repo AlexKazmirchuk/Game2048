@@ -8,6 +8,7 @@ import android.view.SurfaceHolder;
 
 import com.alexkaz.game2048.GameActivity;
 import com.alexkaz.game2048.uicomp.LoseActivity;
+import com.alexkaz.game2048.uicomp.LoseDialogFragment;
 import com.alexkaz.game2048.uicomp.WinActivity;
 
 public class DrawThreat extends Thread {
@@ -29,9 +30,11 @@ public class DrawThreat extends Thread {
     }
 
     private void showLoseActivity(int scores) {
-        Intent intent = new Intent(context,LoseActivity.class);
-        intent.putExtra(SCORES_VALUE,scores);
-        context.startActivity(intent);
+//        Intent intent = new Intent(context,LoseActivity.class);
+//        intent.putExtra(SCORES_VALUE,scores);
+//        context.startActivity(intent);
+        LoseDialogFragment loseDialogFragment = LoseDialogFragment.newInstance(scores);
+        loseDialogFragment.show(context.getFragmentManager(),"loseDialog");
     }
 
     private void showWinActivity(int scores){
