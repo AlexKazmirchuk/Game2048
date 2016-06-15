@@ -24,7 +24,6 @@ public class CellManager {
     public CellManager(GameActivity context){
         this.context = context;
         initComp();
-        setParam();
     }
 
 
@@ -40,9 +39,6 @@ public class CellManager {
         cells[rand.nextInt(4)][rand.nextInt(4)].setId(2);
     }
 
-    private void setParam(){
-
-    }
 
     public int getScores() {
         return scores;
@@ -79,7 +75,6 @@ public class CellManager {
                 break;
             }
             case DOWN:{
-//                System.out.println("всі донизу");
                 moveAllDown(cells);
                 System.out.println(scores);
                 if (key){
@@ -88,7 +83,6 @@ public class CellManager {
                 break;
             }
             case LEFT:{
-//                System.out.println("всі вліво");
                 moveAllLeft(cells);
                 System.out.println(scores);
                 if (key){
@@ -97,7 +91,6 @@ public class CellManager {
                 break;
             }
             case RIGHT:{
-//                System.out.println("всі вправо");
                 moveAllRight(cells);
                 System.out.println(scores);
                 if (key){
@@ -123,13 +116,7 @@ public class CellManager {
                 //////////////////////////////
                 /////////////////////////////   Зробити нормально
                 ////////////////////////////
-//                scores = 0;
                 lose = true;
-
-
-//                System.out.println("Ви програли");
-
-//                initComp();
             }
         }
 
@@ -182,7 +169,6 @@ public class CellManager {
             for (int j = 0; j < 4; j++) {
                 line[j] = cells[j][i];
             }
-//            System.out.println();
             line = moveLineRight(line);
             for (int j = 0; j < 4; j++) {
                 cells[j][i]=line[j];
@@ -219,7 +205,6 @@ public class CellManager {
     private Cell[] mergeLineRight(Cell[] line){
         for (int i = 1; i > 0; i--) {
             for (int j = 3; j > 0; j--) {
-                if(j != 0) {
                     if (line[j].getId() == line[j-1].getId()){
                         line[j].setId(line[j].getId() + line[j-1].getId());
                         if(line[j].getId() > 0){
@@ -229,7 +214,6 @@ public class CellManager {
                         scores = scores + line[j].getId();
                         line[j-1].setId(0);
                     }
-                }
             }
         }
         return line;

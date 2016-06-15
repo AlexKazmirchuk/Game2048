@@ -7,10 +7,6 @@
 
     //////colors for drawing cells/////
 
-    <color name="colorOwnDefault">#218a8d</color>
-    <color name="colorRightDefault">#1a7174</color>
-    <color name="colorBottomDefault">#135a5e</color>
-
     <color name="colorOwn0">#218a8d</color>
     <color name="colorRight0">#1a7174</color>
     <color name="colorBottom0">#135a5e</color>
