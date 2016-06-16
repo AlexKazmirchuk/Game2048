@@ -12,6 +12,7 @@ public class CellManager {
 
     //Свойства
     private Cell[][] cells = new Cell[4][4];
+    private int[][] cellsId = new int[4][4];
     public int scores = 0;
 //    private Graphics g;
     private Random rand = new Random();
@@ -37,6 +38,11 @@ public class CellManager {
         }
 
         cells[rand.nextInt(4)][rand.nextInt(4)].setId(2);
+        cellsId[0] = new int[4];
+        cellsId[1] = new int[4];
+        cellsId[2] = new int[4];
+        cellsId[3] = new int[4];
+
     }
 
 
@@ -304,5 +310,19 @@ public class CellManager {
 
     public Cell[][] getCells() {
         return cells;
+    }
+
+    private void saveCellId(){
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                cellsId[j][i] = cells[j][i].getId();
+            }
+        }
+    }
+
+    private boolean isCellsIdChanged(){
+
+        //TODO finish this method later
+        return false;
     }
 }
