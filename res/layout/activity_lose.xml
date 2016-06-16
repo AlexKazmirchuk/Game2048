@@ -116,7 +116,7 @@
 
             android:layout_gravity="center_horizontal"
             android:text="RESTART"
-            android:background="@drawable/lose_restart_btn_pressed"
+            android:background="@drawable/lose_restart_btn_selector"
             />
 
     </LinearLayout>
