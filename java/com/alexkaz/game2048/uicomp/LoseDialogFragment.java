@@ -15,10 +15,6 @@ import com.alexkaz.game2048.R;
 
 public class LoseDialogFragment extends DialogFragment implements View.OnClickListener {
 
-    private TextView loseTxtScores;
-    private Button loseRestartBtn;
-    private String txtScores;
-
     public static LoseDialogFragment newInstance(int scores){
         LoseDialogFragment fragment = new LoseDialogFragment();
 
@@ -36,13 +32,14 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getDialog().getWindow().setDimAmount(0.8f);
         View v = inflater.inflate(R.layout.activity_lose,null);
 
-        loseTxtScores = (TextView) v.findViewById(R.id.loseTxtScores);
-        loseRestartBtn = (Button) v.findViewById(R.id.loseRestartBtn);
+        TextView loseTxtScores = (TextView) v.findViewById(R.id.loseTxtScores);
+        Button loseRestartBtn = (Button) v.findViewById(R.id.loseRestartBtn);
         loseRestartBtn.setOnClickListener(this);
-        txtScores = String.valueOf(getArguments().getInt("scores",0));
-        loseTxtScores.setText("YOUR SCORE:"+txtScores);
+        String txtScores = String.valueOf(getArguments().getInt("scores", 0));
+        loseTxtScores.setText("YOUR SCORE:"+ txtScores);
 
         return v;
     }
