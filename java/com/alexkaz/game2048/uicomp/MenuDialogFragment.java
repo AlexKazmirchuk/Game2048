@@ -51,9 +51,9 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
 
     private void readPrefs() {
         if (gamePreferences.getMusicPrefs()){
-            musicBtn.setText("Music:on");
+            musicBtn.setText("MUSIC:ON");
         }else {
-            musicBtn.setText("Music:off");
+            musicBtn.setText("MUSIC:OFF");
         }
     }
 
@@ -79,12 +79,12 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
                 break;
             case R.id.musicBtn:
                 if (gamePreferences.getMusicPrefs()){
-                    ((Button)v).setText("Music:off");
+                    ((Button)v).setText("MUSIC:OFF");
                     gamePreferences.setMusicPrefs(false);
                     gameActivity.setMusicEnabled(false);
                     gameActivity.stopSound();
                 }else {
-                    ((Button)v).setText("Music:on");
+                    ((Button)v).setText("MUSIC:ON");
                     gamePreferences.setMusicPrefs(true);
                     gameActivity.setMusicEnabled(true);
                 }
