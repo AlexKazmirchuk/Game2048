@@ -29,11 +29,13 @@ public class DrawThreat extends Thread {
 
     private void showLoseDialog(int scores) {
         LoseDialogFragment loseDialogFragment = LoseDialogFragment.newInstance(scores);
+        context.playGameOverSound();
         loseDialogFragment.show(context.getFragmentManager(),"loseDialog");
     }
 
     private void showWinDialog(int scores){
         WinDialogFragment winDialogFragment = WinDialogFragment.newInstance(scores);
+        context.playWinSound();
         winDialogFragment.show(context.getFragmentManager(),"loseDialog");
     }
 

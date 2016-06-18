@@ -1,5 +1,12 @@
 package com.alexkaz.game2048;
 
+import android.annotation.TargetApi;
+import android.content.res.AssetFileDescriptor;
+import android.content.res.AssetManager;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.SoundPool;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -15,6 +22,8 @@ import com.alexkaz.game2048.gamelogic.Direction;
 import com.alexkaz.game2048.gamelogic.GameSurfaceView;
 import com.alexkaz.game2048.uicomp.MenuDialogFragment;
 
+import java.io.IOException;
+
 public class GameActivity extends AppCompatActivity {
 
     private GestureDetector gestureDetector;
@@ -23,6 +32,13 @@ public class GameActivity extends AppCompatActivity {
     private GameSurfaceView gameSurfaceView;
     private TextView txtScores, txtBestScores;
     private MenuDialogFragment menuDialogFragment;
+
+    private SoundPool mSoundPool;
+    private AssetManager mAssetManager;
+    private int gameOverSound, swipeSound, winSound;
+    private int streamID;
+
+    private boolean isMusicEnabled = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +54,7 @@ public class GameActivity extends AppCompatActivity {
 
         gestureDetector = initGestureDetector();
         gamePreferences = new GamePreferences(this);
+        isMusicEnabled = gamePreferences.getMusicPrefs();
 
         gameFieldWrapper = (FrameLayout) findViewById(R.id.gameFieldWrapper);
         txtScores = (TextView) findViewById(R.id.txtScores);
@@ -56,6 +73,78 @@ public class GameActivity extends AppCompatActivity {
             public void onClick(View arg0) {
             }
         });
+
+        initSound();
+    }
+
+    private void initSound(){
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP){
+            createOldSoundPool();
+        } else {
+            createNewSoundPool();
+        }
+        mAssetManager = getAssets();
+        gameOverSound = loadSound("game_over_sound.mp3");
+        swipeSound = loadSound("swipe_sound.mp3");
+        winSound = loadSound("win_sound.mp3");
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void createNewSoundPool() {
+        AudioAttributes attributes = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_GAME)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build();
+        mSoundPool = new SoundPool.Builder()
+                .setAudioAttributes(attributes)
+                .build();
+    }
+
+    @SuppressWarnings("deprecation")
+    private void createOldSoundPool() {
+        mSoundPool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+    }
+
+    private int loadSound(String fileName){
+        AssetFileDescriptor afd;
+        try{
+            afd = mAssetManager.openFd(fileName);
+        } catch (IOException e){
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Не могу загрузить файл " + fileName,
+                    Toast.LENGTH_SHORT).show();
+            return -1;
+        }
+        return mSoundPool.load(afd, 1);
+    }
+
+    private int playSound(int sound) {
+        if (isMusicEnabled){
+            if (sound > 0) {
+                streamID = mSoundPool.play(sound, 1, 1, 1, 0, 1);
+            }
+            return streamID;
+        }
+        return -1;
+    }
+
+    public void playWinSound(){
+        playSound(winSound);
+    }
+
+    public void playGameOverSound(){
+        playSound(gameOverSound);
+    }
+
+    public void stopSound(){
+        mSoundPool.stop(streamID);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mSoundPool.release();
+        mSoundPool = null;
     }
 
     private void readPrefs() {
@@ -72,12 +161,16 @@ public class GameActivity extends AppCompatActivity {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 try {
                     if (detector.isSwipeDown(e1, e2, velocityY)) {
+                        playSound(swipeSound);
                         gameSurfaceView.moveCells(Direction.DOWN);
                     } else if (detector.isSwipeUp(e1, e2, velocityY)) {
+                        playSound(swipeSound);
                         gameSurfaceView.moveCells(Direction.UP);
                     }else if (detector.isSwipeLeft(e1, e2, velocityX)) {
+                        playSound(swipeSound);
                         gameSurfaceView.moveCells(Direction.LEFT);
                     } else if (detector.isSwipeRight(e1, e2, velocityX)) {
+                        playSound(swipeSound);
                         gameSurfaceView.moveCells(Direction.RIGHT);
                     }
                 } catch (Exception e) {} //for now, ignore
@@ -110,5 +203,13 @@ public class GameActivity extends AppCompatActivity {
 
     public  void restartGame(){
         gameSurfaceView.getDrawThreat().getCellManager().startNewGame();
+    }
+
+    public boolean isMusicEnabled() {
+        return isMusicEnabled;
+    }
+
+    public void setMusicEnabled(boolean musicEnabled) {
+        isMusicEnabled = musicEnabled;
     }
 }
