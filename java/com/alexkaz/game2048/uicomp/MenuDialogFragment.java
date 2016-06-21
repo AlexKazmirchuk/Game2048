@@ -27,6 +27,7 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        getDialog().getWindow().setDimAmount(0.8f);
         View v = inflater.inflate(R.layout.activity_menu,null);
 
         initComps(v);
