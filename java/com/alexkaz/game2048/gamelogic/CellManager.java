@@ -140,6 +140,8 @@ public class CellManager {
 
         if (cells[x][y].getId() == 0){
             cells[x][y].setId(2);
+            cells[x][y].setFresh(true);
+            cells[x][y].setShearR(Cell.SHEAR_MAX);
             return;
         }
         else{
