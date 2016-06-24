@@ -10,6 +10,7 @@ import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -213,5 +214,15 @@ public class GameActivity extends AppCompatActivity {
 
     public void setMusicEnabled(boolean musicEnabled) {
         isMusicEnabled = musicEnabled;
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_MENU){
+            menuDialogFragment.show(getFragmentManager(),"menu");
+            return true;
+        } else {
+            return super.onKeyDown(keyCode, event);
+        }
     }
 }
