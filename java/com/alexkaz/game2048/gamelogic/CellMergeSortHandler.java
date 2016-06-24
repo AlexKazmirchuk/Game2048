@@ -75,7 +75,7 @@ public class CellMergeSortHandler {
                     line[j].setId(line[j].getId() + line[j-1].getId());
                     if(line[j].getId() > 0){
                         line[j].setFresh(true);
-                        line[j].setShearR(Cell.SHEAR_MAX);
+                        line[j].setShearAnim(Cell.SHEAR_MAX);
                     }
                     cellManager.setScores(cellManager.getScores() + line[j].getId());
 //                    scores = scores + line[j].getId();
@@ -115,7 +115,7 @@ public class CellMergeSortHandler {
                     line[j].setId(line[j].getId() + line[j+1].getId());
                     if(line[j].getId() > 0){
                         line[j].setFresh(true);
-                        line[j].setShearR(Cell.SHEAR_MAX);
+                        line[j].setShearAnim(Cell.SHEAR_MAX);
                     }
                     cellManager.setScores(cellManager.getScores() + line[j].getId());
 //                    scores = scores + line[j].getId();

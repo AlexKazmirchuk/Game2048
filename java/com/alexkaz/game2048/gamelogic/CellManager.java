@@ -149,7 +149,7 @@ public class CellManager {
         if (cells[x][y].getId() == 0){
             cells[x][y].setId(2);
             cells[x][y].setFresh(true);
-            cells[x][y].setShearR(Cell.SHEAR_MAX);
+            cells[x][y].setShearAnim(Cell.SHEAR_MAX);
             return;
         }
         else{
@@ -184,14 +184,14 @@ public class CellManager {
             for (int j = 0; j < 4; j++) {
                 if (!(cell[i][j].getId() == 0)){
                     if (cell[i][j].isFresh()){
-                        if (cell[i][j].getShearR() > 0){
-                            cell[i][j].setShearR(cell[i][j].getShearR()-1);
+                        if (cell[i][j].getShearAnim() > 0){
+                            cell[i][j].setShearAnim(cell[i][j].getShearAnim()-1);
                         } else {
                             cell[i][j].setFresh(false);
                         }
                     }
                 } else {
-                    cell[i][j].setShearR(0);
+                    cell[i][j].setShearAnim(0);
                     cell[i][j].setFresh(false);
                 }
             }

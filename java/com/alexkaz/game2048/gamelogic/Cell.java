@@ -1,8 +1,5 @@
 package com.alexkaz.game2048.gamelogic;
 
-//import javax.imageio.ImageIO;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -12,16 +9,15 @@ import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 
 import com.alexkaz.game2048.GameActivity;
-import com.alexkaz.game2048.R;
 
 public class Cell {
 
 
     //for cell
-    public static final int SIDE_SPACE_X = 5;
-    public static final int SIDE_SPACE_Y = 5;
+    public static final int SIDE_SPACE_X = 5;  //resize
+    public static final int SIDE_SPACE_Y = 5;  //resize
     public static final int DEFAULT_ID = 0;
-    public static final int SHEAR_MAX = 7;
+    public static final int SHEAR_MAX = 7;     //resize
     public static final int COLOR_OWN = 0;
     public static final int COLOR_RIGHT = 1;
     public static final int COLOR_BOTTOM = 2;
@@ -37,14 +33,14 @@ public class Cell {
     public static final int START_TEXT_POSITION = 0;
     public static final String TEXT_SHADOW_COLOR = "#741111";
     public static final String TEXT_COLOR = "#fa1515";
-    public static final int TEXT_SHEAR = 5;
-    public static final float NORMAL_TEXT_SIZE = 35.0f;
-    public static final float SMALL_TEXT_SIZE = 29.0f;
-    public static final float LARGE_TEXT_SIZE = 55.0f;
+    public static final int TEXT_SHEAR = 5;     //resize
+    public static final float NORMAL_TEXT_SIZE = 35.0f; //resize
+    public static final float SMALL_TEXT_SIZE = 29.0f;  //resize
+    public static final float LARGE_TEXT_SIZE = 55.0f;  //resize
     public static final int THREE_SYMBOLS = 3;
     public static final int FOUR_SYMBOLS = 4;
     public static final String RESOURCE_TYPE = "color";
-    public static final int SHEAR_FOR_TEXT = 3; //rename
+    public static final int SHEAR_FOR_TEXT = 3; //rename and resize
 
     //Свойства
     private GameActivity context;
@@ -57,8 +53,8 @@ public class Cell {
     public int x,y;
     private int posX, posY;
 
-    private int shear = 7;
-    private int shearR = 0;
+    private int shear = 7; //resize
+    private int shearAnim = 0; //resize
 
     private int sizeX ;
     private int sizeY ;
@@ -91,7 +87,13 @@ public class Cell {
     private void drawRect(Canvas g){
         Paint p = new Paint();
         p.setColor(colors[COLOR_OWN]);
-        g.drawRect(posX + shearR,posY + shearR,posX+sizeX - SIDE_SPACE_X + shearR,posY+sizeY - SIDE_SPACE_Y + shearR,p);
+
+        int left = posX + shearAnim;
+        int top = posY + shearAnim;
+        int right = posX + sizeX - SIDE_SPACE_X + shearAnim;
+        int bottom = posY+sizeY - SIDE_SPACE_Y + shearAnim;
+
+        g.drawRect(left,top,right,bottom,p);
 
         drawNumbers(g);
     }
@@ -100,11 +102,13 @@ public class Cell {
         Paint p = new Paint();
         p.setColor(colors[COLOR_RIGHT]);
         Path path = new Path();
-        path.moveTo(posX + sizeX + shearR - SIDE_SPACE_X, posY + shearR);
-        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+shear);
-        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+sizeY + shear - SIDE_SPACE_Y);
-        path.lineTo(posX+sizeX+shearR - SIDE_SPACE_X, posY+sizeY + shearR - SIDE_SPACE_Y);
-        path.lineTo(posX + sizeX + shearR - SIDE_SPACE_X, posY + shearR);
+
+        path.moveTo(posX + sizeX + shearAnim - SIDE_SPACE_X, posY + shearAnim);                        // left  top
+        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+shear);                                      // right top
+        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+sizeY + shear - SIDE_SPACE_Y);               // right bottom
+        path.lineTo(posX+sizeX+ shearAnim - SIDE_SPACE_X, posY+sizeY + shearAnim - SIDE_SPACE_Y);      // left  bottom
+        path.lineTo(posX + sizeX + shearAnim - SIDE_SPACE_X, posY + shearAnim);                        // left  top
+
         g.drawPath(path,p);
     }
 
@@ -112,11 +116,13 @@ public class Cell {
         Paint p = new Paint();
         p.setColor(colors[COLOR_BOTTOM]);
         Path path = new Path();
-        path.moveTo(posX+shearR, posY+sizeY+shearR-SIDE_SPACE_Y);
-        path.lineTo(posX+sizeX+shearR- SIDE_SPACE_X, posY+sizeY+shearR-SIDE_SPACE_Y);
-        path.lineTo(posX+sizeX+shear- SIDE_SPACE_X, posY+sizeY+shear-SIDE_SPACE_Y);
-        path.lineTo(posX+shear, posY+sizeY+shear-SIDE_SPACE_Y);
-        path.lineTo(posX+shearR, posY+sizeY+shearR-SIDE_SPACE_Y);
+
+        path.moveTo(posX + shearAnim, posY+sizeY + shearAnim -SIDE_SPACE_Y);                           // left  top
+        path.lineTo(posX+sizeX+ shearAnim - SIDE_SPACE_X, posY+sizeY+ shearAnim - SIDE_SPACE_Y);       // right top
+        path.lineTo(posX+sizeX+shear- SIDE_SPACE_X, posY+sizeY+shear-SIDE_SPACE_Y);                    // right bottom
+        path.lineTo(posX+shear, posY+sizeY+shear-SIDE_SPACE_Y);                                        // left  bottom
+        path.lineTo(posX + shearAnim, posY+sizeY + shearAnim -SIDE_SPACE_Y);                           // left  top
+
         g.drawPath(path,p);
     }
 
@@ -143,9 +149,9 @@ public class Cell {
             mTextHeight = mTextBoundRect.height();
 
             p.setColor(Color.parseColor(TEXT_SHADOW_COLOR));
-            if (shearR <= TEXT_SHEAR){
+            if (shearAnim <= TEXT_SHEAR){
                 int paddingFix = 0;
-                for (int i = 1; i < (TEXT_SHEAR - shearR); i++) {
+                for (int i = 1; i < (TEXT_SHEAR - shearAnim); i++) {
                     g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + i,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + i, p);
                     paddingFix = i;
                 }
@@ -209,12 +215,12 @@ public class Cell {
         return id;
     }
 
-    public int getShearR() {
-        return shearR;
+    public int getShearAnim() {
+        return shearAnim;
     }
 
-    public void setShearR(int shearR) {
-        this.shearR = shearR;
+    public void setShearAnim(int shearAnim) {
+        this.shearAnim = shearAnim;
     }
 
     public boolean isFresh() {
