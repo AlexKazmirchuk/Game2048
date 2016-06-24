@@ -143,8 +143,10 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        mSoundPool.release();
-        mSoundPool = null;
+        if (mSoundPool!=null){
+            mSoundPool.release();
+            mSoundPool = null;
+        }
     }
 
     private void readPrefs() {

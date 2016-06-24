@@ -60,7 +60,9 @@ public class DrawThreat extends Thread {
                 try{
                     canvas = surfaceHolder.lockCanvas();
                     synchronized (surfaceHolder){
-                        drawField(canvas);
+                        if (canvas!=null){
+                            drawField(canvas);
+                        }
                     }
                 }finally {
                     if (canvas!= null){
