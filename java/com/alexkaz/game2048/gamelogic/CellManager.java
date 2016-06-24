@@ -50,6 +50,10 @@ public class CellManager {
         return scores;
     }
 
+    public void setScores(int scores) {
+        this.scores = scores;
+    }
+
     public void draw(Canvas g){
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j <cells[i].length ; j++) {
@@ -75,7 +79,8 @@ public class CellManager {
 
         switch (direction){
             case UP:{
-                moveAllUp(cells);
+//                moveAllUp(cells);
+                CellMergeSortHandler.moveAllUp(cells,this);
                 System.out.println(scores);
                 if (key){
                     isFull[0] = 1;
@@ -83,7 +88,8 @@ public class CellManager {
                 break;
             }
             case DOWN:{
-                moveAllDown(cells);
+//                moveAllDown(cells);
+                CellMergeSortHandler.moveAllDown(cells,this);
                 System.out.println(scores);
                 if (key){
                     isFull[1] = 1;
@@ -91,7 +97,8 @@ public class CellManager {
                 break;
             }
             case LEFT:{
-                moveAllLeft(cells);
+//                moveAllLeft(cells);
+                CellMergeSortHandler.moveAllLeft(cells,this);
                 System.out.println(scores);
                 if (key){
                     isFull[2] = 1;
@@ -99,7 +106,8 @@ public class CellManager {
                 break;
             }
             case RIGHT:{
-                moveAllRight(cells);
+//                moveAllRight(cells);
+                CellMergeSortHandler.moveAllRight(cells,this);
                 System.out.println(scores);
                 if (key){
                     isFull[3] = 1;
@@ -147,132 +155,6 @@ public class CellManager {
         else{
             spownCell();
         }
-    }
-
-    private Cell[][] moveAllDown(Cell[][] cells){
-        for (int i = 0; i <cells.length ; i++) {
-            cells[i] = moveLineRight(cells[i]);
-        }
-        return cells;
-    }
-
-    private Cell[][] moveAllUp(Cell[][] cells){
-        for (int i = 0; i <cells.length ; i++) {
-            cells[i] = moveLineLeft(cells[i]);
-        }
-        return cells;
-    }
-
-    private Cell[][] moveAllLeft(Cell[][] cells){
-        Cell[] line = new Cell[4];
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                line[j] = cells[j][i];
-            }
-            line = moveLineLeft(line);
-            for (int j = 0; j < 4; j++) {
-                cells[j][i]=line[j];
-            }
-        }
-        return cells;
-    }
-
-    private Cell[][] moveAllRight(Cell[][] cells){
-        Cell[] line = new Cell[4];
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                line[j] = cells[j][i];
-            }
-            line = moveLineRight(line);
-            for (int j = 0; j < 4; j++) {
-                cells[j][i]=line[j];
-            }
-        }
-        return cells;
-    }
-
-    private Cell[] moveLineRight(Cell[] line){
-
-        line = sortLineRight(line);
-        line = mergeLineRight(line);
-        line = sortLineRight(line);
-
-        return line;
-    }
-
-    private Cell[] sortLineRight(Cell[] line){
-
-        for (int i = 3; i >= 0; i--) {
-            for (int j = 3; j >= 0; j--) {
-                if(j != 0) {
-                    if (line[j].getId() == 0 && line[j - 1].getId() != 0) {
-                        int buf = line[j].getId();
-                        line[j].setId(line[j - 1].getId()) ;
-                        line[j - 1].setId(buf);
-                    }
-                }
-            }
-        }
-        return line;
-    }
-
-    private Cell[] mergeLineRight(Cell[] line){
-        for (int i = 1; i > 0; i--) {
-            for (int j = 3; j > 0; j--) {
-                    if (line[j].getId() == line[j-1].getId()){
-                        line[j].setId(line[j].getId() + line[j-1].getId());
-                        if(line[j].getId() > 0){
-                            line[j].setFresh(true);
-                            line[j].setShearR(Cell.SHEAR_MAX);
-                        }
-                        scores = scores + line[j].getId();
-                        line[j-1].setId(0);
-                    }
-            }
-        }
-        return line;
-    }
-
-    private Cell[] moveLineLeft(Cell[] line){
-
-        line = sortLineLeft(line);
-        line = mergeLineLeft(line);
-        line = sortLineLeft(line);
-
-        return line;
-    }
-
-    private Cell[] sortLineLeft(Cell[] line){
-
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                if(j != 3) {
-                    if (line[j].getId() == 0 && line[j + 1].getId() != 0) {
-                        int buf = line[j].getId();
-                        line[j].setId(line[j + 1].getId()) ;
-                        line[j + 1].setId(buf);
-                    }
-                }
-            }
-        }
-        return line;
-    }
-
-    private Cell[] mergeLineLeft(Cell[] line){
-        for (int j = 0; j < 4; j++) {
-            if(j != 3) {
-                if (line[j].getId() == line[j+1].getId()){
-                    line[j].setId(line[j].getId() + line[j+1].getId());
-                    if(line[j].getId() > 0){
-                        line[j].setFresh(true);
-                        line[j].setShearR(Cell.SHEAR_MAX);
-                    }
-                    scores = scores + line[j].getId();
-                    line[j+1].setId(0);
-                }
-            }
-        }
-        return line;
     }
 
     public void startNewGame(){
