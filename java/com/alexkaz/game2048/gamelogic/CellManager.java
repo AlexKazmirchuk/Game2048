@@ -149,7 +149,7 @@ public class CellManager {
         if (cells[x][y].getId() == 0){
             cells[x][y].setId(2);
             cells[x][y].setFresh(true);
-            cells[x][y].setShearAnim(Cell.SHEAR_MAX);
+            cells[x][y].setShearAnim(cells[x][y].getShearMax());
             return;
         }
         else{

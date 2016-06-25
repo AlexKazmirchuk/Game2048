@@ -7,6 +7,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.alexkaz.game2048.GameActivity;
 
@@ -14,10 +15,7 @@ public class Cell {
 
 
     //for cell
-    public static final int SIDE_SPACE_X = 5;  //resize
-    public static final int SIDE_SPACE_Y = 5;  //resize
     public static final int DEFAULT_ID = 0;
-    public static final int SHEAR_MAX = 7;     //resize
     public static final int COLOR_OWN = 0;
     public static final int COLOR_RIGHT = 1;
     public static final int COLOR_BOTTOM = 2;
@@ -28,19 +26,30 @@ public class Cell {
     public static final int CELL_SIDE_Y_DIVIDER = 88;
     public static final int CELL_BORDER_Y_DIVIDER = 11;
     public static final int CELL_PIVOT_Y_DIVIDER = 10;
+    public static final int SIDE_SPACE_X_DIVIDER = 5;
+    public static final int SIDE_SPACE_Y_DIVIDER = 5;
+    public static final int SHEAR_MAX_DIVIDER = 7;
+    public static final int SHEAR_DIVIDER = 7;
+
+    private int sideSpaceX;
+    private int sideSpaceY;
+    private int shearMax;
+    private int shear;
+    private int shearAnim = 0;
 
     //for text
     public static final int START_TEXT_POSITION = 0;
     public static final String TEXT_SHADOW_COLOR = "#741111";
     public static final String TEXT_COLOR = "#fa1515";
-    public static final int TEXT_SHEAR = 5;     //resize
-    public static final float NORMAL_TEXT_SIZE = 35.0f; //resize
-    public static final float SMALL_TEXT_SIZE = 29.0f;  //resize
-    public static final float LARGE_TEXT_SIZE = 55.0f;  //resize
     public static final int THREE_SYMBOLS = 3;
     public static final int FOUR_SYMBOLS = 4;
     public static final String RESOURCE_TYPE = "color";
-    public static final int SHEAR_FOR_TEXT = 3; //rename and resize
+
+    private int textShear = 5;
+    private int shearForText = 3;
+    public static final float NORMAL_TEXT_SIZE = 35.0f; //resize
+    public static final float SMALL_TEXT_SIZE = 29.0f;  //resize
+    public static final float LARGE_TEXT_SIZE = 55.0f;  //resize
 
     //Свойства
     private GameActivity context;
@@ -52,10 +61,6 @@ public class Cell {
 
     public int x,y;
     private int posX, posY;
-
-    private int shear = 7; //resize
-    private int shearAnim = 0; //resize
-
     private int sizeX ;
     private int sizeY ;
 
@@ -68,7 +73,6 @@ public class Cell {
     }
 
     // Методи
-
     public void draw(Canvas g){
         if (locker){
             getSizes(g.getHeight(),g.getWidth());
@@ -90,8 +94,8 @@ public class Cell {
 
         int left = posX + shearAnim;
         int top = posY + shearAnim;
-        int right = posX + sizeX - SIDE_SPACE_X + shearAnim;
-        int bottom = posY+sizeY - SIDE_SPACE_Y + shearAnim;
+        int right = posX + sizeX - sideSpaceX + shearAnim;
+        int bottom = posY+sizeY - sideSpaceY + shearAnim;
 
         g.drawRect(left,top,right,bottom,p);
 
@@ -103,11 +107,11 @@ public class Cell {
         p.setColor(colors[COLOR_RIGHT]);
         Path path = new Path();
 
-        path.moveTo(posX + sizeX + shearAnim - SIDE_SPACE_X, posY + shearAnim);                        // left  top
-        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+shear);                                      // right top
-        path.lineTo(posX+sizeX+shear - SIDE_SPACE_X, posY+sizeY + shear - SIDE_SPACE_Y);               // right bottom
-        path.lineTo(posX+sizeX+ shearAnim - SIDE_SPACE_X, posY+sizeY + shearAnim - SIDE_SPACE_Y);      // left  bottom
-        path.lineTo(posX + sizeX + shearAnim - SIDE_SPACE_X, posY + shearAnim);                        // left  top
+        path.moveTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
+        path.lineTo(posX+sizeX+shear - sideSpaceX, posY+shear);                                      // right top
+        path.lineTo(posX+sizeX+shear - sideSpaceX, posY+sizeY + shear - sideSpaceY);               // right bottom
+        path.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY + shearAnim - sideSpaceY);      // left  bottom
+        path.lineTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
 
         g.drawPath(path,p);
     }
@@ -117,11 +121,11 @@ public class Cell {
         p.setColor(colors[COLOR_BOTTOM]);
         Path path = new Path();
 
-        path.moveTo(posX + shearAnim, posY+sizeY + shearAnim -SIDE_SPACE_Y);                           // left  top
-        path.lineTo(posX+sizeX+ shearAnim - SIDE_SPACE_X, posY+sizeY+ shearAnim - SIDE_SPACE_Y);       // right top
-        path.lineTo(posX+sizeX+shear- SIDE_SPACE_X, posY+sizeY+shear-SIDE_SPACE_Y);                    // right bottom
-        path.lineTo(posX+shear, posY+sizeY+shear-SIDE_SPACE_Y);                                        // left  bottom
-        path.lineTo(posX + shearAnim, posY+sizeY + shearAnim -SIDE_SPACE_Y);                           // left  top
+        path.moveTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
+        path.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY+ shearAnim - sideSpaceY);       // right top
+        path.lineTo(posX+sizeX+shear- sideSpaceX, posY+sizeY+shear- sideSpaceY);                    // right bottom
+        path.lineTo(posX+shear, posY+sizeY+shear- sideSpaceY);                                        // left  bottom
+        path.lineTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
 
         g.drawPath(path,p);
     }
@@ -149,14 +153,14 @@ public class Cell {
             mTextHeight = mTextBoundRect.height();
 
             p.setColor(Color.parseColor(TEXT_SHADOW_COLOR));
-            if (shearAnim <= TEXT_SHEAR){
+            if (shearAnim <= textShear){
                 int paddingFix = 0;
-                for (int i = 1; i < (TEXT_SHEAR - shearAnim); i++) {
-                    g.drawText(text,(centerX - (mTextWidth / 2f)) - SIDE_SPACE_X + i,(centerY + (mTextHeight /2f)) - SIDE_SPACE_Y + i, p);
+                for (int i = 1; i < (textShear - shearAnim); i++) {
+                    g.drawText(text,(centerX - (mTextWidth / 2f)) - sideSpaceX + i,(centerY + (mTextHeight /2f)) - sideSpaceY + i, p);
                     paddingFix = i;
                 }
                 p.setColor(Color.parseColor(TEXT_COLOR));
-                g.drawText(text,(centerX - (mTextWidth/2f)) - SIDE_SPACE_X-paddingFix+ SHEAR_FOR_TEXT,(centerY + (mTextHeight/2f))-SIDE_SPACE_Y-paddingFix+SHEAR_FOR_TEXT,p);
+                g.drawText(text,(centerX - (mTextWidth/2f)) - sideSpaceX -paddingFix+ shearForText,(centerY + (mTextHeight/2f))- sideSpaceY -paddingFix+ shearForText,p);
             }
         }
     }
@@ -181,6 +185,23 @@ public class Cell {
         float fySize = ((float) height / DEFAULT_WIDTH)* CELL_SIDE_Y_DIVIDER;
         float fyBorder = ((float) height / DEFAULT_WIDTH)* CELL_BORDER_Y_DIVIDER;
         float fyPivot = ((float) height / DEFAULT_WIDTH)* CELL_PIVOT_Y_DIVIDER;
+
+
+        float fSideSpaceX = ((float) width / DEFAULT_WIDTH) * SIDE_SPACE_X_DIVIDER;    //resize 5
+        float fSideSpaceY = ((float) width / DEFAULT_WIDTH) * SIDE_SPACE_Y_DIVIDER;   //resize 5
+        float fShearMax = ((float) width / DEFAULT_WIDTH) * SHEAR_MAX_DIVIDER;     //resize 7
+        float fShear = ((float) width / DEFAULT_WIDTH) * SHEAR_DIVIDER;        //resize 7
+
+        sideSpaceX = (int)fSideSpaceX;
+        sideSpaceY = (int)fSideSpaceY;
+        shearMax = (int)fShearMax;
+        shear = (int)fShear;
+
+        float fTextShear = shearMax * 0.7143f;
+        float fShearForText = shearMax * 0.4286f;
+
+        textShear = (int)fTextShear;
+        shearForText = (int) fShearForText;
 
         sizeX = (int) fxSize;
         int borderX = (int) fxBorder;
@@ -229,6 +250,14 @@ public class Cell {
 
     public void setFresh(boolean fresh) {
         isFresh = fresh;
+    }
+
+    public int getShearMax() {
+        return shearMax;
+    }
+
+    public void setShearMax(int shearMax) {
+        this.shearMax = shearMax;
     }
 }
 
