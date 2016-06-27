@@ -11,8 +11,10 @@ import android.util.Log;
 
 import com.alexkaz.game2048.GameActivity;
 
-public class Cell {
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
+public class Cell {
 
     //for cell
     public static final int DEFAULT_ID = 0;
@@ -31,10 +33,10 @@ public class Cell {
     public static final int SHEAR_MAX_DIVIDER = 7;
     public static final int SHEAR_DIVIDER = 7;
 
-    private int sideSpaceX;
-    private int sideSpaceY;
-    private int shearMax;
-    private int shear;
+    private int sideSpaceX; //resizable
+    private int sideSpaceY; //resizable
+    private int shearMax;   //resizable
+    private int shear;      //resizable
     private int shearAnim = 0;
 
     //for text
@@ -44,12 +46,17 @@ public class Cell {
     public static final int THREE_SYMBOLS = 3;
     public static final int FOUR_SYMBOLS = 4;
     public static final String RESOURCE_TYPE = "color";
+    public static final float TEXT_SHEAR_DIVIDER = 0.7143f;
+    public static final float SHEAR_FOR_TEXT_DIVIDER = 0.4286f;
+    public static final float NORMAL_TEXT_SIZE_DIVIDER = 0.3889f;
+    public static final float SMALL_TEXT_SIZE_DIVIDER = 0.3223f;
+    public static final float LARGE_TEXT_SIZE_DIVIDER = 0.6112f;
 
-    private int textShear = 5;
-    private int shearForText = 3;
-    public static final float NORMAL_TEXT_SIZE = 35.0f; //resize
-    public static final float SMALL_TEXT_SIZE = 29.0f;  //resize
-    public static final float LARGE_TEXT_SIZE = 55.0f;  //resize
+    private int textShear = 5;      //resizable
+    private int shearForText = 3;   //resizable
+    private float normalTextSize = 35.0f; //resizable    35.0f
+    private float smallTextSize = 29.0f;  //resizable    29.0f
+    private float largeTextSize = 55.0f;  //resizable    55.0f
 
     //Свойства
     private GameActivity context;
@@ -60,9 +67,9 @@ public class Cell {
     private boolean isFresh = false;
 
     public int x,y;
-    private int posX, posY;
-    private int sizeX ;
-    private int sizeY ;
+    private int posX, posY;  //resizable
+    private int sizeX ;      //resizable
+    private int sizeY ;      //resizable
 
     //Конструктор
     public Cell(GameActivity context, int x, int y){
@@ -197,8 +204,8 @@ public class Cell {
         shearMax = (int)fShearMax;
         shear = (int)fShear;
 
-        float fTextShear = shearMax * 0.7143f;
-        float fShearForText = shearMax * 0.4286f;
+        float fTextShear = shearMax * TEXT_SHEAR_DIVIDER;
+        float fShearForText = shearMax * SHEAR_FOR_TEXT_DIVIDER;
 
         textShear = (int)fTextShear;
         shearForText = (int) fShearForText;
@@ -213,19 +220,23 @@ public class Cell {
 
         this.posX = (sizeX*x) + borderX*x + pivotX;
         this.posY = (sizeY*y) + borderY*y + pivotY;
+
+        normalTextSize = new BigDecimal(sizeX * NORMAL_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
+        smallTextSize = new BigDecimal(sizeX * SMALL_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
+        largeTextSize = new BigDecimal(sizeX * LARGE_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
     }
 
     private float resizeText(int textLength){
         if (textLength > 0){
             if(textLength == THREE_SYMBOLS){
-                return NORMAL_TEXT_SIZE;
+                return normalTextSize;
             } else if (textLength == FOUR_SYMBOLS){
-                return SMALL_TEXT_SIZE;
+                return smallTextSize;
             } else {
-                return LARGE_TEXT_SIZE;
+                return largeTextSize;
             }
         }
-        return LARGE_TEXT_SIZE;
+        return largeTextSize;
     }
 
     public void setId(int id){
