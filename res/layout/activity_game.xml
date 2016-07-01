@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -31,70 +32,102 @@
 
         </FrameLayout>
 
-        <GridLayout
+        <android.support.v7.widget.GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
+            android:paddingTop="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="24dp"
+            android:paddingRight="28dp"
+
             android:layout_weight="173"
-            android:rowCount="3"
-            android:columnCount="3"
+            app:columnCount="2"
+            app:rowCount="2"
+            app:orientation="horizontal"
             android:id="@+id/infoPanel"
             android:layout_marginBottom="5dp"
             android:background="@drawable/info_panel_bg">
+            <FrameLayout
 
-            <TextView
-                android:layout_width="156dp"
-                android:layout_height="40dp"
-                android:text="SCORES:3485"
-                android:textStyle="bold"
-                android:textSize="21sp"
-                android:textColor="#EFC130"
+                android:layout_marginRight="2dp"
 
-                android:shadowColor="#494949"
-                android:shadowDx="5"
-                android:shadowDy="5"
-                android:shadowRadius="5"
+                app:layout_rowWeight="50"
+                app:layout_columnWeight="45"
+                app:layout_gravity="fill_horizontal|fill_vertical"
+                android:background="#591d7c">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="SCORES:3485"
+                    android:textStyle="bold"
+                    android:textSize="21sp"
+                    android:textColor="#EFC130"
 
-                android:layout_marginLeft="9dp"
-                android:layout_marginStart="9dp"
-                android:layout_marginTop="11dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:id="@+id/txtScores"
-                android:layout_row="0"
-                android:layout_column="0" />
+                    android:shadowColor="#494949"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
 
-            <ImageButton
-                android:layout_width="85dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="11dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/menu_btn_selector"
-                android:id="@+id/menuBtn"
-                android:onClick="onClickMenuBtn"
-                android:layout_row="0"
-                android:layout_column="1" />
+                    android:gravity="center_horizontal|center_vertical"
+                    android:id="@+id/txtScores" />
+            </FrameLayout>
+            <FrameLayout
 
-            <TextView
-                android:layout_width="246dp"
-                android:layout_height="40dp"
-                android:text="BEST SCORES:42341"
-                android:textColor="#EFC130"
-                android:textStyle="bold"
-                android:textSize="23sp"
+                android:layout_marginLeft="4dp"
 
-                android:shadowColor="#494949"
-                android:shadowDx="5"
-                android:shadowDy="5"
-                android:shadowRadius="5"
+                app:layout_rowWeight="50"
+                app:layout_columnWeight="59"
+                app:layout_gravity="fill_horizontal|fill_vertical"
+                android:background="#e12278">
+                <!--<ImageButton-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:background="@drawable/menu_btn_selector"-->
+                    <!--android:id="@+id/menuBtn"-->
+                    <!--android:onClick="onClickMenuBtn"/>-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="BEST"
+                    android:textColor="#EFC130"
+                    android:textStyle="bold"
+                    android:textSize="23sp"
 
-                android:layout_marginLeft="9dp"
-                android:layout_marginStart="9dp"
+                    android:shadowColor="#494949"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+
+                    android:gravity="center_horizontal|center_vertical"
+                    android:id="@+id/txt2BestScores"/>
+
+            </FrameLayout>
+            <FrameLayout
+
                 android:layout_marginTop="5dp"
-                android:gravity="center_horizontal|center_vertical"
-                android:layout_columnSpan="2"
-                android:id="@+id/txtBestScores"
-                android:layout_row="1"
-                android:layout_column="0" />
-        </GridLayout>
+
+                app:layout_rowWeight="50"
+                app:layout_columnSpan="2"
+                app:layout_gravity="fill_horizontal|fill_vertical"
+                android:background="#a99f33">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="BEST SCORES:42341"
+                    android:textColor="#EFC130"
+                    android:textStyle="bold"
+                    android:textSize="23sp"
+
+                    android:shadowColor="#494949"
+                    android:shadowDx="5"
+                    android:shadowDy="5"
+                    android:shadowRadius="5"
+
+                    android:gravity="center_horizontal|center_vertical"
+                    android:id="@+id/txtBestScores"/>
+            </FrameLayout>
+        </android.support.v7.widget.GridLayout>
 
         <FrameLayout
             android:id="@+id/gameFieldWrapper"
