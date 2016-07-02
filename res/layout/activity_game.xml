@@ -49,19 +49,21 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/info_panel_bg">
             <FrameLayout
-
                 android:layout_marginRight="2dp"
 
+                android:minWidth="136dp"
+
                 app:layout_rowWeight="50"
-                app:layout_columnWeight="45"
+                app:layout_columnWeight="70"
                 app:layout_gravity="fill_horizontal|fill_vertical"
-                android:background="#591d7c">
+                >
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="SCORES:3485"
+                    android:layout_gravity="center"
+                    android:text="SCORES:34765"
                     android:textStyle="bold"
-                    android:textSize="21sp"
+                    android:textSize="20sp"
                     android:textColor="#EFC130"
 
                     android:shadowColor="#494949"
@@ -75,32 +77,35 @@
             <FrameLayout
 
                 android:layout_marginLeft="4dp"
+                android:minWidth="90dp"
 
                 app:layout_rowWeight="50"
-                app:layout_columnWeight="59"
+                app:layout_columnWeight="30"
                 app:layout_gravity="fill_horizontal|fill_vertical"
-                android:background="#e12278">
-                <!--<ImageButton-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:background="@drawable/menu_btn_selector"-->
-                    <!--android:id="@+id/menuBtn"-->
-                    <!--android:onClick="onClickMenuBtn"/>-->
-                <TextView
+                >
+                <ImageButton
                     android:layout_width="match_parent"
+                    android:layout_gravity="center"
                     android:layout_height="match_parent"
-                    android:text="BEST"
-                    android:textColor="#EFC130"
-                    android:textStyle="bold"
-                    android:textSize="23sp"
+                    android:background="@drawable/menu_btn_selector"
+                    android:id="@+id/menuBtn"
+                    android:onClick="onClickMenuBtn"/>
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:text="BEST"-->
+                    <!--android:textColor="#EFC130"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textSize="23sp"-->
 
-                    android:shadowColor="#494949"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="5"
+                    <!--android:shadowColor="#494949"-->
+                    <!--android:shadowDx="5"-->
+                    <!--android:shadowDy="5"-->
+                    <!--android:shadowRadius="5"-->
 
-                    android:gravity="center_horizontal|center_vertical"
-                    android:id="@+id/txt2BestScores"/>
+                    <!--android:gravity="center_horizontal|center_vertical"-->
+                    <!--android:id="@+id/txt2BestScores"/>-->
 
             </FrameLayout>
             <FrameLayout
@@ -110,14 +115,14 @@
                 app:layout_rowWeight="50"
                 app:layout_columnSpan="2"
                 app:layout_gravity="fill_horizontal|fill_vertical"
-                android:background="#a99f33">
+                >
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:text="BEST SCORES:42341"
                     android:textColor="#EFC130"
                     android:textStyle="bold"
-                    android:textSize="23sp"
+                    android:textSize="20sp"
 
                     android:shadowColor="#494949"
                     android:shadowDx="5"
