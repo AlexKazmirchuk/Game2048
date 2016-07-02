@@ -29,7 +29,6 @@
             android:layout_marginBottom="5dp"
             android:layout_weight="189"
             android:background="@drawable/title_bg">
-
         </FrameLayout>
 
         <android.support.v7.widget.GridLayout
@@ -50,13 +49,10 @@
             android:background="@drawable/info_panel_bg">
             <FrameLayout
                 android:layout_marginRight="2dp"
-
                 android:minWidth="136dp"
-
                 app:layout_rowWeight="50"
                 app:layout_columnWeight="70"
-                app:layout_gravity="fill_horizontal|fill_vertical"
-                >
+                app:layout_gravity="fill_horizontal|fill_vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -75,14 +71,11 @@
                     android:id="@+id/txtScores" />
             </FrameLayout>
             <FrameLayout
-
                 android:layout_marginLeft="4dp"
                 android:minWidth="90dp"
-
                 app:layout_rowWeight="50"
                 app:layout_columnWeight="30"
-                app:layout_gravity="fill_horizontal|fill_vertical"
-                >
+                app:layout_gravity="fill_horizontal|fill_vertical">
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
@@ -90,32 +83,12 @@
                     android:background="@drawable/menu_btn_selector"
                     android:id="@+id/menuBtn"
                     android:onClick="onClickMenuBtn"/>
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:text="BEST"-->
-                    <!--android:textColor="#EFC130"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:textSize="23sp"-->
-
-                    <!--android:shadowColor="#494949"-->
-                    <!--android:shadowDx="5"-->
-                    <!--android:shadowDy="5"-->
-                    <!--android:shadowRadius="5"-->
-
-                    <!--android:gravity="center_horizontal|center_vertical"-->
-                    <!--android:id="@+id/txt2BestScores"/>-->
-
             </FrameLayout>
             <FrameLayout
-
                 android:layout_marginTop="5dp"
-
                 app:layout_rowWeight="50"
                 app:layout_columnSpan="2"
-                app:layout_gravity="fill_horizontal|fill_vertical"
-                >
+                app:layout_gravity="fill_horizontal|fill_vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -142,7 +115,6 @@
             android:paddingBottom="10dp"
             android:paddingRight="10dp"
             android:background="@drawable/gamefield_bg">
-
         </FrameLayout>
 
     </LinearLayout>
