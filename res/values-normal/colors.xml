@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="transparent_black">#a6000000</color>
+
+    //////colors for drawing cells/////
+
+    <color name="colorOwn0">#218a8d</color>
+    <color name="colorRight0">#1a7174</color>
+    <color name="colorBottom0">#135a5e</color>
+
+    <color name="colorOwn2">#ffcc80</color>
+    <color name="colorRight2">#b88e4f</color>
+    <color name="colorBottom2">#7a603a</color>
+
+    <color name="colorOwn4">#f06292</color>
+    <color name="colorRight4">#b73762</color>
+    <color name="colorBottom4">#73364a</color>
+
+    <color name="colorOwn8">#b610d4</color>
+    <color name="colorRight8">#75008b</color>
+    <color name="colorBottom8">#470a52</color>
+
+    <color name="colorOwn16">#42a5f5</color>
+    <color name="colorRight16">#3b7aae</color>
+    <color name="colorBottom16">#355570</color>
+
+    <color name="colorOwn32">#196159</color>
+    <color name="colorRight32">#15322e</color>
+    <color name="colorBottom32">#101a18</color>
+
+    <color name="colorOwn64">#fff176</color>
+    <color name="colorRight64">#9d933b</color>
+    <color name="colorBottom64">#6f6933</color>
+
+    <color name="colorOwn128">#76ff03</color>
+    <color name="colorRight128">#66a631</color>
+    <color name="colorBottom128">#405b2a</color>
+
+    <color name="colorOwn256">#00e676</color>
+    <color name="colorRight256">#2c9d66</color>
+    <color name="colorBottom256">#2b6046</color>
+
+    <color name="colorOwn512">#a1887f</color>
+    <color name="colorRight512">#786761</color>
+    <color name="colorBottom512">#49423f</color>
+
+    <color name="colorOwn1024">#053044</color>
+    <color name="colorRight1024">#08171f</color>
+    <color name="colorBottom1024">#537383</color>
+
+    <color name="colorOwn2048">#a4f7a8</color>
+    <color name="colorRight2048">#3d8a41</color>
+    <color name="colorBottom2048">#3d8a41</color>
+
+    ////////////////end///////////////
+</resources>
