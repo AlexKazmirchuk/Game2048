@@ -56,4 +56,7 @@
     <color name="colorBottom2048">#3d8a41</color>
 
     ////////////////end///////////////
+    <color name="info_panel_text_color">#EFC130</color>
+    <color name="info_panel_text_shadow_color">#494949</color>
+
 </resources>

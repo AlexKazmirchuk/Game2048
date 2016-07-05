@@ -16,18 +16,20 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="6dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="6dp"
+        android:paddingTop="@dimen/transparent_black_panel_padding_top"
+        android:paddingLeft="@dimen/transparent_black_panel_padding_left"
+        android:paddingStart="@dimen/transparent_black_panel_padding_left"
+        android:paddingRight="@dimen/transparent_black_panel_padding_right"
+        android:paddingEnd="@dimen/transparent_black_panel_padding_right"
+        android:paddingBottom="@dimen/transparent_black_panel_padding_bottom"
         android:background="@color/transparent_black">
 
         <FrameLayout
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_weight="189"
+            android:layout_marginBottom="@dimen/title_margin_bottom"
+            android:layout_weight="@integer/title_weight"
             android:background="@drawable/title_bg">
         </FrameLayout>
 
@@ -35,34 +37,37 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
-            android:paddingTop="10dp"
-            android:paddingLeft="10dp"
-            android:paddingBottom="24dp"
-            android:paddingRight="28dp"
+            android:paddingTop="@dimen/info_panel_padding_top"
+            android:paddingLeft="@dimen/info_panel_padding_left"
+            android:paddingStart="@dimen/info_panel_padding_left"
+            android:paddingBottom="@dimen/bottom"
+            android:paddingRight="@dimen/info_panel_padding_right"
+            android:paddingEnd="@dimen/info_panel_padding_right"
 
-            android:layout_weight="173"
+            android:layout_weight="@integer/info_panel_weight"
             app:columnCount="2"
             app:rowCount="2"
             app:orientation="horizontal"
             android:id="@+id/infoPanel"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/info_panel_margin_bottom"
             android:background="@drawable/info_panel_bg">
             <FrameLayout
                 android:layout_marginRight="2dp"
-                android:minWidth="136dp"
-                app:layout_rowWeight="50"
-                app:layout_columnWeight="70"
+                android:layout_marginEnd="2dp"
+                android:minWidth="@dimen/txt_scores_container_min_width"
+                app:layout_rowWeight="@integer/txt_scores_container_row_weight"
+                app:layout_columnWeight="@integer/txt_scores_container_column_weight"
                 app:layout_gravity="fill_horizontal|fill_vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:text="SCORES:34765"
+                    android:text="@string/txt_scores_text"
                     android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:textColor="#EFC130"
+                    android:textSize="@dimen/txt_scores_text_size"
+                    android:textColor="@color/info_panel_text_color"
 
-                    android:shadowColor="#494949"
+                    android:shadowColor="@color/info_panel_text_shadow_color"
                     android:shadowDx="5"
                     android:shadowDy="5"
                     android:shadowRadius="5"
@@ -72,7 +77,8 @@
             </FrameLayout>
             <FrameLayout
                 android:layout_marginLeft="4dp"
-                android:minWidth="90dp"
+                android:layout_marginStart="4dp"
+                android:minWidth="@dimen/menu_btn_container_min_width"
                 app:layout_rowWeight="50"
                 app:layout_columnWeight="30"
                 app:layout_gravity="fill_horizontal|fill_vertical">
@@ -92,12 +98,12 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="BEST SCORES:42341"
-                    android:textColor="#EFC130"
+                    android:text="@string/txt_best_scores_text"
+                    android:textColor="@color/info_panel_text_color"
                     android:textStyle="bold"
                     android:textSize="20sp"
 
-                    android:shadowColor="#494949"
+                    android:shadowColor="@color/info_panel_text_shadow_color"
                     android:shadowDx="5"
                     android:shadowDy="5"
                     android:shadowRadius="5"
@@ -112,8 +118,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="99"
-            android:paddingBottom="10dp"
-            android:paddingRight="10dp"
+            android:paddingBottom="@dimen/game_field_wrapper_padding_bottom"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="@dimen/game_field_wrapper_padding_right"
+            android:paddingEnd="@dimen/game_field_wrapper_padding_right"
             android:background="@drawable/gamefield_bg">
         </FrameLayout>
 

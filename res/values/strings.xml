@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Game2048</string>
+    <string name="txt_scores_text">SCORES:34765</string>
+    <string name="txt_best_scores_text">BEST SCORES:42341</string>
 </resources>
