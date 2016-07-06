@@ -17,9 +17,23 @@
     <dimen name="menu_btn_container_min_width">90dp</dimen>
     <dimen name="game_field_wrapper_padding_bottom">10dp</dimen>
     <dimen name="game_field_wrapper_padding_right">10dp</dimen>
+    <dimen name="txt_scores_container_margin_right">2dp</dimen>
+    <dimen name="menu_btn_container_margin_left">4dp</dimen>
+    <dimen name="txt_best_scores_container_margin_top">5dp</dimen>
+    <dimen name="txt_best_scores_text_size">20sp</dimen>
+
     <integer name="title_weight">189</integer>
     <integer name="info_panel_weight">173</integer>
     <integer name="txt_scores_container_row_weight">50</integer>
     <integer name="txt_scores_container_column_weight">70</integer>
+    <integer name="text_shadow_x">5</integer>
+    <integer name="text_shadow_y">5</integer>
+    <integer name="text_shadow_radius">5</integer>
+    <integer name="menu_btn_container_row_weight">50</integer>
+    <integer name="menu_btn_container_column_weight">30</integer>
+    <integer name="txt_best_scores_container_row_weight">50</integer>
+    <integer name="game_field_wrapper_weight">99</integer>
+
+
 
 </resources>

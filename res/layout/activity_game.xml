@@ -52,8 +52,8 @@
             android:layout_marginBottom="@dimen/info_panel_margin_bottom"
             android:background="@drawable/info_panel_bg">
             <FrameLayout
-                android:layout_marginRight="2dp"
-                android:layout_marginEnd="2dp"
+                android:layout_marginRight="@dimen/txt_scores_container_margin_right"
+                android:layout_marginEnd="@dimen/txt_scores_container_margin_right"
                 android:minWidth="@dimen/txt_scores_container_min_width"
                 app:layout_rowWeight="@integer/txt_scores_container_row_weight"
                 app:layout_columnWeight="@integer/txt_scores_container_column_weight"
@@ -68,31 +68,32 @@
                     android:textColor="@color/info_panel_text_color"
 
                     android:shadowColor="@color/info_panel_text_shadow_color"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="5"
+                    android:shadowDx="@integer/text_shadow_x"
+                    android:shadowDy="@integer/text_shadow_y"
+                    android:shadowRadius="@integer/text_shadow_radius"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:id="@+id/txtScores" />
             </FrameLayout>
             <FrameLayout
-                android:layout_marginLeft="4dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginLeft="@dimen/menu_btn_container_margin_left"
+                android:layout_marginStart="@dimen/menu_btn_container_margin_left"
                 android:minWidth="@dimen/menu_btn_container_min_width"
-                app:layout_rowWeight="50"
-                app:layout_columnWeight="30"
+                app:layout_rowWeight="@integer/menu_btn_container_row_weight"
+                app:layout_columnWeight="@integer/menu_btn_container_column_weight"
                 app:layout_gravity="fill_horizontal|fill_vertical">
                 <ImageButton
                     android:layout_width="match_parent"
                     android:layout_gravity="center"
+                    android:contentDescription="@string/menu_btn_image_content_description"
                     android:layout_height="match_parent"
                     android:background="@drawable/menu_btn_selector"
                     android:id="@+id/menuBtn"
                     android:onClick="onClickMenuBtn"/>
             </FrameLayout>
             <FrameLayout
-                android:layout_marginTop="5dp"
-                app:layout_rowWeight="50"
+                android:layout_marginTop="@dimen/txt_best_scores_container_margin_top"
+                app:layout_rowWeight="@integer/txt_best_scores_container_row_weight"
                 app:layout_columnSpan="2"
                 app:layout_gravity="fill_horizontal|fill_vertical">
                 <TextView
@@ -101,12 +102,12 @@
                     android:text="@string/txt_best_scores_text"
                     android:textColor="@color/info_panel_text_color"
                     android:textStyle="bold"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/txt_best_scores_text_size"
 
                     android:shadowColor="@color/info_panel_text_shadow_color"
-                    android:shadowDx="5"
-                    android:shadowDy="5"
-                    android:shadowRadius="5"
+                    android:shadowDx="@integer/text_shadow_x"
+                    android:shadowDy="@integer/text_shadow_y"
+                    android:shadowRadius="@integer/text_shadow_radius"
 
                     android:gravity="center_horizontal|center_vertical"
                     android:id="@+id/txtBestScores"/>
@@ -117,7 +118,7 @@
             android:id="@+id/gameFieldWrapper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="99"
+            android:layout_weight="@integer/game_field_wrapper_weight"
             android:paddingBottom="@dimen/game_field_wrapper_padding_bottom"
             android:paddingStart="0dp"
             android:paddingLeft="0dp"
