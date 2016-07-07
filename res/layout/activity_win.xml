@@ -7,8 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#00ffffff"
-    >
+    android:background="#00ffffff">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,12 +24,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="303dp"
+            android:layout_height="match_parent"
+            android:layout_weight="27"
 
             android:layout_marginTop="13dp"
             android:layout_marginBottom="6dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="15dp"
+
+            android:paddingTop="5dp"
+            android:paddingBottom="15dp"
 
             android:background="@drawable/win_yellow_bg"
             android:orientation="vertical">
@@ -38,6 +41,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_weight="50"
 
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="5dp"
@@ -60,6 +64,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
+                android:layout_weight="150"
 
                 android:src="@drawable/win_image"
 
@@ -77,6 +82,7 @@
                 android:id="@+id/winTxtScores"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+                android:layout_weight="50"
 
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
@@ -103,7 +109,10 @@
         <Button
             android:id="@+id/winOkBtn"
             android:layout_width="130dp"
-            android:layout_height="50dp"
+            android:layout_height="match_parent"
+            android:minHeight="50dp"
+            android:layout_weight="130"
+            android:layout_marginBottom="20dp"
 
             android:textStyle="bold"
             android:textSize="21sp"
