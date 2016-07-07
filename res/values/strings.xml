@@ -3,4 +3,8 @@
     <string name="txt_scores_text">SCORES:34765</string>
     <string name="txt_best_scores_text">BEST SCORES:42341</string>
     <string name="menu_btn_image_content_description">Menu</string>
+    <string name="resume_btn_text">RESUME</string>
+    <string name="restart_btn_text">RESTART</string>
+    <string name="mode_btn_text">MODE:ORIGINAL</string>
+    <string name="music_btn_text">MUSIC:ON</string>
 </resources>
