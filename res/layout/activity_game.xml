@@ -120,43 +120,69 @@
             android:layout_height="match_parent"
             android:layout_weight="@integer/info_panel_weight"
             android:layout_marginBottom="@dimen/info_panel_margin_bottom"
+
+            android:paddingTop="@dimen/info_panel_padding_top"
+            android:paddingLeft="@dimen/info_panel_padding_left"
+            android:paddingStart="@dimen/info_panel_padding_left"
+            android:paddingRight="@dimen/info_panel_padding_right"
+            android:paddingEnd="@dimen/info_panel_padding_right"
+            android:paddingBottom="@dimen/info_panel_padding_bottom"
+
             android:background="@drawable/info_field_bg">
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#00ffffff">
                 <Space
                     android:id="@+id/divider"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="@dimen/divider_width"
+                    android:layout_height="@dimen/divider_height"
                     android:layout_centerInParent="true"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="20dp"
                     android:weightSum="100"
                     android:layout_above="@id/divider"
                     android:layout_alignParentTop="true"
+                    android:baselineAligned="false"
                     android:orientation="horizontal">
                     <FrameLayout
+                        android:id="@+id/txtScoresWrapper"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="33"
+                        android:layout_marginRight="@dimen/txt_scores_wrapper_margin_right"
+                        android:layout_marginEnd="@dimen/txt_scores_wrapper_margin_right"
+                        android:layout_weight="@integer/txt_scores_wrapper_weight"
                         android:background="@drawable/scores_bg_20">
                         <TextView
+                            android:id="@+id/txtScores"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:text="Scores"
-                            android:textSize="22sp"
+
+                            android:text="@string/txt_scores_text"
+                            android:textStyle="bold"
+                            android:textSize="@dimen/txt_scores_text_size"
+                            android:textColor="@color/info_panel_text_color"
+
+                            android:shadowColor="@color/info_panel_text_shadow_color"
+                            android:shadowDx="@integer/text_shadow_x"
+                            android:shadowDy="@integer/text_shadow_y"
+                            android:shadowRadius="@integer/text_shadow_radius"
+
                             android:gravity="center_horizontal|center_vertical"/>
                     </FrameLayout>
                     <FrameLayout
+                        android:id="@+id/menuBtnWrapper"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="67"
+                        android:layout_weight="@integer/menu_btn_wrapper_weight"
                         android:background="@drawable/menu_btn_bg_20">
                         <ImageButton
+                            android:id="@+id/menuBtn"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:contentDescription="@string/menu_btn_image_content_description"
+                            android:onClick="onClickMenuBtn"
                             android:background="@drawable/menu_btn_bg"/>
                     </FrameLayout>
                 </LinearLayout>
@@ -164,15 +190,24 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="20dp"
                     android:layout_below="@id/divider"
                     android:layout_alignParentBottom="true"
                     android:background="@drawable/best_scores_bg_20">
                     <TextView
+                        android:id="@+id/txtBestScores"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="My text"
-                        android:textSize="22sp"
+
+                        android:text="@string/txt_best_scores_text"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/txt_scores_text_size"
+                        android:textColor="@color/info_panel_text_color"
+
+                        android:shadowColor="@color/info_panel_text_shadow_color"
+                        android:shadowDx="@integer/text_shadow_x"
+                        android:shadowDy="@integer/text_shadow_y"
+                        android:shadowRadius="@integer/text_shadow_radius"
+
                         android:gravity="center_horizontal|center_vertical"/>
                 </FrameLayout>
             </RelativeLayout>
