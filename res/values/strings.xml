@@ -11,4 +11,8 @@
     <string name="activity_win_image_content_description">Winning image</string>
     <string name="win_txt_scores_text">YOUR SCORE: 5436</string>
     <string name="win_ok_btn_text">OK</string>
+    <string name="activity_lose_title_text">YOU LOSE...</string>
+    <string name="activity_lose_image_content_description">Losing image</string>
+    <string name="lose_txt_scores_text">YOUR SCORE: 5436</string>
+    <string name="lose_restart_btn_text">RESTART</string>
 </resources>

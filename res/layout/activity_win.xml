@@ -107,5 +107,4 @@
             android:text="@string/win_ok_btn_text"
             android:background="@drawable/win_ok_btn_selector"/>
     </LinearLayout>
-
 </RelativeLayout>
