@@ -12,8 +12,13 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.alexkaz.game2048.R;
+import com.alexkaz.game2048.gamelogic.CellManager;
+import com.alexkaz.game2048.gamelogic.DrawThreat;
 
 public class LoseDialogFragment extends DialogFragment implements View.OnClickListener {
+
+    private CellManager cellManager;
+    private DrawThreat drawThreat;
 
     public static LoseDialogFragment newInstance(int scores){
         LoseDialogFragment fragment = new LoseDialogFragment();
@@ -23,9 +28,6 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
         fragment.setArguments(args);
         return fragment;
     }
-
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -47,5 +49,22 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         getDialog().cancel();
+        if (cellManager!=null){
+            cellManager.startNewGame();
+        }
+        cellManager = null;
+        if (drawThreat!=null){
+            drawThreat.isLoseDialogShow = false;
+        }
+        drawThreat = null;
     }
+
+    public void setCellManager(CellManager cellManager) {
+        this.cellManager = cellManager;
+    }
+
+    public void setDrawThreat(DrawThreat drawThreat) {
+        this.drawThreat = drawThreat;
+    }
+
 }

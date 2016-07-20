@@ -15,6 +15,7 @@ public class DrawThreat extends Thread {
     private CellManager cellManager;
     public static final String SCORES_VALUE = "scoresValue";
     private boolean isWinActivityShowed  = true;
+    public boolean isLoseDialogShow = false;
 
     private boolean runFlag = false;
     private SurfaceHolder surfaceHolder;
@@ -29,6 +30,8 @@ public class DrawThreat extends Thread {
 
     private void showLoseDialog(int scores) {
         LoseDialogFragment loseDialogFragment = LoseDialogFragment.newInstance(scores);
+        loseDialogFragment.setCellManager(cellManager);
+        loseDialogFragment.setDrawThreat(this);
         context.playGameOverSound();
         loseDialogFragment.show(context.getFragmentManager(),"loseDialog");
     }
@@ -88,8 +91,11 @@ public class DrawThreat extends Thread {
             }
         }
         else {
-            showLoseDialog(cellManager.getScores());
-            cellManager.startNewGame();
+            if (!isLoseDialogShow){
+                showLoseDialog(cellManager.getScores());
+                isLoseDialogShow = true;
+            }
+//            cellManager.startNewGame();
             cellManager.draw(canvas);
         }
     }
