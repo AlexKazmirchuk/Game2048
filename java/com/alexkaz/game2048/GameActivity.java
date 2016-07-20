@@ -206,6 +206,7 @@ public class GameActivity extends AppCompatActivity {
 
     public  void restartGame(){
         gameSurfaceView.getDrawThreat().getCellManager().startNewGame();
+        setScores(0);
     }
 
     public boolean isMusicEnabled() {
