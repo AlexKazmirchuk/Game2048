@@ -43,6 +43,38 @@
     <dimen name="divider_height">3dp</dimen>
     <dimen name="divider_width">0dp</dimen>
     <dimen name="txt_scores_wrapper_margin_right">4dp</dimen>
+    <dimen name="dialog_win_container_width">290dp</dimen>
+    <dimen name="dialog_win_container_height">400dp</dimen>
+    <dimen name="dialog_win_container_margin">10dp</dimen>
+    <dimen name="dialog_win_container_padding">5dp</dimen>
+    <dimen name="scores_panel_height">304dp</dimen>
+    <dimen name="scores_panel_margin_top">13dp</dimen>
+    <dimen name="scores_panel_margin_bottom">6dp</dimen>
+    <dimen name="scores_panel_margin_left">10dp</dimen>
+    <dimen name="scores_panel_margin_right">15dp</dimen>
+    <dimen name="scores_panel_pdding_top">5dp</dimen>
+    <dimen name="scores_panel_padding_bottom">15dp</dimen>
+    <dimen name="title_win_height">50dp</dimen>
+    <dimen name="title_win_margin_top">0dp</dimen>
+    <dimen name="title_win_margin_bottom">5dp</dimen>
+    <dimen name="title_win_margin_left">5dp</dimen>
+    <dimen name="title_win_margin_right">16dp</dimen>
+    <dimen name="title_win_text_size">21sp</dimen>
+    <dimen name="win_image_height">170dp</dimen>
+    <dimen name="win_image_padding_left">5dp</dimen>
+    <dimen name="win_image_padding_right">8dp</dimen>
+    <dimen name="win_image_padding_top">2dp</dimen>
+    <dimen name="win_image_padding_bottom">5dp</dimen>
+    <dimen name="win_image_margin_bottom">5dp</dimen>
+    <dimen name="win_image_margin_left">5dp</dimen>
+    <dimen name="win_image_margin_right">16dp</dimen>
+    <dimen name="win_txt_scores_height">50dp</dimen>
+    <dimen name="win_txt_scores_margin_bottom">0dp</dimen>
+    <dimen name="win_txt_scores_margin_left">5dp</dimen>
+    <dimen name="win_txt_scores_margin_right">16dp</dimen>
+    <dimen name="win_ok_btn_width">150dp</dimen>
+    <dimen name="win_ok_btn_height">50dp</dimen>
+    <dimen name="win_ok_btn_margin_bottom">17dp</dimen>
 
     <integer name="title_weight">189</integer>
     <integer name="info_panel_weight">173</integer>
@@ -58,6 +90,11 @@
 
     <integer name="txt_scores_wrapper_weight">33</integer>
     <integer name="menu_btn_wrapper_weight">67</integer>
+    <integer name="win_text_shadow_offset">5</integer>
+    <integer name="title_win_weight">50</integer>
+    <integer name="win_image_weight">150</integer>
+    <integer name="win_txt_scores_weight">50</integer>
+
 
 
 
