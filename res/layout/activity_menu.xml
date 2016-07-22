@@ -2,7 +2,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,12 +9,10 @@
         android:paddingStart="@dimen/root_padding_left"
         android:paddingRight="@dimen/root_padding_right"
         android:paddingEnd="@dimen/root_padding_right">
-
         <LinearLayout
             android:layout_width="@dimen/menu_container_width"
             android:layout_height="@dimen/menu_container_height"
             android:paddingBottom="@dimen/menu_container_padding_bottom"
-
             android:paddingLeft="@dimen/menu_container_padding_left"
             android:paddingStart="@dimen/menu_container_padding_left"
             android:paddingRight="@dimen/menu_container_padding_right"
@@ -29,12 +26,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:paddingBottom="@dimen/resume_btn_padding_bottom"
                 android:background="@drawable/first_item_bg_selector"
                 android:text="@string/resume_btn_text"
                 android:textStyle="bold"
                 android:textSize="@dimen/menu_button_text_size"
-                android:textColor="@color/info_panel_text_color"
+                android:textColor="@color/info_panel_text_color1"
 
                 android:shadowColor="@color/info_panel_text_shadow_color"
                 android:shadowDx="@integer/text_shadow_x"
@@ -48,12 +44,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:paddingBottom="@dimen/restart_btn_padding_bottom"
                 android:background="@drawable/second_item_bg_selector"
                 android:text="@string/restart_btn_text"
                 android:textStyle="bold"
                 android:textSize="@dimen/menu_button_text_size"
-                android:textColor="@color/info_panel_text_color"
+                android:textColor="@color/info_panel_text_color1"
 
                 android:shadowColor="@color/info_panel_text_shadow_color"
                 android:shadowDx="@integer/text_shadow_x"
@@ -67,12 +62,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:paddingBottom="@dimen/mode_btn_padding_bottom"
                 android:background="@drawable/third_item_bg_selector"
                 android:text="@string/mode_btn_text"
                 android:textStyle="bold"
                 android:textSize="@dimen/menu_button_text_size"
-                android:textColor="@color/info_panel_text_color"
+                android:textColor="@color/info_panel_text_color1"
 
                 android:shadowColor="@color/info_panel_text_shadow_color"
                 android:shadowDx="@integer/text_shadow_x"
@@ -86,13 +80,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="10"
-                android:paddingBottom="@dimen/music_btn_padding_bottom"
                 android:background="@drawable/fourth_item_bg_selector"
                 android:text="@string/music_btn_text"
                 android:textStyle="bold"
                 android:textSize="@dimen/menu_button_text_size"
-                android:textColor="@color/info_panel_text_color"
-
+                android:textColor="@color/info_panel_text_color1"
                 android:shadowColor="@color/info_panel_text_shadow_color"
                 android:shadowDx="@integer/text_shadow_x"
                 android:shadowDy="@integer/text_shadow_y"
