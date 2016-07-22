@@ -21,7 +21,6 @@
             android:background="@drawable/menu_bg"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal|center_vertical">
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -31,15 +30,12 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/menu_button_text_size"
                 android:textColor="@color/info_panel_text_color1"
-
                 android:shadowColor="@color/info_panel_text_shadow_color"
                 android:shadowDx="@integer/text_shadow_x"
                 android:shadowDy="@integer/text_shadow_y"
                 android:shadowRadius="@integer/text_shadow_radius"
-
                 android:id="@+id/resumeBtn"
                 android:layout_gravity="center_horizontal" />
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -49,15 +45,12 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/menu_button_text_size"
                 android:textColor="@color/info_panel_text_color1"
-
                 android:shadowColor="@color/info_panel_text_shadow_color"
                 android:shadowDx="@integer/text_shadow_x"
                 android:shadowDy="@integer/text_shadow_y"
                 android:shadowRadius="@integer/text_shadow_radius"
-
                 android:id="@+id/restartBtn"
                 android:layout_gravity="center_horizontal" />
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -67,15 +60,12 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/menu_button_text_size"
                 android:textColor="@color/info_panel_text_color1"
-
                 android:shadowColor="@color/info_panel_text_shadow_color"
                 android:shadowDx="@integer/text_shadow_x"
                 android:shadowDy="@integer/text_shadow_y"
                 android:shadowRadius="@integer/text_shadow_radius"
-
                 android:id="@+id/modeBtn"
                 android:layout_gravity="center_horizontal" />
-
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -89,12 +79,8 @@
                 android:shadowDx="@integer/text_shadow_x"
                 android:shadowDy="@integer/text_shadow_y"
                 android:shadowRadius="@integer/text_shadow_radius"
-
                 android:id="@+id/musicBtn"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
-
     </FrameLayout>
-
-
 </RelativeLayout>
