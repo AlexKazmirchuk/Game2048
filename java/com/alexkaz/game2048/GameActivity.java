@@ -226,4 +226,10 @@ public class GameActivity extends AppCompatActivity {
             return super.onKeyDown(keyCode, event);
         }
     }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initSound();
+    }
 }
