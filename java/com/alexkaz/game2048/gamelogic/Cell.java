@@ -7,7 +7,6 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import com.alexkaz.game2048.GameActivity;
 

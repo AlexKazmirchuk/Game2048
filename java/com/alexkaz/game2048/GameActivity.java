@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.alexkaz.game2048.controllers.GamePreferences;
 import com.alexkaz.game2048.controllers.SwipeDetector;
 import com.alexkaz.game2048.gamelogic.Direction;

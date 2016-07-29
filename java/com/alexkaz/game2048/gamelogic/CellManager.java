@@ -2,19 +2,15 @@ package com.alexkaz.game2048.gamelogic;
 
 import android.graphics.Canvas;
 import android.util.Log;
-
 import com.alexkaz.game2048.GameActivity;
-
 import java.util.Random;
 
 public class CellManager {
-
 
     //Свойства
     private Cell[][] cells = new Cell[4][4];
     private int[][] cellsId = new int[4][4];
     public int scores = 0;
-//    private Graphics g;
     private Random rand = new Random();
     private int[] isFull = new int[]{0,0,0,0};
     private boolean key = false;
@@ -26,7 +22,6 @@ public class CellManager {
         this.context = context;
         initComp();
     }
-
 
     //Методи
     public void initComp(){
@@ -79,7 +74,6 @@ public class CellManager {
 
         switch (direction){
             case UP:{
-//                moveAllUp(cells);
                 CellMergeSortHandler.moveAllUp(cells,this);
                 System.out.println(scores);
                 if (key){
@@ -88,7 +82,6 @@ public class CellManager {
                 break;
             }
             case DOWN:{
-//                moveAllDown(cells);
                 CellMergeSortHandler.moveAllDown(cells,this);
                 System.out.println(scores);
                 if (key){
@@ -97,7 +90,6 @@ public class CellManager {
                 break;
             }
             case LEFT:{
-//                moveAllLeft(cells);
                 CellMergeSortHandler.moveAllLeft(cells,this);
                 System.out.println(scores);
                 if (key){
@@ -106,7 +98,6 @@ public class CellManager {
                 break;
             }
             case RIGHT:{
-//                moveAllRight(cells);
                 CellMergeSortHandler.moveAllRight(cells,this);
                 System.out.println(scores);
                 if (key){
@@ -133,9 +124,6 @@ public class CellManager {
             int tmp;
             tmp = isFull[0] + isFull[1]+ isFull[2]+ isFull[3];
             if (tmp == 4){
-                //////////////////////////////
-                /////////////////////////////   Зробити нормально
-                ////////////////////////////
                 lose = true;
             }
         }
@@ -145,7 +133,6 @@ public class CellManager {
     public void spownCell(){
         int x = rand.nextInt(4);
         int y = rand.nextInt(4);
-
         if (cells[x][y].getId() == 0){
             cells[x][y].setId(2);
             cells[x][y].setFresh(true);
@@ -179,7 +166,6 @@ public class CellManager {
     }
 
     public static void spawnCellAnimation(Cell[][] cell){
-
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (!(cell[i][j].getId() == 0)){

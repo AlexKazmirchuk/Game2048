@@ -4,7 +4,6 @@ package com.alexkaz.game2048.gamelogic;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.SurfaceHolder;
-
 import com.alexkaz.game2048.GameActivity;
 import com.alexkaz.game2048.uicomp.LoseDialogFragment;
 import com.alexkaz.game2048.uicomp.WinDialogFragment;
@@ -95,7 +94,6 @@ public class DrawThreat extends Thread {
                 showLoseDialog(cellManager.getScores());
                 isLoseDialogShow = true;
             }
-//            cellManager.startNewGame();
             cellManager.draw(canvas);
         }
     }

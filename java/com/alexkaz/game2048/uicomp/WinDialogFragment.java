@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-
 import com.alexkaz.game2048.R;
 
 public class WinDialogFragment  extends DialogFragment implements View.OnClickListener {

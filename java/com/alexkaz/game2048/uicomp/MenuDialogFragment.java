@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-
 import com.alexkaz.game2048.GameActivity;
 import com.alexkaz.game2048.R;
 import com.alexkaz.game2048.controllers.GamePreferences;
