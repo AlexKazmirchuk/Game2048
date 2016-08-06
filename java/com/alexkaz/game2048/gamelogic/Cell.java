@@ -15,6 +15,11 @@ import java.math.RoundingMode;
 
 public class Cell {
 
+    //for anim
+    public int moving = 0;
+    public int merged = 0;
+    public int anim = 0;
+
     //for cell
     public static final int DEFAULT_ID = 0;
     public static final int COLOR_OWN = 0;
