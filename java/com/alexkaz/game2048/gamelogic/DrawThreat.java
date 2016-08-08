@@ -55,7 +55,7 @@ public class DrawThreat extends Thread {
         while(runFlag){
             long now = System.currentTimeMillis();
             long elapsedTime  = now - prevTime;
-            if (elapsedTime > 40){
+            if (elapsedTime > 5){
                 prevTime = now;
                 canvas = null;
                 CellManager.spawnCellAnimation(cellManager.getCells());
