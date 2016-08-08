@@ -55,7 +55,11 @@ public class CellManager {
             for (int j = 0; j <cells[i].length ; j++) {
                 if (this.swipeDirection == Direction.RIGHT || this.swipeDirection == Direction.LEFT){
                     if (cells[j][i].moveX > 0){
-                        cells[j][i].moveX = cells[j][i].moveX - 10;
+                        cells[j][i].moveX = cells[j][i].moveX - 1; //TODO
+                    }
+                } else if(this.swipeDirection == Direction.DOWN || this.swipeDirection == Direction.UP){
+                    if (cells[j][i].moveY > 0){
+                        cells[j][i].moveY = cells[j][i].moveY - 1; //TODO
                     }
                 }
 

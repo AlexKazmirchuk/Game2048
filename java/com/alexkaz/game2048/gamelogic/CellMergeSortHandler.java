@@ -1344,10 +1344,18 @@ public class CellMergeSortHandler {
         }
     }
 
-    private static void moveCells(Cell[][] cells){
+    private static void moveCellsX(Cell[][] cells){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 cells[j][i].calculateMoveX();
+            }
+        }
+    }
+
+    private static void moveCellsY(Cell[][] cells){
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                cells[j][i].calculateMoveY();
             }
         }
     }
@@ -1408,6 +1416,7 @@ public class CellMergeSortHandler {
             cells[i] = moveLineRight(cells[i], cellManager);
         }
         combinationFilterDown(cells);
+        moveCellsY(cells);
         showInfo(cells);
         return cells;
     }
@@ -1420,6 +1429,7 @@ public class CellMergeSortHandler {
             cells[i] = moveLineLeft(cells[i], cellManager);
         }
         combinationFilterUp(cells);
+        moveCellsY(cells);
         showInfo(cells);
         return cells;
     }
@@ -1439,7 +1449,7 @@ public class CellMergeSortHandler {
             }
         }
         combinationFilterLeft(cells);
-        moveCells(cells);
+        moveCellsX(cells);
         showInfo(cells);
         return cells;
     }
@@ -1459,7 +1469,7 @@ public class CellMergeSortHandler {
             }
         }
         combinationFilterRight(cells);
-        moveCells(cells);
+        moveCellsX(cells);
         showInfo(cells);
         return cells;
     }

@@ -21,6 +21,8 @@ public class Cell {
     public int merged = 0;
     public int anim = 0;
     public int moveX = 0;
+    public int moveY = 0;
+
 
     //for cell
     public static final int DEFAULT_ID = 0;
@@ -100,6 +102,10 @@ public class Cell {
             this.posX = ((sizeX*x) + borderX*x + pivotX) - moveX;
         } else if(CellManager.swipeDirection == Direction.LEFT){
             this.posX = ((sizeX*x) + borderX*x + pivotX) + moveX;
+        } else if(CellManager.swipeDirection == Direction.DOWN){
+            this.posY = ((sizeY*y) + borderY*y + pivotY) - moveY;
+        } else if(CellManager.swipeDirection == Direction.UP){
+            this.posY = ((sizeY*y) + borderY*y + pivotY) + moveY;
         }
 
         drawMyCell(g);
@@ -290,6 +296,10 @@ public class Cell {
 
     public void calculateMoveX(){
         this.moveX = sizeX*anim + borderX*anim;
+    }
+
+    public void calculateMoveY(){
+        this.moveY = sizeY*anim + borderY*anim;
     }
 
     public int getPosX() {
