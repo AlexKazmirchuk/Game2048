@@ -1329,7 +1329,7 @@ public class CellMergeSortHandler {
             System.out.println("");
             /////////////////////////////
         }
-    }//
+    }
 
 
     private static void resetAnimValues(Cell[][] cells){
@@ -1344,7 +1344,13 @@ public class CellMergeSortHandler {
         }
     }
 
-
+    private static void moveCells(Cell[][] cells){
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                cells[j][i].calculateMoveX();
+            }
+        }
+    }
 
     private static void showMoving(Cell[][] cells){
         String lineID = "";
@@ -1375,8 +1381,19 @@ public class CellMergeSortHandler {
     private static void showInfo(Cell[][] cells){
         showMoving(cells);
         showMerging(cells);
+        showPosXPosY(cells);
     }
 
+    private static void showPosXPosY(Cell[][] cells){
+        String line = "";
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                line = line + " [" + cells[j][i].getPosX() + "," + cells[j][i].getPosY() + "]";
+            }
+            Log.d("positionLog",line);
+            line = "";
+        }
+    }
 
 
 
@@ -1384,6 +1401,7 @@ public class CellMergeSortHandler {
 
 ////////////////////////////////////////////////////////////////////
     public static Cell[][] moveAllDown(Cell[][] cells, CellManager cellManager){
+        cellManager.swipeDirection = Direction.DOWN;
         resetAnimValues(cells);
         saveLastID(cells);
         for (int i = 0; i <cells.length ; i++) {
@@ -1395,6 +1413,7 @@ public class CellMergeSortHandler {
     }
 
     public static Cell[][] moveAllUp(Cell[][] cells, CellManager cellManager){
+        cellManager.swipeDirection = Direction.UP;
         resetAnimValues(cells);
         saveLastID(cells);
         for (int i = 0; i <cells.length ; i++) {
@@ -1406,6 +1425,7 @@ public class CellMergeSortHandler {
     }
 
     public static Cell[][] moveAllLeft(Cell[][] cells, CellManager cellManager){
+        cellManager.swipeDirection = Direction.LEFT;
         resetAnimValues(cells);
         saveLastID(cells);
         Cell[] line = new Cell[4];
@@ -1419,11 +1439,13 @@ public class CellMergeSortHandler {
             }
         }
         combinationFilterLeft(cells);
+        moveCells(cells);
         showInfo(cells);
         return cells;
     }
 
     public static Cell[][] moveAllRight(Cell[][] cells, CellManager cellManager){
+        cellManager.swipeDirection = Direction.RIGHT;
         resetAnimValues(cells);
         saveLastID(cells);
         Cell[] line = new Cell[4];
@@ -1437,11 +1459,10 @@ public class CellMergeSortHandler {
             }
         }
         combinationFilterRight(cells);
+        moveCells(cells);
         showInfo(cells);
         return cells;
     }
-
-
 
     public static Cell[] moveLineRight(Cell[] line,CellManager cellManager){
         line = sortLineRight(line);

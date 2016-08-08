@@ -7,6 +7,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 
 import com.alexkaz.game2048.GameActivity;
 
@@ -19,6 +20,7 @@ public class Cell {
     public int moving = 0;
     public int merged = 0;
     public int anim = 0;
+    public int moveX = 0;
 
     //for cell
     public static final int DEFAULT_ID = 0;
@@ -74,6 +76,10 @@ public class Cell {
     private int posX, posY;  //resizable
     private int sizeX ;      //resizable
     private int sizeY ;      //resizable
+    private int borderX ;      //resizable
+    private int borderY ;      //resizable
+    private int pivotX ;      //resizable
+    private int pivotY ;      //resizable
 
     //Конструктор
     public Cell(GameActivity context, int x, int y){
@@ -89,6 +95,13 @@ public class Cell {
             getSizes(g.getHeight(),g.getWidth());
             locker = false;
         }
+
+        if (CellManager.swipeDirection == Direction.RIGHT){
+            this.posX = ((sizeX*x) + borderX*x + pivotX) - moveX;
+        } else if(CellManager.swipeDirection == Direction.LEFT){
+            this.posX = ((sizeX*x) + borderX*x + pivotX) + moveX;
+        }
+
         drawMyCell(g);
     }
 
@@ -215,12 +228,12 @@ public class Cell {
         shearForText = (int) fShearForText;
 
         sizeX = (int) fxSize;
-        int borderX = (int) fxBorder;
-        int pivotX = (int) fxPivot;
+        borderX = (int) fxBorder;
+        pivotX = (int) fxPivot;
 
         sizeY = (int) fySize;
-        int borderY = (int) fyBorder;
-        int pivotY = (int) fyPivot;
+        borderY = (int) fyBorder;
+        pivotY = (int) fyPivot;
 
         this.posX = (sizeX*x) + borderX*x + pivotX;
         this.posY = (sizeY*y) + borderY*y + pivotY;
@@ -273,6 +286,18 @@ public class Cell {
 
     public void setShearMax(int shearMax) {
         this.shearMax = shearMax;
+    }
+
+    public void calculateMoveX(){
+        this.moveX = sizeX*anim + borderX*anim;
+    }
+
+    public int getPosX() {
+        return posX;
+    }
+
+    public int getPosY() {
+        return posY;
     }
 }
 

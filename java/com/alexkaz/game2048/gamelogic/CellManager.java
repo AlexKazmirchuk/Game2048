@@ -16,6 +16,7 @@ public class CellManager {
     private boolean key = false;
     public boolean lose = false;
     private GameActivity context;
+    public static Direction swipeDirection ;
 
     //Конструктор
     public CellManager(GameActivity context){
@@ -52,6 +53,12 @@ public class CellManager {
     public void draw(Canvas g){
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j <cells[i].length ; j++) {
+                if (this.swipeDirection == Direction.RIGHT || this.swipeDirection == Direction.LEFT){
+                    if (cells[j][i].moveX > 0){
+                        cells[j][i].moveX = cells[j][i].moveX - 10;
+                    }
+                }
+
                 cells[i][j].draw(g);
             }
         }
