@@ -98,6 +98,9 @@ public class Cell {
             locker = false;
         }
 
+        this.posX = (sizeX*x) + borderX*x + pivotX;
+        this.posY = (sizeY*y) + borderY*y + pivotY;
+
         if (CellManager.swipeDirection == Direction.RIGHT){
             this.posX = ((sizeX*x) + borderX*x + pivotX) - moveX;
         } else if(CellManager.swipeDirection == Direction.LEFT){
@@ -108,7 +111,9 @@ public class Cell {
             this.posY = ((sizeY*y) + borderY*y + pivotY) + moveY;
         }
 
-        drawMyCell(g);
+        if(this.id != 0){
+            drawMyCell(g);
+        }
     }
 
     private void drawMyCell(Canvas g) {
