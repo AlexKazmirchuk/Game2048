@@ -191,7 +191,8 @@ public class CellMergeSortHandler {
                 case 2:
 //                    System.out.println("Ця комбінація: |x|x|y|y|");
                     //////////////////////////
-
+                    cells[2][j].anim = 2;
+                    cells[3][j].anim = 1;
 
                     /////////////////////////
                     break;
@@ -210,20 +211,21 @@ public class CellMergeSortHandler {
                                             && cells[1][j].moving == cells[2][j].getId()){
 //                                        Log.d("animLog","[вправо]|y|x|x| |");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 2;
+                                        cells[2][j].anim = 2;
 
                                         /////////////////////////
                                     } else if((lastID[0][j]*2) == cells[3][j].merged
                                             && (lastID[2][j]*2) == cells[3][j].merged){
 //                                        Log.d("animLog","[вправо]|x| |x| |");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 3;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]|x|x| | |");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 3;
 
                                         /////////////////////////
                                     }
@@ -233,7 +235,7 @@ public class CellMergeSortHandler {
                                             && (cells[2][j].moving*2) == cells[3][j].merged){
 //                                        Log.d("animLog","[вправо]| |x|x| |");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 2;
 
                                         /////////////////////////
                                     } else if(cells[0][j].moving != cells[1][j].moving){
@@ -246,20 +248,22 @@ public class CellMergeSortHandler {
                                             && (lastID[3][j]*2) == cells[3][j].merged){
 //                                        Log.d("animLog","[вправо]|y| |x|x|");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 1;
+                                        cells[2][j].anim = 2;
 
                                         /////////////////////////
                                     } else if((lastID[1][j]*2) == cells[3][j].merged
                                             && (lastID[3][j]*2) == cells[3][j].merged){
 //                                        Log.d("animLog","[вправо]|y|x| |x|");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 2;
+                                        cells[2][j].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]|x| | |x|");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 3;
 
                                         /////////////////////////
                                     }
@@ -272,13 +276,14 @@ public class CellMergeSortHandler {
                                             && (cells[2][j].getId() == 0)){
 //                                        Log.d("animLog","[вправо]| |x| |x|");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]| |y|x|x|");
                                         //////////////////////////
-
+                                        cells[3][j].anim = 1;
+                                        cells[2][j].anim = 1;
 
                                         /////////////////////////
                                     }
@@ -286,7 +291,7 @@ public class CellMergeSortHandler {
                                 case 0:
 //                                    Log.d("animLog","[вправо]| | |x|x|");
                                     //////////////////////////
-
+                                    cells[3][j].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -297,14 +302,15 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вправо]|x|x|y| |");
                                     //////////////////////////
-
+                                    cells[3][j].anim = 1;
+                                    cells[2][j].anim = 2;
 
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вправо]|x|x| |y|");
                                     //////////////////////////
-
+                                    cells[2][j].anim = 2;
 
                                     /////////////////////////
                                     break;
@@ -316,13 +322,14 @@ public class CellMergeSortHandler {
                                             && ((cells[0][j].moving*2) == cells[2][j].merged)){
 //                                        Log.d("animLog","[вправо]|x| |x|y|");
                                         //////////////////////////
-
+                                        cells[2][j].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]|y|x|x|z|");
                                         //////////////////////////
-
+                                        cells[1][j].anim = 1;
+                                        cells[2][j].anim = 1;
 
                                         /////////////////////////
                                     }
@@ -330,7 +337,7 @@ public class CellMergeSortHandler {
                                 case 0:
 //                                    Log.d("animLog","[вправо]| |x|x|y|");
                                     //////////////////////////
-
+                                    cells[2][j].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -339,7 +346,7 @@ public class CellMergeSortHandler {
                         case 1:
 //                            Log.d("animLog","[вправо]|x|x|y|z|");
                             //////////////////////////
-
+                            cells[1][j].anim = 1;
 
                             /////////////////////////
                             break;
@@ -371,7 +378,8 @@ public class CellMergeSortHandler {
                 case 2:
 //                    Log.d("animLog","[вліво]|y|y|x|x|");
                     //////////////////////////
-
+                    cells[0][j].anim = 1;
+                    cells[1][j].anim = 2;
 
                     /////////////////////////
                     break;
@@ -390,20 +398,21 @@ public class CellMergeSortHandler {
                                             && cells[2][j].moving == cells[1][j].getId()){
 //                                        Log.d("animLog","[вліво]| |x|x|y|");
                                         //////////////////////////
-
+                                        cells[0][j].anim = 2;
+                                        cells[1][j].anim = 2;
 
                                         /////////////////////////
                                     } else if((lastID[3][j]*2) == cells[0][j].merged
                                             && (lastID[1][j]*2) == cells[0][j].merged){
 //                                        Log.d("animLog","[вліво]| |x| |x|");
                                         //////////////////////////
-
+                                        cells[0][j].anim = 3;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]| | |x|x|");
                                         //////////////////////////
-
+                                        cells[0][j].anim = 3;
 
                                         /////////////////////////
                                     }
@@ -413,34 +422,34 @@ public class CellMergeSortHandler {
                                             && (cells[1][j].moving*2) == cells[0][j].merged){
 //                                        Log.d("animLog","[вліво]| |x|x| |");
                                         //////////////////////////
-
+                                        cells[0][j].anim = 2;
 
                                         /////////////////////////
                                     } else if(cells[3][j].moving != cells[2][j].moving){
 //                                        Log.d("animLog","[вліво]|x|x|y|z|");
                                         //////////////////////////
-
-
+                                        cells[0][j].anim = 1;
+                                        cells[1][j].anim = 1;
+                                        cells[2][j].anim = 1;
                                         /////////////////////////
                                     } else if((lastID[1][j]*2) == cells[0][j].merged
                                             && (lastID[0][j]*2) == cells[0][j].merged){
 //                                        Log.d("animLog","[вліво]|x|x| |y|");
                                         //////////////////////////
-
-
+                                        cells[0][j].anim = 1;
+                                        cells[1][j].anim = 2;
                                         /////////////////////////
                                     } else if((lastID[2][j]*2) == cells[0][j].merged
                                             && (lastID[0][j]*2) == cells[0][j].merged){
 //                                        Log.d("animLog","[вліво]|x| |x|y|");
                                         //////////////////////////
-
-
+                                        cells[0][j].anim = 2;
+                                        cells[1][j].anim = 2;
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]|x| | |x|");
                                         //////////////////////////
-
-
+                                        cells[0][j].anim = 3;
                                         /////////////////////////
                                     }
                                     break;
@@ -452,21 +461,21 @@ public class CellMergeSortHandler {
                                             && (cells[1][j].getId() == 0)){
 //                                        Log.d("animLog","[вліво]|x| |x| |");
                                         //////////////////////////
-
+                                        cells[0][j].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]|x|x|y| |");
                                         //////////////////////////
-
-
+                                        cells[0][j].anim = 1;
+                                        cells[1][j].anim = 1;
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вліво]|x|x| | |");
                                     //////////////////////////
-
+                                    cells[0][j].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -477,14 +486,14 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вліво]| |y|x|x|");
                                     //////////////////////////
-
-
+                                    cells[0][j].anim = 1;
+                                    cells[1][j].anim = 2;
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вліво]|y| |x|x|");
                                     //////////////////////////
-
+                                    cells[1][j].anim = 2;
 
                                     /////////////////////////
                                     break;
@@ -496,21 +505,21 @@ public class CellMergeSortHandler {
                                             && ((cells[3][j].moving*2) == cells[1][j].merged)){
 //                                        Log.d("animLog","[вліво]|y|x| |x|");
                                         //////////////////////////
-
+                                        cells[1][j].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]|z|x|x|y|");
                                         //////////////////////////
-
-
+                                        cells[1][j].anim = 1;
+                                        cells[2][j].anim = 1;
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вліво]|y|x|x| |");
                                     //////////////////////////
-
+                                    cells[1][j].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -519,7 +528,7 @@ public class CellMergeSortHandler {
                         case 2:
 //                            Log.d("animLog","[вліво]|z|y|x|x|");
                             //////////////////////////
-
+                            cells[2][j].anim = 1;
 
                             /////////////////////////
                             break;
@@ -551,7 +560,8 @@ public class CellMergeSortHandler {
                 case 2:
 //                    Log.d("animLog","[вниз]|x|x|y|y|");
                     //////////////////////////
-
+                    cells[j][3].anim = 1;
+                    cells[j][2].anim = 2;
 
                     /////////////////////////
                     break;
@@ -570,20 +580,21 @@ public class CellMergeSortHandler {
                                             && cells[j][1].moving == cells[j][2].getId()){
 //                                        Log.d("animLog","[вниз]|y|x|x| |");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 2;
+                                        cells[j][2].anim = 2;
 
                                         /////////////////////////
                                     } else if((lastID[j][0]*2) == cells[j][3].merged
                                             && (lastID[j][2]*2) == cells[j][3].merged){
 //                                        Log.d("animLog","[вниз]|x| |x| |");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 3;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]|x|x| | |");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 3;
 
                                         /////////////////////////
                                     }
@@ -593,34 +604,37 @@ public class CellMergeSortHandler {
                                             && (cells[j][2].moving*2) == cells[j][3].merged){
 //                                        Log.d("animLog","[вниз]| |x|x| |");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 2;
 
                                         /////////////////////////
                                     } else if(cells[j][0].moving != cells[j][1].moving){
 //                                        System.out.println("4. Ця комбінація: |z|y|x|x|");
 //                                        Log.d("animLog","[вниз]|z|y|x|x|");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 1;
+                                        cells[j][2].anim = 1;
+                                        cells[j][1].anim = 1;
 
                                         /////////////////////////
                                     } else if((lastID[j][2]*2) == cells[j][3].merged
                                             && (lastID[j][3]*2) == cells[j][3].merged){
 //                                        Log.d("animLog","[вниз]|y| |x|x|");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 1;
+                                        cells[j][2].anim = 2;
 
                                         /////////////////////////
                                     } else if((lastID[j][1]*2) == cells[j][3].merged
                                             && (lastID[j][3]*2) == cells[j][3].merged){
 //                                        Log.d("animLog","[вниз]|y|x| |x|");
                                         //////////////////////////
-
-
+                                        cells[j][3].anim = 2;
+                                        cells[j][2].anim = 2;
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]|x| | |x|");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 3;
 
                                         /////////////////////////
                                     }
@@ -633,21 +647,21 @@ public class CellMergeSortHandler {
                                             && (cells[j][2].getId() == 0)){
 //                                        Log.d("animLog","[вниз]| |x| |x|");
                                         //////////////////////////
-
+                                        cells[j][3].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]| |y|x|x|");
                                         //////////////////////////
-
-
+                                        cells[j][3].anim = 1;
+                                        cells[j][2].anim = 1;
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вниз]| | |x|x|");
                                     //////////////////////////
-
+                                    cells[j][3].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -658,14 +672,14 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вниз]|x|x|y| |");
                                     //////////////////////////
-
-
+                                    cells[j][3].anim = 1;
+                                    cells[j][2].anim = 2;
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вниз]|x|x| |y|");
                                     //////////////////////////
-
+                                    cells[j][2].anim = 2;
 
                                     /////////////////////////
                                     break;
@@ -677,21 +691,21 @@ public class CellMergeSortHandler {
                                             && ((cells[j][0].moving*2) == cells[j][2].merged)){
 //                                        Log.d("animLog","[вниз]|x| |x|y|");
                                         //////////////////////////
-
+                                        cells[j][2].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]|y|x|x|z|");
                                         //////////////////////////
-
-
+                                        cells[j][2].anim = 1;
+                                        cells[j][1].anim = 1;
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вниз]| |x|x|y|");
                                     //////////////////////////
-
+                                    cells[j][2].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -700,7 +714,7 @@ public class CellMergeSortHandler {
                         case 1:
 //                            Log.d("animLog","[вниз]|x|x|y|z|");
                             //////////////////////////
-
+                            cells[j][1].anim = 1;
 
                             /////////////////////////
                             break;
@@ -732,7 +746,8 @@ public class CellMergeSortHandler {
                 case 2:
 //                    Log.d("animLog","[вверх]|y|y|x|x|");
                     //////////////////////////
-
+                    cells[j][0].anim = 1;
+                    cells[j][1].anim = 2;
 
                     /////////////////////////
                     break;
@@ -751,20 +766,21 @@ public class CellMergeSortHandler {
                                             && cells[j][2].moving == cells[j][1].getId()){
 //                                        Log.d("animLog","[вверх]| |x|x|y|");
                                         //////////////////////////
-
+                                        cells[j][0].anim = 2;
+                                        cells[j][1].anim = 2;
 
                                         /////////////////////////
                                     } else if((lastID[j][3]*2) == cells[j][0].merged
                                             && (lastID[j][1]*2) == cells[j][0].merged){
 //                                        Log.d("animLog","[вверх]| |x| |x|");
                                         //////////////////////////
-
+                                        cells[j][0].anim = 3;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вверх]| | |x|x|");
                                         //////////////////////////
-
+                                        cells[j][0].anim = 3;
 
                                         /////////////////////////
                                     }
@@ -774,33 +790,34 @@ public class CellMergeSortHandler {
                                             && (cells[j][1].moving*2) == cells[j][0].merged){
 //                                        Log.d("animLog","[вверх]| |x|x| |");
                                         //////////////////////////
-
+                                        cells[j][0].anim = 2;
 
                                         /////////////////////////
                                     } else if(cells[j][3].moving != cells[j][2].moving){
 //                                        Log.d("animLog","[вверх]|x|x|y|z|");
                                         //////////////////////////
-
-
+                                        cells[j][0].anim = 1;
+                                        cells[j][1].anim = 1;
+                                        cells[j][2].anim = 1;
                                         /////////////////////////
                                     } else if((lastID[j][1]*2) == cells[j][0].merged
                                             && (lastID[j][0]*2) == cells[j][0].merged){
 //                                        Log.d("animLog","[вверх]|x|x| |y|");
                                         //////////////////////////
-
-
+                                        cells[j][0].anim = 1;
+                                        cells[j][1].anim = 2;
                                         /////////////////////////
                                     } else if((lastID[j][2]*2) == cells[j][0].merged
                                             && (lastID[j][0]*2) == cells[j][0].merged){
 //                                        Log.d("animLog","[вверх]|x| |x|y|");
                                         //////////////////////////
-
-
+                                        cells[j][0].anim = 2;
+                                        cells[j][1].anim = 2;
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вверх]|x| | |x|");
                                         //////////////////////////
-
+                                        cells[j][0].anim = 3;
 
                                         /////////////////////////
                                     }
@@ -813,21 +830,21 @@ public class CellMergeSortHandler {
                                             && (cells[j][1].getId() == 0)){
 //                                        Log.d("animLog","[вверх]|x| |x| |");
                                         //////////////////////////
-
+                                        cells[j][0].anim = 2;
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вверх]|x|x|y| |");
                                         //////////////////////////
-
-
+                                        cells[j][0].anim = 1;
+                                        cells[j][1].anim = 1;
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вверх]|x|x| | |");
                                     //////////////////////////
-
+                                    cells[j][0].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -838,14 +855,14 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вверх]| |y|x|x|");
                                     //////////////////////////
-
-
+                                    cells[j][0].anim = 1;
+                                    cells[j][1].anim = 2;
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вверх]|y| |x|x|");
                                     //////////////////////////
-
+                                    cells[j][1].anim = 2;
 
                                     /////////////////////////
                                     break;
@@ -857,22 +874,21 @@ public class CellMergeSortHandler {
                                             && ((cells[j][3].moving*2) == cells[j][1].merged)){
 //                                        Log.d("animLog","[вверх]|y|x| |x|");
                                         //////////////////////////
-
+                                        cells[j][1].anim = 2;
 
                                         /////////////////////////
                                     } else {
-//                                        System.out.println("4. Ця комбінація: |z|x|x|y|");
 //                                        Log.d("animLog","[вверх]|z|x|x|y|");
                                         //////////////////////////
-
-
+                                        cells[j][1].anim = 1;
+                                        cells[j][2].anim = 1;
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вверх]|y|x|x| |");
                                     //////////////////////////
-
+                                    cells[j][1].anim = 1;
 
                                     /////////////////////////
                                     break;
@@ -881,7 +897,7 @@ public class CellMergeSortHandler {
                         case 2:
 //                            Log.d("animLog","[вверх]|z|y|x|x|");
                             //////////////////////////
-
+                            cells[j][2].anim = 1;
 
                             /////////////////////////
                             break;
