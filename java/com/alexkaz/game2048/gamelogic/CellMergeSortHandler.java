@@ -1,8 +1,6 @@
 package com.alexkaz.game2048.gamelogic;
 
 
-import android.util.Log;
-
 public class CellMergeSortHandler {
 
     private static int[][] lastID = new int[4][4];
@@ -241,8 +239,9 @@ public class CellMergeSortHandler {
                                     } else if(cells[0][j].moving != cells[1][j].moving){
 //                                        Log.d("animLog","[вправо]|z|y|x|x|");
                                         //////////////////////////
-
-
+                                        cells[3][j].anim = 1;
+                                        cells[2][j].anim = 1;
+                                        cells[1][j].anim = 1;
                                         /////////////////////////
                                     } else if((lastID[2][j]*2) == cells[3][j].merged
                                             && (lastID[3][j]*2) == cells[3][j].merged){
@@ -940,48 +939,48 @@ public class CellMergeSortHandler {
         }
     }
 
-    private static void showMoving(Cell[][] cells){
-        String lineID = "";
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                lineID = lineID + cells[j][i].moving + " ";
-            }
-            Log.d("animLog", lineID);
-            lineID = "";
-        }
-        Log.d("animLog", "============");
-    }
-
-    private static void showMerging(Cell[][] cells){
-        String lineID = "";
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                lineID = lineID + cells[j][i].merged + " ";
-            }
-            Log.d("animLog", lineID);
-            lineID = "";
-        }
-        Log.d("animLog", "============");
-        Log.d("animLog", "============");
-        Log.d("animLog", "============");
-    }
-
-    private static void showInfo(Cell[][] cells){
-//        showMoving(cells);
-//        showMerging(cells);
-//        showPosXPosY(cells);
-    }
-
-    private static void showPosXPosY(Cell[][] cells){
-        String line = "";
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
-                line = line + " [" + cells[j][i].getPosX() + "," + cells[j][i].getPosY() + "]";
-            }
-            Log.d("positionLog",line);
-            line = "";
-        }
-    }
+//    private static void showInfo(Cell[][] cells){
+////        showMoving(cells);
+////        showMerging(cells);
+////        showPosXPosY(cells);
+//    }
+//
+//    private static void showMoving(Cell[][] cells){
+//        String lineID = "";
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                lineID = lineID + cells[j][i].moving + " ";
+//            }
+//            Log.d("animLog", lineID);
+//            lineID = "";
+//        }
+//        Log.d("animLog", "============");
+//    }
+//
+//    private static void showMerging(Cell[][] cells){
+//        String lineID = "";
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                lineID = lineID + cells[j][i].merged + " ";
+//            }
+//            Log.d("animLog", lineID);
+//            lineID = "";
+//        }
+//        Log.d("animLog", "============");
+//        Log.d("animLog", "============");
+//        Log.d("animLog", "============");
+//    }
+//
+//    private static void showPosXPosY(Cell[][] cells){
+//        String line = "";
+//        for (int i = 0; i < 4; i++) {
+//            for (int j = 0; j < 4; j++) {
+//                line = line + " [" + cells[j][i].getPosX() + "," + cells[j][i].getPosY() + "]";
+//            }
+//            Log.d("positionLog",line);
+//            line = "";
+//        }
+//    }
 
 
 
@@ -989,7 +988,7 @@ public class CellMergeSortHandler {
 
     ////////////////////////////////////////////////////////////////////
     public static Cell[][] moveAllDown(Cell[][] cells, CellManager cellManager){
-        cellManager.swipeDirection = Direction.DOWN;
+        CellManager.swipeDirection = Direction.DOWN;
         resetAnimValues(cells);
         saveLastID(cells);
         for (int i = 0; i <cells.length ; i++) {
@@ -997,12 +996,11 @@ public class CellMergeSortHandler {
         }
         combinationFilterDown(cells);
         moveCellsY(cells);
-        showInfo(cells);
         return cells;
     }
 
     public static Cell[][] moveAllUp(Cell[][] cells, CellManager cellManager){
-        cellManager.swipeDirection = Direction.UP;
+        CellManager.swipeDirection = Direction.UP;
         resetAnimValues(cells);
         saveLastID(cells);
         for (int i = 0; i <cells.length ; i++) {
@@ -1010,12 +1008,11 @@ public class CellMergeSortHandler {
         }
         combinationFilterUp(cells);
         moveCellsY(cells);
-        showInfo(cells);
         return cells;
     }
 
     public static Cell[][] moveAllLeft(Cell[][] cells, CellManager cellManager){
-        cellManager.swipeDirection = Direction.LEFT;
+        CellManager.swipeDirection = Direction.LEFT;
         resetAnimValues(cells);
         saveLastID(cells);
         Cell[] line = new Cell[4];
@@ -1030,12 +1027,11 @@ public class CellMergeSortHandler {
         }
         combinationFilterLeft(cells);
         moveCellsX(cells);
-        showInfo(cells);
         return cells;
     }
 
     public static Cell[][] moveAllRight(Cell[][] cells, CellManager cellManager){
-        cellManager.swipeDirection = Direction.RIGHT;
+        CellManager.swipeDirection = Direction.RIGHT;
         resetAnimValues(cells);
         saveLastID(cells);
         Cell[] line = new Cell[4];
@@ -1050,9 +1046,10 @@ public class CellMergeSortHandler {
         }
         combinationFilterRight(cells);
         moveCellsX(cells);
-        showInfo(cells);
         return cells;
     }
+
+
 
     public static Cell[] moveLineRight(Cell[] line,CellManager cellManager){
         line = sortLineRight(line);
