@@ -82,6 +82,8 @@ public class Cell {
     private int borderY ;      //resizable
     private int pivotX ;      //resizable
     private int pivotY ;      //resizable
+    private int cellPosX;
+    private int cellPosY;
 
     //Конструктор
     public Cell(GameActivity context, int x, int y){
@@ -98,17 +100,17 @@ public class Cell {
             locker = false;
         }
 
-        this.posX = (sizeX*x) + borderX*x + pivotX;
-        this.posY = (sizeY*y) + borderY*y + pivotY;
+        this.posX = cellPosX;
+        this.posY = cellPosY;
 
         if (CellManager.swipeDirection == Direction.RIGHT){
-            this.posX = ((sizeX*x) + borderX*x + pivotX) - moveX;
+            this.posX = cellPosX - moveX;
         } else if(CellManager.swipeDirection == Direction.LEFT){
-            this.posX = ((sizeX*x) + borderX*x + pivotX) + moveX;
+            this.posX = cellPosX + moveX;
         } else if(CellManager.swipeDirection == Direction.DOWN){
-            this.posY = ((sizeY*y) + borderY*y + pivotY) - moveY;
+            this.posY = cellPosY - moveY;
         } else if(CellManager.swipeDirection == Direction.UP){
-            this.posY = ((sizeY*y) + borderY*y + pivotY) + moveY;
+            this.posY = cellPosY + moveY;
         }
 
         if(this.id != 0){
@@ -246,8 +248,11 @@ public class Cell {
         borderY = (int) fyBorder;
         pivotY = (int) fyPivot;
 
-        this.posX = (sizeX*x) + borderX*x + pivotX;
-        this.posY = (sizeY*y) + borderY*y + pivotY;
+        cellPosX = (sizeX*x) + borderX*x + pivotX;
+        cellPosY = (sizeY*y) + borderY*y + pivotY;
+
+        this.posX = cellPosX;
+        this.posY = cellPosY;
 
         normalTextSize = new BigDecimal(sizeX * NORMAL_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
         smallTextSize = new BigDecimal(sizeX * SMALL_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
