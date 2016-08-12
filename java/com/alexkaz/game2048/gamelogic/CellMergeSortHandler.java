@@ -926,7 +926,11 @@ public class CellMergeSortHandler {
     private static void moveCellsX(Cell[][] cells){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                cells[j][i].calculateMoveX();
+                if(cells[j][i].anim != 0){
+                    cells[j][i].calculateMoveX();
+                } else {
+                    cells[j][i].moveX = 0;
+                }
             }
         }
     }
@@ -934,7 +938,11 @@ public class CellMergeSortHandler {
     private static void moveCellsY(Cell[][] cells){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                cells[j][i].calculateMoveY();
+                if (cells[j][i].anim != 0){
+                    cells[j][i].calculateMoveY();
+                } else{
+                    cells[j][i].moveY = 0;
+                }
             }
         }
     }
