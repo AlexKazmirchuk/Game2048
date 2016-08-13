@@ -1,17 +1,11 @@
 package com.alexkaz.game2048.gamelogic;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 
 import com.alexkaz.game2048.GameActivity;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 
 public class CellForBG {
@@ -44,13 +38,10 @@ public class CellForBG {
 
     //Свойства
     private GameActivity context;
-    private int id;
     private int[] colors = new int[3];
 
     private boolean locker = true;
 
-    public int x,y;
-    private int posX, posY;  //resizable
     private int sizeX ;      //resizable
     private int sizeY ;      //resizable
     private int borderX ;      //resizable
@@ -58,68 +49,90 @@ public class CellForBG {
     private int pivotX ;      //resizable
     private int pivotY ;      //resizable
 
+    int left,top,right,bottom;
+
+    Paint rectPaint;
+    Paint rightRombPaint;
+    Paint bottomRombPaint;
+
+    Path rectPath;
+    Path rightRombPath ;
+    Path bottomRombPath;
+
+    Path buff1;
+    Path buff2;
+
     //Конструктор
-    public CellForBG(GameActivity context, int x, int y){
+    public CellForBG(GameActivity context){
         this.context = context;
-        this.x = x;
-        this.y = y;
-        this.id = DEFAULT_ID;
+        initComp();
+    }
+
+    private void initComp() {
+        rectPaint = new Paint();
+        rightRombPaint = new Paint();
+        bottomRombPaint = new Paint();
+
+        rectPath = new Path();
+        rightRombPath = new Path();
+        bottomRombPath = new Path();
+
+        buff1 = new Path();
+        buff2 = new Path();
     }
 
     // Методи
     public void draw(Canvas g){
         if (locker){
             getSizes(g.getHeight(),g.getWidth());
+
+            setColorFromRes();
+            rectPaint.setColor(colors[COLOR_OWN]);
+            rightRombPaint.setColor(colors[COLOR_RIGHT]);
+            bottomRombPaint.setColor(colors[COLOR_BOTTOM]);
+
+            initPaths();
             locker = false;
         }
         drawMyCell(g);
     }
 
     private void drawMyCell(Canvas g) {
-        setColorFromRes();
-        drawRect(g);
-        drawRightRomb(g);
-        drawBottomRomb(g);
+        g.drawPath(rectPath,rectPaint);
+        g.drawPath(rightRombPath,rightRombPaint);
+        g.drawPath(bottomRombPath,bottomRombPaint);
     }
 
-    private void drawRect(Canvas g){
-        Paint p = new Paint();
-        p.setColor(colors[COLOR_OWN]);
-
-        int left = posX + shearAnim;
-        int top = posY + shearAnim;
-        int right = posX + sizeX - sideSpaceX + shearAnim;
-        int bottom = posY+sizeY - sideSpaceY + shearAnim;
-
-        g.drawRect(left,top,right,bottom,p);
-    }
-
-    private void drawRightRomb(Canvas g){
-        Paint p = new Paint();
-        p.setColor(colors[COLOR_RIGHT]);
-        Path path = new Path();
-
-        path.moveTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
-        path.lineTo(posX+sizeX+shear - sideSpaceX, posY+shear);                                      // right top
-        path.lineTo(posX+sizeX+shear - sideSpaceX, posY+sizeY + shear - sideSpaceY);               // right bottom
-        path.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY + shearAnim - sideSpaceY);      // left  bottom
-        path.lineTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
-
-        g.drawPath(path,p);
-    }
-
-    private void drawBottomRomb(Canvas g){
-        Paint p = new Paint();
-        p.setColor(colors[COLOR_BOTTOM]);
-        Path path = new Path();
-
-        path.moveTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
-        path.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY+ shearAnim - sideSpaceY);       // right top
-        path.lineTo(posX+sizeX+shear- sideSpaceX, posY+sizeY+shear- sideSpaceY);                    // right bottom
-        path.lineTo(posX+shear, posY+sizeY+shear- sideSpaceY);                                        // left  bottom
-        path.lineTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
-
-        g.drawPath(path,p);
+    private void initPaths(){
+        int posX,posY;
+        for (int x = 0; x < 4; x++) {
+            for (int y = 0; y < 4; y++) {
+                posX = sizeX*x + borderX*x + pivotX;
+                posY = sizeY*y + borderY*y + pivotY;
+                /////////////////////////////////////////
+                left = posX + shearAnim;
+                top = posY + shearAnim;
+                right = posX + sizeX - sideSpaceX + shearAnim;
+                bottom = posY+sizeY - sideSpaceY + shearAnim;
+                rectPath.addRect(left,top,right,bottom, Path.Direction.CCW);
+                ////////////////////////////////////////
+                buff1.reset();
+                buff1.moveTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
+                buff1.lineTo(posX+sizeX+shear - sideSpaceX, posY+shear);                                      // right top
+                buff1.lineTo(posX+sizeX+shear - sideSpaceX, posY+sizeY + shear - sideSpaceY);               // right bottom
+                buff1.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY + shearAnim - sideSpaceY);      // left  bottom
+                buff1.lineTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);
+                rightRombPath.addPath(buff1);
+                ////////////////////////////////////////
+                buff2.reset();
+                buff2.moveTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
+                buff2.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY+ shearAnim - sideSpaceY);       // right top
+                buff2.lineTo(posX+sizeX+shear- sideSpaceX, posY+sizeY+shear- sideSpaceY);                    // right bottom
+                buff2.lineTo(posX+shear, posY+sizeY+shear- sideSpaceY);                                        // left  bottom
+                buff2.lineTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);
+                bottomRombPath.addPath(buff2);
+            }
+        }
     }
 
     private void setColorFromRes(){
@@ -161,8 +174,5 @@ public class CellForBG {
         sizeY = (int) fySize;
         borderY = (int) fyBorder;
         pivotY = (int) fyPivot;
-
-        this.posX = (sizeX*x) + borderX*x + pivotX;
-        this.posY = (sizeY*y) + borderY*y + pivotY;
     }
 }
