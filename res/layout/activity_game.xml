@@ -182,7 +182,7 @@
                             android:layout_height="match_parent"
                             android:contentDescription="@string/menu_btn_image_content_description"
                             android:onClick="onClickMenuBtn"
-                            android:background="@drawable/menu_btn_bg"/>
+                            android:background="@drawable/menu_btn_selector"/>
                     </FrameLayout>
                 </LinearLayout>
 
