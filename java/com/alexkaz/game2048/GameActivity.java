@@ -30,7 +30,8 @@ public class GameActivity extends AppCompatActivity {
     public GamePreferences gamePreferences;
     private FrameLayout gameFieldWrapper;
     private GameSurfaceView gameSurfaceView;
-    private TextView txtScores, txtBestScores;
+    private TextView txtScores;
+    private TextView txtBestScores;
     private MenuDialogFragment menuDialogFragment;
 
     private SoundPool mSoundPool;
@@ -203,6 +204,10 @@ public class GameActivity extends AppCompatActivity {
             txtBestScores.setText("BEST SCORES:" + points);
             gamePreferences.setBestScores(points);
         }
+    }
+
+    public void setTxtBestScores(int points) {
+        this.txtBestScores.setText("BEST SCORES:" + points);
     }
 
     public  void restartGame(){

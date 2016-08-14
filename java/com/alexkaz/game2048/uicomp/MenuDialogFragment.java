@@ -19,7 +19,7 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
 
     private GameActivity gameActivity;
     private GamePreferences gamePreferences;
-    private Button resumeBtn, restartBtn, modeBtn, musicBtn;
+    private Button resumeBtn, restartBtn, clearResultsBtn, musicBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,12 +38,12 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
     private void initComps(View v) {
         resumeBtn = (Button)v.findViewById(R.id.resumeBtn);
         restartBtn = (Button)v.findViewById(R.id.restartBtn);
-        modeBtn = (Button)v.findViewById(R.id.modeBtn);
+        clearResultsBtn = (Button)v.findViewById(R.id.clearResultsBtn);
         musicBtn = (Button)v.findViewById(R.id.musicBtn);
 
         resumeBtn.setOnClickListener(this);
         restartBtn.setOnClickListener(this);
-        modeBtn.setOnClickListener(this);
+        clearResultsBtn.setOnClickListener(this);
         musicBtn.setOnClickListener(this);
 
         gamePreferences = new GamePreferences(getActivity());
@@ -74,8 +74,13 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
                 gameActivity.restartGame();
                 getDialog().cancel();
                 break;
-            case R.id.modeBtn:
-
+            case R.id.clearResultsBtn:
+                gamePreferences.setGameScores(0);
+                gamePreferences.setBestScores(0);
+                gameActivity.setScores(0);
+                gameActivity.setTxtBestScores(0);
+                gameActivity.restartGame();
+                getDialog().cancel();
                 break;
             case R.id.musicBtn:
                 if (gamePreferences.getMusicPrefs()){
