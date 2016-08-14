@@ -9,8 +9,8 @@
     <dimen name="title_margin_bottom">5dp</dimen>
     <dimen name="info_panel_padding_top">13dp</dimen>
     <dimen name="info_panel_padding_left">13dp</dimen>
-    <dimen name="info_panel_padding_right">25dp</dimen>
-    <dimen name="info_panel_padding_bottom">21dp</dimen>
+    <dimen name="info_panel_padding_right">19dp</dimen>
+    <dimen name="info_panel_padding_bottom">16dp</dimen>
     <dimen name="info_panel_margin_bottom">5dp</dimen>
     <dimen name="bottom">24dp</dimen>
     <dimen name="txt_scores_container_min_width">136dp</dimen>
