@@ -27,7 +27,7 @@ import java.io.IOException;
 public class GameActivity extends AppCompatActivity {
 
     private GestureDetector gestureDetector;
-    private GamePreferences gamePreferences;
+    public GamePreferences gamePreferences;
     private FrameLayout gameFieldWrapper;
     private GameSurfaceView gameSurfaceView;
     private TextView txtScores, txtBestScores;
@@ -143,6 +143,8 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        gamePreferences.saveCellsID(gameSurfaceView.getDrawThreat().getCellManager().getStringCellsID());
+        gamePreferences.setGameScores(gameSurfaceView.getDrawThreat().getCellManager().getScores());
         if (mSoundPool!=null){
             mSoundPool.release();
             mSoundPool = null;

@@ -223,4 +223,26 @@ public class CellManager {
         }
         return true;
     }
+
+    public String getStringCellsID(){
+        String cellsID = "";
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                cellsID = cellsID + cells[i][j].getId() + " ";
+            }
+        }
+        return cellsID;
+    }
+
+    public void setCellsIDFromString(String cellsID){
+        String[] strArr = cellsID.split(" ");
+        if (strArr.length == 16){
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    cells[i][j].setId(Integer.valueOf(strArr[i*4+j]));
+                }
+            }
+        }
+    }
 }

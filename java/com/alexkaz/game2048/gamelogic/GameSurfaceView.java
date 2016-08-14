@@ -24,6 +24,8 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
         drawThreat = new DrawThreat(context, getHolder());
         drawThreat.setRunning(true);
         drawThreat.start();
+        drawThreat.getCellManager().setCellsIDFromString(context.gamePreferences.recoverCellsID());
+        drawThreat.getCellManager().setScores(context.gamePreferences.getGameScores());
     }
 
     public void moveCells(Direction direction){
