@@ -57,9 +57,9 @@
 
     ////////////////end///////////////
     <color name="info_panel_text_color">#EFC130</color>
-    <color name="info_panel_text_color1">#632835</color>
+    <color name="info_panel_text_color1">#e7eae8</color>
 
-    <color name="info_panel_text_shadow_color">#494949</color>
+    <color name="info_panel_text_shadow_color">#2e2e2e</color>
     <color name="transparent_color">#00ffffff</color>
     <color name="win_text_color">#f4edd8</color>
     <color name="win_shadow_text_color">#394801</color>
