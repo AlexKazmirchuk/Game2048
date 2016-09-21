@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 
-import com.alexkaz.game2048.gamelogic.Cell;
-
 public class GamePreferences {
 
     private SharedPreferences preferences;
@@ -34,7 +32,7 @@ public class GamePreferences {
             editor.putInt(GAME_SCORES,0);
             editor.putInt(BEST_SCORES,0);
             editor.putString(CELLS_ID,CELLS_ID_DEFAULT);
-            editor.commit();
+            editor.apply();
         }
 
     }
@@ -83,7 +81,7 @@ public class GamePreferences {
     }
 
     public String recoverCellsID(){
-        String cellsID = "";
+        String cellsID;
         cellsID = preferences.getString(CELLS_ID,CELLS_ID_DEFAULT);
         return cellsID;
     }
