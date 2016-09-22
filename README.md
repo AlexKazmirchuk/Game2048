@@ -1,4 +1,4 @@
-# game
+# 2048 game
  
 This application is another implementation of the popular game 2048 and written in java. However, this version was created with the design in the style of 2.5D. That adds some diversity among many other implementations of this game. The application can run in android 4.1+. Does not require any permission or Internet connection. Just play and enjoy the gameplay.
  
