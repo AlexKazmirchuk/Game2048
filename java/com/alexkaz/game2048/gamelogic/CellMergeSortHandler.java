@@ -4,24 +4,21 @@ package com.alexkaz.game2048.gamelogic;
 public class CellMergeSortHandler {
 
     private static int[][] lastID = new int[4][4];
-////////////////////////////////////////////////////////////////////
 
-    ////////////////////////////////////////////////////////////////////
-    private static void saveLastID(Cell[][] cells){
+    static {
         lastID[0] = new int[4];
         lastID[1] = new int[4];
         lastID[2] = new int[4];
         lastID[3] = new int[4];
+    }
 
+    private static void saveLastID(Cell[][] cells){
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i < 4; i++) {
                 lastID[i][j] = cells[i][j].getId();
             }
         }
-
     }
-
-
 
     private static void searchMovingRight(Cell[][] cells){
         for (int j = 0; j < 4; j++) {
@@ -947,54 +944,6 @@ public class CellMergeSortHandler {
         }
     }
 
-//    private static void showInfo(Cell[][] cells){
-////        showMoving(cells);
-////        showMerging(cells);
-////        showPosXPosY(cells);
-//    }
-//
-//    private static void showMoving(Cell[][] cells){
-//        String lineID = "";
-//        for (int i = 0; i < 4; i++) {
-//            for (int j = 0; j < 4; j++) {
-//                lineID = lineID + cells[j][i].moving + " ";
-//            }
-//            Log.d("animLog", lineID);
-//            lineID = "";
-//        }
-//        Log.d("animLog", "============");
-//    }
-//
-//    private static void showMerging(Cell[][] cells){
-//        String lineID = "";
-//        for (int i = 0; i < 4; i++) {
-//            for (int j = 0; j < 4; j++) {
-//                lineID = lineID + cells[j][i].merged + " ";
-//            }
-//            Log.d("animLog", lineID);
-//            lineID = "";
-//        }
-//        Log.d("animLog", "============");
-//        Log.d("animLog", "============");
-//        Log.d("animLog", "============");
-//    }
-//
-//    private static void showPosXPosY(Cell[][] cells){
-//        String line = "";
-//        for (int i = 0; i < 4; i++) {
-//            for (int j = 0; j < 4; j++) {
-//                line = line + " [" + cells[j][i].getPosX() + "," + cells[j][i].getPosY() + "]";
-//            }
-//            Log.d("positionLog",line);
-//            line = "";
-//        }
-//    }
-
-
-
-    ////////////////////////////////////////////////////////////////////
-
-    ////////////////////////////////////////////////////////////////////
     public static Cell[][] moveAllDown(Cell[][] cells, CellManager cellManager){
         CellManager.swipeDirection = Direction.DOWN;
         resetAnimValues(cells);

@@ -15,4 +15,6 @@
     <string name="activity_lose_image_content_description">Losing image</string>
     <string name="lose_txt_scores_text">YOUR SCORE: 5436</string>
     <string name="lose_restart_btn_text">RESTART</string>
+    <string name="music_btn_text_on">MUSIC:ON</string>
+    <string name="music_btn_text_off">MUSIC:OFF</string>
 </resources>

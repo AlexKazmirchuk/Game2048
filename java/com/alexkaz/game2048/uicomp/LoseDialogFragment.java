@@ -17,6 +17,8 @@ import com.alexkaz.game2048.gamelogic.DrawThreat;
 
 public class LoseDialogFragment extends DialogFragment implements View.OnClickListener {
 
+    public static final String SCORES = "scores";
+    public static final float DIM_AMOUNT = 0.8f;
     private CellManager cellManager;
     private DrawThreat drawThreat;
 
@@ -24,7 +26,7 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
         LoseDialogFragment fragment = new LoseDialogFragment();
 
         Bundle args = new Bundle();
-        args.putInt("scores",scores);
+        args.putInt(SCORES,scores);
         fragment.setArguments(args);
         return fragment;
     }
@@ -34,14 +36,14 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        getDialog().getWindow().setDimAmount(0.8f);
+        getDialog().getWindow().setDimAmount(DIM_AMOUNT);
         View v = inflater.inflate(R.layout.activity_lose,null);
 
         TextView loseTxtScores = (TextView) v.findViewById(R.id.loseTxtScores);
         Button loseRestartBtn = (Button) v.findViewById(R.id.loseRestartBtn);
         loseRestartBtn.setOnClickListener(this);
-        String txtScores = String.valueOf(getArguments().getInt("scores", 0));
-        loseTxtScores.setText("YOUR SCORE:"+ txtScores);
+        String txtScores = "YOUR SCORE:" + String.valueOf(getArguments().getInt(SCORES, 0));
+        loseTxtScores.setText(txtScores);
 
         return v;
     }
@@ -66,5 +68,4 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
     public void setDrawThreat(DrawThreat drawThreat) {
         this.drawThreat = drawThreat;
     }
-
 }

@@ -7,7 +7,6 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 
 import com.alexkaz.game2048.GameActivity;
 
@@ -15,14 +14,6 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 public class Cell {
-
-    //for anim
-    public int moving = 0;
-    public int merged = 0;
-    public int anim = 0;
-    public int moveX = 0;
-    public int moveY = 0;
-
 
     //for cell
     public static final int DEFAULT_ID = 0;
@@ -70,7 +61,6 @@ public class Cell {
     private GameActivity context;
     private int id;
     private int[] colors = new int[3];
-
     private boolean locker = true;
     private boolean isFresh = false;
 
@@ -80,10 +70,15 @@ public class Cell {
     private int sizeY ;      //resizable
     private int borderX ;      //resizable
     private int borderY ;      //resizable
-    private int pivotX ;      //resizable
-    private int pivotY ;      //resizable
     private int cellPosX;
     private int cellPosY;
+
+    //for anim
+    public int moving = 0;
+    public int merged = 0;
+    public int anim = 0;
+    public int moveX = 0;
+    public int moveY = 0;
 
     //Конструктор
     public Cell(GameActivity context, int x, int y){
@@ -242,11 +237,11 @@ public class Cell {
 
         sizeX = (int) fxSize;
         borderX = (int) fxBorder;
-        pivotX = (int) fxPivot;
+        int pivotX = (int) fxPivot;
 
         sizeY = (int) fySize;
         borderY = (int) fyBorder;
-        pivotY = (int) fyPivot;
+        int pivotY = (int) fyPivot;
 
         cellPosX = (sizeX*x) + borderX*x + pivotX;
         cellPosY = (sizeY*y) + borderY*y + pivotY;
@@ -300,16 +295,16 @@ public class Cell {
         return shearMax;
     }
 
-    public void setShearMax(int shearMax) {
-        this.shearMax = shearMax;
-    }
-
     public void calculateMoveX(){
         this.moveX = sizeX*anim + borderX*anim;
     }
 
     public void calculateMoveY(){
         this.moveY = sizeY*anim + borderY*anim;
+    }
+
+    public void setShearMax(int shearMax) {
+        this.shearMax = shearMax;
     }
 
     public int getPosX() {

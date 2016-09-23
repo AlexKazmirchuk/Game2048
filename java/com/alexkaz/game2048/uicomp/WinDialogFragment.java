@@ -14,11 +14,14 @@ import com.alexkaz.game2048.R;
 
 public class WinDialogFragment  extends DialogFragment implements View.OnClickListener {
 
+    public static final String SCORES = "scores";
+    public static final float DIM_AMOUNT = 0.8f;
+
     public static WinDialogFragment newInstance(int scores){
         WinDialogFragment fragment = new WinDialogFragment();
 
         Bundle args = new Bundle();
-        args.putInt("scores",scores);
+        args.putInt(SCORES,scores);
         fragment.setArguments(args);
         return fragment;
     }
@@ -28,14 +31,14 @@ public class WinDialogFragment  extends DialogFragment implements View.OnClickLi
 
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        getDialog().getWindow().setDimAmount(0.8f);
+        getDialog().getWindow().setDimAmount(DIM_AMOUNT);
         View v = inflater.inflate(R.layout.activity_win,null);
 
         TextView winTxtScores = (TextView) v.findViewById(R.id.winTxtScores);
         Button winOkBtn = (Button) v.findViewById(R.id.winOkBtn);
         winOkBtn.setOnClickListener(this);
-        String txtScores = String.valueOf(getArguments().getInt("scores", 0));
-        winTxtScores.setText("YOUR SCORE:"+ txtScores);
+        String txtScores = "YOUR SCORE:" + String.valueOf(getArguments().getInt(SCORES, 0));
+        winTxtScores.setText(txtScores);
 
         return v;
     }

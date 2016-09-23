@@ -12,12 +12,11 @@ public class DrawThreat extends Thread {
 
     private GameActivity context;
     private CellManager cellManager;
-    public static final String SCORES_VALUE = "scoresValue";
     private boolean isWinActivityShowed  = true;
     public boolean isLoseDialogShow = false;
 
     private boolean runFlag = false;
-    private SurfaceHolder surfaceHolder;
+    private final SurfaceHolder surfaceHolder;
     private long prevTime;
 
     public DrawThreat(GameActivity context, SurfaceHolder surfaceHolder){
@@ -38,7 +37,7 @@ public class DrawThreat extends Thread {
     private void showWinDialog(int scores){
         WinDialogFragment winDialogFragment = WinDialogFragment.newInstance(scores);
         context.playWinSound();
-        winDialogFragment.show(context.getFragmentManager(),"loseDialog");
+        winDialogFragment.show(context.getFragmentManager(),"winDialog");
     }
 
     public CellManager getCellManager() {
@@ -79,7 +78,6 @@ public class DrawThreat extends Thread {
         runFlag = run;
     }
 
-    //TODO WRITE YOUR CODE HERE
     private void drawField(Canvas canvas){
         canvas.drawColor(Color.parseColor("#137b82"));
         if (!getCellManager().lose){

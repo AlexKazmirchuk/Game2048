@@ -8,16 +8,16 @@ import java.util.Random;
 public class CellManager {
 
     //Свойства
-    private Cell[][] cells = new Cell[4][4];
+    private GameActivity context;
+    public static Direction swipeDirection;
     private CellForBG cellsForBG;
+    private Cell[][] cells = new Cell[4][4];
     private int[][] cellsId = new int[4][4];
-    public int scores = 0;
-    private Random rand = new Random();
     private int[] isFull = new int[]{0,0,0,0};
+    public int scores = 0;
     private boolean key = false;
     public boolean lose = false;
-    private GameActivity context;
-    public static Direction swipeDirection ;
+    private Random rand = new Random();
 
     //Конструктор
     public CellManager(GameActivity context){
@@ -40,7 +40,6 @@ public class CellManager {
         cellsId[1] = new int[4];
         cellsId[2] = new int[4];
         cellsId[3] = new int[4];
-
     }
 
 
@@ -58,13 +57,13 @@ public class CellManager {
             for (int j = 0; j <cells[i].length ; j++) {
                 if (swipeDirection == Direction.RIGHT || swipeDirection == Direction.LEFT){
                     if (cells[j][i].moveX > 0){
-                        cells[j][i].moveX = cells[j][i].moveX - 40; //TODO
+                        cells[j][i].moveX = cells[j][i].moveX - 40;
                     } else {
                         cells[j][i].moveX = 0;
                     }
                 } else if(swipeDirection == Direction.DOWN || swipeDirection == Direction.UP){
                     if (cells[j][i].moveY > 0){
-                        cells[j][i].moveY = cells[j][i].moveY - 40; //TODO
+                        cells[j][i].moveY = cells[j][i].moveY - 40;
                     } else {
                         cells[j][i].moveY = 0;
                     }
@@ -126,7 +125,7 @@ public class CellManager {
         if (verifyCells()){
 
             if (!isCellsIdChanged()){
-                spownCell();
+                spawnCell();
             }
 
             key = false;
@@ -147,17 +146,16 @@ public class CellManager {
 
     }
 
-    public void spownCell(){
+    public void spawnCell(){
         int x = rand.nextInt(4);
         int y = rand.nextInt(4);
         if (cells[x][y].getId() == 0){
             cells[x][y].setId(2);
             cells[x][y].setFresh(true);
             cells[x][y].setShearAnim(cells[x][y].getShearMax());
-            return;
         }
         else{
-            spownCell();
+            spawnCell();
         }
     }
 
@@ -178,7 +176,6 @@ public class CellManager {
                 }
             }
         }
-        Log.d("largestNumber",String.valueOf(largestNumber));
         return largestNumber;
     }
 

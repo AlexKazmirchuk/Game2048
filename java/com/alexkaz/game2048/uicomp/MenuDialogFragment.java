@@ -1,6 +1,5 @@
 package com.alexkaz.game2048.uicomp;
 
-
 import android.app.Activity;
 import android.app.DialogFragment;
 import android.graphics.Color;
@@ -19,7 +18,7 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
 
     private GameActivity gameActivity;
     private GamePreferences gamePreferences;
-    private Button resumeBtn, restartBtn, clearResultsBtn, musicBtn;
+    private Button musicBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -36,9 +35,9 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
     }
 
     private void initComps(View v) {
-        resumeBtn = (Button)v.findViewById(R.id.resumeBtn);
-        restartBtn = (Button)v.findViewById(R.id.restartBtn);
-        clearResultsBtn = (Button)v.findViewById(R.id.clearResultsBtn);
+        Button resumeBtn = (Button) v.findViewById(R.id.resumeBtn);
+        Button restartBtn = (Button) v.findViewById(R.id.restartBtn);
+        Button clearResultsBtn = (Button) v.findViewById(R.id.clearResultsBtn);
         musicBtn = (Button)v.findViewById(R.id.musicBtn);
 
         resumeBtn.setOnClickListener(this);
@@ -51,12 +50,11 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
 
     private void readPrefs() {
         if (gamePreferences.getMusicPrefs()){
-            musicBtn.setText("MUSIC:ON");
+            musicBtn.setText(R.string.music_btn_text_on);
         }else {
-            musicBtn.setText("MUSIC:OFF");
+            musicBtn.setText(R.string.music_btn_text_off);
         }
     }
-
 
     @Override
     public void onAttach(Activity activity) {
@@ -71,29 +69,41 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
                 getDialog().cancel();
                 break;
             case R.id.restartBtn:
-                gameActivity.restartGame();
-                getDialog().cancel();
+                restartGame();
                 break;
             case R.id.clearResultsBtn:
-                gamePreferences.setGameScores(0);
-                gamePreferences.setBestScores(0);
-                gameActivity.setScores(0);
-                gameActivity.setTxtBestScores(0);
-                gameActivity.restartGame();
-                getDialog().cancel();
+                clearResults();
                 break;
             case R.id.musicBtn:
-                if (gamePreferences.getMusicPrefs()){
-                    ((Button)v).setText("MUSIC:OFF");
-                    gamePreferences.setMusicPrefs(false);
-                    gameActivity.setMusicEnabled(false);
-                    gameActivity.stopSound();
-                }else {
-                    ((Button)v).setText("MUSIC:ON");
-                    gamePreferences.setMusicPrefs(true);
-                    gameActivity.setMusicEnabled(true);
-                }
+                musicBtnHandler(v);
                 break;
+        }
+    }
+
+    private void restartGame(){
+        gameActivity.restartGame();
+        getDialog().cancel();
+    }
+
+    private void clearResults(){
+        gamePreferences.setGameScores(0);
+        gamePreferences.setBestScores(0);
+        gameActivity.setScores(0);
+        gameActivity.setTxtBestScores(0);
+        gameActivity.restartGame();
+        getDialog().cancel();
+    }
+
+    private void musicBtnHandler(View v){
+        if (gamePreferences.getMusicPrefs()){
+            ((Button)v).setText(R.string.music_btn_text_off);
+            gamePreferences.setMusicPrefs(false);
+            gameActivity.setMusicEnabled(false);
+            gameActivity.stopSound();
+        }else {
+            ((Button)v).setText(R.string.music_btn_text_on);
+            gamePreferences.setMusicPrefs(true);
+            gameActivity.setMusicEnabled(true);
         }
     }
 }
