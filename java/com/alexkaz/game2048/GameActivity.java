@@ -3,6 +3,7 @@ package com.alexkaz.game2048;
 import android.annotation.TargetApi;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
+import android.graphics.Typeface;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
@@ -33,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     private GestureDetector gestureDetector;
     public  GamePreferences gamePreferences;
     private GameSurfaceView gameSurfaceView;
+    private Typeface typeface;
     private TextView txtScores;
     private TextView txtBestScores;
     private MenuDialogFragment menuDialogFragment;
@@ -56,8 +58,11 @@ public class GameActivity extends AppCompatActivity {
         menuDialogFragment = new MenuDialogFragment();
         gestureDetector = initGestureDetector();
         gamePreferences = new GamePreferences(this);
+        typeface = Typeface.createFromAsset(getAssets(),"impact.ttf");
         txtScores = (TextView) findViewById(R.id.txtScores);
+        txtScores.setTypeface(typeface);
         txtBestScores = (TextView) findViewById(R.id.txtBestScores);
+        txtBestScores.setTypeface(typeface);
         gameSurfaceView = new GameSurfaceView(this);
         initGameSurface(gameSurfaceView);
     }
@@ -227,5 +232,9 @@ public class GameActivity extends AppCompatActivity {
 
     public void setMusicEnabled(boolean musicEnabled) {
         isMusicEnabled = musicEnabled;
+    }
+
+    public Typeface getTypeface() {
+        return typeface;
     }
 }

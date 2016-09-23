@@ -14,7 +14,7 @@
     <dimen name="info_panel_margin_bottom">5dp</dimen>
     <dimen name="bottom">24dp</dimen>
     <dimen name="txt_scores_container_min_width">136dp</dimen>
-    <dimen name="txt_scores_text_size">20sp</dimen>
+    <dimen name="txt_scores_text_size">24sp</dimen>
     <dimen name="menu_btn_container_min_width">90dp</dimen>
     <dimen name="game_field_wrapper_padding_bottom">10dp</dimen>
     <dimen name="game_field_wrapper_padding_right">10dp</dimen>

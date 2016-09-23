@@ -49,7 +49,8 @@ public class Cell {
     public static final float SHEAR_FOR_TEXT_DIVIDER = 0.4286f;
     public static final float NORMAL_TEXT_SIZE_DIVIDER = 0.3889f;
     public static final float SMALL_TEXT_SIZE_DIVIDER = 0.3223f;
-    public static final float LARGE_TEXT_SIZE_DIVIDER = 0.6112f;
+//    public static final float LARGE_TEXT_SIZE_DIVIDER = 0.6112f;
+    public static final float LARGE_TEXT_SIZE_DIVIDER = 0.7512f;
 
     private int textShear = 5;      //resizable
     private int shearForText = 3;   //resizable
@@ -59,6 +60,7 @@ public class Cell {
 
     //Свойства
     private GameActivity context;
+    private Typeface typeFace;
     private int id;
     private int[] colors = new int[3];
     private boolean locker = true;
@@ -80,12 +82,30 @@ public class Cell {
     public int moveX = 0;
     public int moveY = 0;
 
+    //for paint
+    private Paint rectPaint;
+    private Paint rightRombPaint;
+    private Paint bottomRombPaint;
+    private Paint numberPaint;
+
     //Конструктор
     public Cell(GameActivity context, int x, int y){
         this.context = context;
         this.x = x;
         this.y = y;
         this.id = DEFAULT_ID;
+        initComp(context);
+    }
+
+    private void initComp(GameActivity context) {
+        typeFace = context.getTypeface();
+        rectPaint = new Paint();
+        rightRombPaint = new Paint();
+        bottomRombPaint = new Paint();
+        numberPaint = new Paint();
+        numberPaint.setTypeface(typeFace);
+        numberPaint.setStyle(Paint.Style.FILL);
+        numberPaint.setAntiAlias(true);
     }
 
     // Методи
@@ -121,22 +141,20 @@ public class Cell {
     }
 
     private void drawRect(Canvas g){
-        Paint p = new Paint();
-        p.setColor(colors[COLOR_OWN]);
+        rectPaint.setColor(colors[COLOR_OWN]);
 
         int left = posX + shearAnim;
         int top = posY + shearAnim;
         int right = posX + sizeX - sideSpaceX + shearAnim;
         int bottom = posY+sizeY - sideSpaceY + shearAnim;
 
-        g.drawRect(left,top,right,bottom,p);
+        g.drawRect(left,top,right,bottom,rectPaint);
 
         drawNumbers(g);
     }
 
     private void drawRightRomb(Canvas g){
-        Paint p = new Paint();
-        p.setColor(colors[COLOR_RIGHT]);
+        rightRombPaint.setColor(colors[COLOR_RIGHT]);
         Path path = new Path();
 
         path.moveTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
@@ -145,12 +163,11 @@ public class Cell {
         path.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY + shearAnim - sideSpaceY);      // left  bottom
         path.lineTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
 
-        g.drawPath(path,p);
+        g.drawPath(path,rightRombPaint);
     }
 
     private void drawBottomRomb(Canvas g){
-        Paint p = new Paint();
-        p.setColor(colors[COLOR_BOTTOM]);
+        bottomRombPaint.setColor(colors[COLOR_BOTTOM]);
         Path path = new Path();
 
         path.moveTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
@@ -159,11 +176,10 @@ public class Cell {
         path.lineTo(posX+shear, posY+sizeY+shear- sideSpaceY);                                        // left  bottom
         path.lineTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
 
-        g.drawPath(path,p);
+        g.drawPath(path,bottomRombPaint);
     }
 
     private void drawNumbers(Canvas g){
-        Paint p = new Paint();
 
         float mTextWidth, mTextHeight;
         String text = String.valueOf(this.id);
@@ -176,23 +192,19 @@ public class Cell {
         centerY = posY + height/2;
 
         if(this.id > 0){
-            p.setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD));
-            p.setTextSize(resizeText(text.length()));
-            p.setStyle(Paint.Style.FILL);
-            p.setAntiAlias(true);
-            p.getTextBounds(text, START_TEXT_POSITION, text.length(), mTextBoundRect);
-            mTextWidth = p.measureText(text);
+            numberPaint.setTextSize(resizeText(text.length()));
+            numberPaint.getTextBounds(text, START_TEXT_POSITION, text.length(), mTextBoundRect);
+            mTextWidth = numberPaint.measureText(text);
             mTextHeight = mTextBoundRect.height();
-
-            p.setColor(Color.parseColor(TEXT_SHADOW_COLOR));
+            numberPaint.setColor(Color.parseColor(TEXT_SHADOW_COLOR));
             if (shearAnim <= textShear){
                 int paddingFix = 0;
                 for (int i = 1; i < (textShear - shearAnim); i++) {
-                    g.drawText(text,(centerX - (mTextWidth / 2f)) - sideSpaceX + i,(centerY + (mTextHeight /2f)) - sideSpaceY + i, p);
+                    g.drawText(text,(centerX - (mTextWidth / 2f)) - sideSpaceX + i,(centerY + (mTextHeight /2f)) - sideSpaceY + i, numberPaint);
                     paddingFix = i;
                 }
-                p.setColor(Color.parseColor(TEXT_COLOR));
-                g.drawText(text,(centerX - (mTextWidth/2f)) - sideSpaceX -paddingFix+ shearForText,(centerY + (mTextHeight/2f))- sideSpaceY -paddingFix+ shearForText,p);
+                numberPaint.setColor(Color.parseColor(TEXT_COLOR));
+                g.drawText(text,(centerX - (mTextWidth/2f)) - sideSpaceX -paddingFix+ shearForText,(centerY + (mTextHeight/2f))- sideSpaceY -paddingFix+ shearForText,numberPaint);
             }
         }
     }

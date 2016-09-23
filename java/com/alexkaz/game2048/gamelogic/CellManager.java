@@ -54,7 +54,10 @@ public class CellManager {
     public void draw(Canvas g){
         cellsForBG.draw(g);
         for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j <cells[i].length ; j++) {
+            for (int j = 0; j < cells[i].length ; j++) {
+                if (cells[j][i] == null){
+                    return;
+                }
                 if (swipeDirection == Direction.RIGHT || swipeDirection == Direction.LEFT){
                     if (cells[j][i].moveX > 0){
                         cells[j][i].moveX = cells[j][i].moveX - 40;
@@ -171,8 +174,10 @@ public class CellManager {
         int largestNumber = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (largestNumber<cells[i][j].getId()){
-                    largestNumber = cells[i][j].getId();
+                if (cells[i][j] != null ){
+                    if (largestNumber<cells[i][j].getId()){
+                        largestNumber = cells[i][j].getId();
+                    }
                 }
             }
         }
@@ -182,6 +187,9 @@ public class CellManager {
     public static void spawnCellAnimation(Cell[][] cell){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
+                if (cell[i][j] == null){
+                    return;
+                }
                 if (!(cell[i][j].getId() == 0)){
                     if (cell[i][j].isFresh()){
                         if (cell[i][j].getShearAnim() > 0){
