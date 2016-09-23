@@ -17,4 +17,6 @@
     <string name="lose_restart_btn_text">RESTART</string>
     <string name="music_btn_text_on">MUSIC:ON</string>
     <string name="music_btn_text_off">MUSIC:OFF</string>
+    <string name="txt_scores_default_text">SCORES:</string>
+    <string name="txt_best_scores_default_text">BEST SCORES:</string>
 </resources>
