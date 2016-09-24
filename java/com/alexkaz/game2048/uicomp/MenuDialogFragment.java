@@ -99,7 +99,7 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
             ((Button)v).setText(R.string.music_btn_text_off);
             gamePreferences.setMusicPrefs(false);
             gameActivity.setMusicEnabled(false);
-            gameActivity.stopSound();
+            gameActivity.soundController.stopSound();
         }else {
             ((Button)v).setText(R.string.music_btn_text_on);
             gamePreferences.setMusicPrefs(true);
