@@ -71,7 +71,9 @@ public class CellManager {
                         cells[j][i].moveY = 0;
                     }
                 }
-                cells[i][j].draw(g);
+                if (cells[i][j] != null){
+                    cells[i][j].draw(g);
+                }
             }
         }
     }
@@ -153,8 +155,7 @@ public class CellManager {
         int x = rand.nextInt(4);
         int y = rand.nextInt(4);
         if (cells[x][y].getId() == 0){
-//            cells[x][y].setId(2);
-            cells[x][y].setId(1024);
+            cells[x][y].setId(2);
             cells[x][y].setFresh(true);
             cells[x][y].setShearAnim(cells[x][y].getShearMax());
         }
