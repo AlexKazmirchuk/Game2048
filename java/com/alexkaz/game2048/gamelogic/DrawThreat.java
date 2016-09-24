@@ -12,8 +12,8 @@ public class DrawThreat extends Thread {
 
     private GameActivity context;
     private CellManager cellManager;
-    public boolean isWinActivityShowed  = true;
-    public boolean isLoseDialogShow = false;
+    private boolean isWinActivityShowed  = true;
+    private boolean isLoseDialogShow = false;
 
     private boolean runFlag = false;
     private final SurfaceHolder surfaceHolder;
@@ -22,7 +22,7 @@ public class DrawThreat extends Thread {
     public DrawThreat(GameActivity context, SurfaceHolder surfaceHolder){
         this.surfaceHolder = surfaceHolder;
         this.context = context;
-        isWinActivityShowed = context.gamePreferences.getWinDialogShowed();
+        setWinActivityShowed(context.getGamePreferences().getWinDialogShowed());
         prevTime = System.currentTimeMillis();
         cellManager = new CellManager(context);
     }
@@ -31,13 +31,13 @@ public class DrawThreat extends Thread {
         LoseDialogFragment loseDialogFragment = LoseDialogFragment.newInstance(scores);
         loseDialogFragment.setCellManager(cellManager);
         loseDialogFragment.setDrawThreat(this);
-        context.soundController.playGameOverSound();
+        context.getSoundController().playGameOverSound();
         loseDialogFragment.show(context.getFragmentManager(),"loseDialog");
     }
 
     private void showWinDialog(int scores){
         WinDialogFragment winDialogFragment = WinDialogFragment.newInstance(scores);
-        context.soundController.playWinSound();
+        context.getSoundController().playWinSound();
         winDialogFragment.show(context.getFragmentManager(),"winDialog");
     }
 
@@ -81,20 +81,36 @@ public class DrawThreat extends Thread {
 
     private void drawField(Canvas canvas){
         canvas.drawColor(Color.parseColor("#137b82"));
-        if (!getCellManager().lose){
+        if (!getCellManager().isLose()){
             cellManager.draw(canvas);
-            if(2048 == cellManager.getTheLargestNumber() && isWinActivityShowed){
+            if(2048 == cellManager.getTheLargestNumber() && isWinActivityShowed()){
                 showWinDialog(cellManager.getScores());
-                isWinActivityShowed = false;
-                context.gamePreferences.setWinDialogShowed(false);
+                setWinActivityShowed(false);
+                context.getGamePreferences().setWinDialogShowed(false);
             }
         }
         else {
-            if (!isLoseDialogShow){
+            if (!isLoseDialogShow()){
                 showLoseDialog(cellManager.getScores());
-                isLoseDialogShow = true;
+                setLoseDialogShow(true);
             }
             cellManager.draw(canvas);
         }
+    }
+
+    public boolean isWinActivityShowed() {
+        return isWinActivityShowed;
+    }
+
+    public void setWinActivityShowed(boolean winActivityShowed) {
+        isWinActivityShowed = winActivityShowed;
+    }
+
+    public boolean isLoseDialogShow() {
+        return isLoseDialogShow;
+    }
+
+    public void setLoseDialogShow(boolean loseDialogShow) {
+        isLoseDialogShow = loseDialogShow;
     }
 }

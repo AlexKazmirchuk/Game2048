@@ -1,7 +1,7 @@
 package com.alexkaz.game2048.gamelogic;
 
 import android.graphics.Canvas;
-import android.util.Log;
+
 import com.alexkaz.game2048.GameActivity;
 import java.util.Random;
 
@@ -9,20 +9,28 @@ public class CellManager {
 
     //Свойства
     private GameActivity context;
-    public static Direction swipeDirection;
+    private static Direction swipeDirection;
     private CellForBG cellsForBG;
     private Cell[][] cells = new Cell[4][4];
     private int[][] cellsId = new int[4][4];
     private int[] isFull = new int[]{0,0,0,0};
-    public int scores = 0;
+    private int scores = 0;
     private boolean key = false;
-    public boolean lose = false;
+    private boolean lose = false;
     private Random rand = new Random();
 
     //Конструктор
     public CellManager(GameActivity context){
         this.context = context;
         initComp();
+    }
+
+    public static Direction getSwipeDirection() {
+        return swipeDirection;
+    }
+
+    public static void setSwipeDirection(Direction swipeDirection) {
+        CellManager.swipeDirection = swipeDirection;
     }
 
     //Методи
@@ -58,17 +66,17 @@ public class CellManager {
                 if (cells[j][i] == null){
                     return;
                 }
-                if (swipeDirection == Direction.RIGHT || swipeDirection == Direction.LEFT){
-                    if (cells[j][i].moveX > 0){
-                        cells[j][i].moveX = cells[j][i].moveX - 40;
+                if (getSwipeDirection() == Direction.RIGHT || getSwipeDirection() == Direction.LEFT){
+                    if (cells[j][i].getMoveX() > 0){
+                        cells[j][i].setMoveX(cells[j][i].getMoveX() - 40);
                     } else {
-                        cells[j][i].moveX = 0;
+                        cells[j][i].setMoveX(0);
                     }
-                } else if(swipeDirection == Direction.DOWN || swipeDirection == Direction.UP){
-                    if (cells[j][i].moveY > 0){
-                        cells[j][i].moveY = cells[j][i].moveY - 40;
+                } else if(getSwipeDirection() == Direction.DOWN || getSwipeDirection() == Direction.UP){
+                    if (cells[j][i].getMoveY() > 0){
+                        cells[j][i].setMoveY(cells[j][i].getMoveY() - 40);
                     } else {
-                        cells[j][i].moveY = 0;
+                        cells[j][i].setMoveY(0);
                     }
                 }
                 if (cells[i][j] != null){
@@ -96,7 +104,7 @@ public class CellManager {
         switch (direction){
             case UP:{
                 CellMergeSortHandler.moveAllUp(cells,this);
-                System.out.println(scores);
+                System.out.println(getScores());
                 if (key){
                     isFull[0] = 1;
                 }
@@ -104,7 +112,7 @@ public class CellManager {
             }
             case DOWN:{
                 CellMergeSortHandler.moveAllDown(cells,this);
-                System.out.println(scores);
+                System.out.println(getScores());
                 if (key){
                     isFull[1] = 1;
                 }
@@ -112,7 +120,7 @@ public class CellManager {
             }
             case LEFT:{
                 CellMergeSortHandler.moveAllLeft(cells,this);
-                System.out.println(scores);
+                System.out.println(getScores());
                 if (key){
                     isFull[2] = 1;
                 }
@@ -120,7 +128,7 @@ public class CellManager {
             }
             case RIGHT:{
                 CellMergeSortHandler.moveAllRight(cells,this);
-                System.out.println(scores);
+                System.out.println(getScores());
                 if (key){
                     isFull[3] = 1;
                 }
@@ -138,14 +146,14 @@ public class CellManager {
             isFull[1] = 0;
             isFull[2] = 0;
             isFull[3] = 0;
-            context.setScores(scores);
+            context.setScores(getScores());
         }
         else {
             key = true;
             int tmp;
             tmp = isFull[0] + isFull[1]+ isFull[2]+ isFull[3];
             if (tmp == 4){
-                lose = true;
+                setLose(true);
             }
         }
 
@@ -165,10 +173,10 @@ public class CellManager {
     }
 
     public void startNewGame(){
-        this.lose = false;
+        this.setLose(false);
         this.key = false;
         initComp();
-        this.scores = 0;
+        this.setScores(0);
         this.isFull = new int[]{0,0,0,0};
     }
 
@@ -251,5 +259,13 @@ public class CellManager {
                 }
             }
         }
+    }
+
+    public boolean isLose() {
+        return lose;
+    }
+
+    public void setLose(boolean lose) {
+        this.lose = lose;
     }
 }

@@ -16,15 +16,13 @@ public class SoundController {
     public static final String SWIPE_SOUND = "swipe_sound.mp3";
     public static final String WIN_SOUND = "win_sound.mp3";
 
-    Context context;
     private SoundPool mSoundPool;
     private AssetManager mAssetManager;
     private int gameOverSound, swipeSound, winSound;
     private int streamID;
-    public boolean isMusicEnabled = false;
+    private boolean isMusicEnabled = false;
 
     public SoundController(Context context){
-        this.context = context;
         initSound(context);
     }
 
@@ -98,5 +96,13 @@ public class SoundController {
 
     public void playSwipe(){
         playSound(swipeSound);
+    }
+
+    public boolean isMusicEnabled() {
+        return isMusicEnabled;
+    }
+
+    public void setMusicEnabled(boolean musicEnabled) {
+        isMusicEnabled = musicEnabled;
     }
 }

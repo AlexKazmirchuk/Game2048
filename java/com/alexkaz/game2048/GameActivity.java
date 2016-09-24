@@ -21,13 +21,13 @@ public class GameActivity extends AppCompatActivity {
     public static final String MENU_TAG = "menu";
 
     private GestureDetector gestureDetector;
-    public  GamePreferences gamePreferences;
+    private GamePreferences gamePreferences;
     private GameSurfaceView gameSurfaceView;
     private Typeface typeface;
     private TextView txtScores;
     private TextView txtBestScores;
     private MenuDialogFragment menuDialogFragment;
-    public SoundController soundController;
+    private SoundController soundController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class GameActivity extends AppCompatActivity {
     private void initComp(){
         menuDialogFragment = new MenuDialogFragment();
         gestureDetector = initGestureDetector();
-        gamePreferences = new GamePreferences(this);
+        setGamePreferences(new GamePreferences(this));
         typeface = Typeface.createFromAsset(getAssets(),"impact.ttf");
         txtScores = (TextView) findViewById(R.id.txtScores);
         txtScores.setTypeface(typeface);
@@ -48,7 +48,7 @@ public class GameActivity extends AppCompatActivity {
         txtBestScores.setTypeface(typeface);
         gameSurfaceView = new GameSurfaceView(this);
         initGameSurface(gameSurfaceView);
-        soundController = new SoundController(this);
+        setSoundController(new SoundController(this));
     }
 
     private void initGameSurface(GameSurfaceView gameSurfaceView){
@@ -65,8 +65,8 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void readPrefs() {
-        soundController.isMusicEnabled = gamePreferences.getMusicPrefs();
-        int bestScores = gamePreferences.getBestScores();
+        getSoundController().setMusicEnabled(getGamePreferences().getMusicPrefs());
+        int bestScores = getGamePreferences().getBestScores();
         String scoresValue = getString(R.string.txt_scores_default_text) + 0;
         txtScores.setText(scoresValue);
         String bestScoresValue = getString(R.string.txt_best_scores_default_text) + bestScores;
@@ -76,9 +76,9 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        gamePreferences.saveCellsID(gameSurfaceView.getDrawThreat().getCellManager().getStringCellsID());
-        gamePreferences.setGameScores(gameSurfaceView.getDrawThreat().getCellManager().getScores());
-        soundController.resetSoundPool();
+        getGamePreferences().saveCellsID(gameSurfaceView.getDrawThreat().getCellManager().getStringCellsID());
+        getGamePreferences().setGameScores(gameSurfaceView.getDrawThreat().getCellManager().getScores());
+        getSoundController().resetSoundPool();
     }
 
     private GestureDetector initGestureDetector() {
@@ -87,16 +87,16 @@ public class GameActivity extends AppCompatActivity {
             public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
                 try {
                     if (detector.isSwipeDown(e1, e2, velocityY)) {
-                        soundController.playSwipe();
+                        getSoundController().playSwipe();
                         gameSurfaceView.moveCells(Direction.DOWN);
                     } else if (detector.isSwipeUp(e1, e2, velocityY)) {
-                        soundController.playSwipe();
+                        getSoundController().playSwipe();
                         gameSurfaceView.moveCells(Direction.UP);
                     }else if (detector.isSwipeLeft(e1, e2, velocityX)) {
-                        soundController.playSwipe();
+                        getSoundController().playSwipe();
                         gameSurfaceView.moveCells(Direction.LEFT);
                     } else if (detector.isSwipeRight(e1, e2, velocityX)) {
-                        soundController.playSwipe();
+                        getSoundController().playSwipe();
                         gameSurfaceView.moveCells(Direction.RIGHT);
                     }
                 } catch (Exception ignored) {}
@@ -116,11 +116,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void setBestScores(int points){
-        int bestScores = gamePreferences.getBestScores();
+        int bestScores = getGamePreferences().getBestScores();
         if(points>bestScores){
             String bestScoresValue = getString(R.string.txt_best_scores_default_text) + points;
             txtBestScores.setText(bestScoresValue);
-            gamePreferences.setBestScores(points);
+            getGamePreferences().setBestScores(points);
         }
     }
 
@@ -131,8 +131,8 @@ public class GameActivity extends AppCompatActivity {
 
     public  void restartGame(){
         gameSurfaceView.getDrawThreat().getCellManager().startNewGame();
-        gameSurfaceView.getDrawThreat().isWinActivityShowed = true;
-        gamePreferences.setWinDialogShowed(true);
+        gameSurfaceView.getDrawThreat().setWinActivityShowed(true);
+        getGamePreferences().setWinDialogShowed(true);
         setScores(0);
     }
 
@@ -149,14 +149,30 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        soundController.initSound(this);
+        getSoundController().initSound(this);
     }
 
     public void setMusicEnabled(boolean musicEnabled) {
-        soundController.isMusicEnabled = musicEnabled;
+        getSoundController().setMusicEnabled(musicEnabled);
     }
 
     public Typeface getTypeface() {
         return typeface;
+    }
+
+    public GamePreferences getGamePreferences() {
+        return gamePreferences;
+    }
+
+    public void setGamePreferences(GamePreferences gamePreferences) {
+        this.gamePreferences = gamePreferences;
+    }
+
+    public SoundController getSoundController() {
+        return soundController;
+    }
+
+    public void setSoundController(SoundController soundController) {
+        this.soundController = soundController;
     }
 }

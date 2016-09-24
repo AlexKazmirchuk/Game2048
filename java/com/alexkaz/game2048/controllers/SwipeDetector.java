@@ -1,6 +1,5 @@
 package com.alexkaz.game2048.controllers;
 
-
 import android.view.MotionEvent;
 
 public class SwipeDetector {

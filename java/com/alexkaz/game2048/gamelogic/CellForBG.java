@@ -40,17 +40,17 @@ public class CellForBG {
     private int borderY ;      //resizable
     private int pivotX ;      //resizable
     private int pivotY ;      //resizable
-    int left,top,right,bottom;
+    private int left,top,right,bottom;
 
-    Paint rectPaint;
-    Paint rightRombPaint;
-    Paint bottomRombPaint;
+    private Paint rectPaint;
+    private Paint rightRombPaint;
+    private Paint bottomRombPaint;
 
-    Path rectPath;
-    Path rightRombPath ;
-    Path bottomRombPath;
-    Path buff1;
-    Path buff2;
+    private Path rectPath;
+    private Path rightRombPath ;
+    private Path bottomRombPath;
+    private Path buff1;
+    private Path buff2;
 
     //Конструктор
     public CellForBG(GameActivity context){

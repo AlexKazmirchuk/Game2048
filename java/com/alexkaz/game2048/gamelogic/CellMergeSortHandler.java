@@ -24,27 +24,27 @@ public class CellMergeSortHandler {
         for (int j = 0; j < 4; j++) {
             for (int i = 3; i >= 0; i--) {
                 if(i==3){
-                    if(cells[i][j].getId() == cells[i - 1][j].moving && cells[i - 1][j].moving != 0){
-                        cells[i][j].anim = 1;
-                        if(cells[i][j].getId() == cells[i - 2][j].moving){
-                            cells[i][j].anim = cells[i][j].anim + 1;
-                            if(cells[i][j].getId() == cells[i - 3][j].moving){
-                                cells[i][j].anim = cells[i][j].anim + 1;
+                    if(cells[i][j].getId() == cells[i - 1][j].getMoving() && cells[i - 1][j].getMoving() != 0){
+                        cells[i][j].setAnim(1);
+                        if(cells[i][j].getId() == cells[i - 2][j].getMoving()){
+                            cells[i][j].setAnim(cells[i][j].getAnim() + 1);
+                            if(cells[i][j].getId() == cells[i - 3][j].getMoving()){
+                                cells[i][j].setAnim(cells[i][j].getAnim() + 1);
                             }
                         }
                     }
                 }
                 if(i==2){
-                    if(cells[i][j].getId() == cells[i - 1][j].moving && cells[i - 1][j].moving != 0){
-                        cells[i][j].anim = 1;
-                        if(cells[i][j].getId() == cells[i - 2][j].moving){
-                            cells[i][j].anim = cells[i][j].anim + 1;
+                    if(cells[i][j].getId() == cells[i - 1][j].getMoving() && cells[i - 1][j].getMoving() != 0){
+                        cells[i][j].setAnim(1);
+                        if(cells[i][j].getId() == cells[i - 2][j].getMoving()){
+                            cells[i][j].setAnim(cells[i][j].getAnim() + 1);
                         }
                     }
                 }
                 if(i==1){
-                    if(cells[i][j].getId() == cells[i - 1][j].moving && cells[i - 1][j].moving != 0){
-                        cells[i][j].anim = 1;
+                    if(cells[i][j].getId() == cells[i - 1][j].getMoving() && cells[i - 1][j].getMoving() != 0){
+                        cells[i][j].setAnim(1);
                     }
                 }
             }
@@ -52,7 +52,7 @@ public class CellMergeSortHandler {
                     && lastID[1][j] != 0
                     && lastID[2][j] == 0
                     && lastID[3][j] == 0){
-                cells[3][j].anim = 2;
+                cells[3][j].setAnim(2);
             }
         }
     }
@@ -61,27 +61,27 @@ public class CellMergeSortHandler {
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i < 4; i++) {
                 if(i==0){
-                    if(cells[i][j].getId() == cells[i+1][j].moving && cells[i+1][j].moving != 0){
-                        cells[i][j].anim = 1;
-                        if(cells[i][j].getId() == cells[i+2][j].moving){
-                            cells[i][j].anim = cells[i][j].anim + 1;
-                            if(cells[i][j].getId() == cells[i+3][j].moving){
-                                cells[i][j].anim = cells[i][j].anim + 1;
+                    if(cells[i][j].getId() == cells[i + 1][j].getMoving() && cells[i + 1][j].getMoving() != 0){
+                        cells[i][j].setAnim(1);
+                        if(cells[i][j].getId() == cells[i + 2][j].getMoving()){
+                            cells[i][j].setAnim(cells[i][j].getAnim() + 1);
+                            if(cells[i][j].getId() == cells[i + 3][j].getMoving()){
+                                cells[i][j].setAnim(cells[i][j].getAnim() + 1);
                             }
                         }
                     }
                 }
                 if(i==1){
-                    if(cells[i][j].getId() == cells[i+1][j].moving && cells[i+1][j].moving != 0){
-                        cells[i][j].anim = 1;
-                        if(cells[i][j].getId() == cells[i+2][j].moving){
-                            cells[i][j].anim = cells[i][j].anim + 1;
+                    if(cells[i][j].getId() == cells[i + 1][j].getMoving() && cells[i + 1][j].getMoving() != 0){
+                        cells[i][j].setAnim(1);
+                        if(cells[i][j].getId() == cells[i + 2][j].getMoving()){
+                            cells[i][j].setAnim(cells[i][j].getAnim() + 1);
                         }
                     }
                 }
                 if(i==2){
-                    if(cells[i][j].getId() == cells[i+1][j].moving && cells[i+1][j].moving != 0){
-                        cells[i][j].anim = 1;
+                    if(cells[i][j].getId() == cells[i + 1][j].getMoving() && cells[i + 1][j].getMoving() != 0){
+                        cells[i][j].setAnim(1);
                     }
                 }
             }
@@ -89,7 +89,7 @@ public class CellMergeSortHandler {
                     && lastID[1][j] == 0
                     && lastID[2][j] != 0
                     && lastID[3][j] != 0){
-                cells[0][j].anim = 2;
+                cells[0][j].setAnim(2);
             }
         }
     }
@@ -98,27 +98,27 @@ public class CellMergeSortHandler {
         for (int j = 0; j < 4; j++) {
             for (int i = 3; i >= 0; i--) {
                 if(i==3){
-                    if(cells[j][i].getId() == cells[j][i-1].moving && cells[j][i-1].moving != 0){
-                        cells[j][i].anim = 1;
-                        if(cells[j][i].getId() == cells[j][i-2].moving){
-                            cells[j][i].anim = cells[j][i].anim + 1;
-                            if(cells[j][i].getId() == cells[j][i-3].moving){
-                                cells[j][i].anim = cells[j][i].anim + 1;
+                    if(cells[j][i].getId() == cells[j][i - 1].getMoving() && cells[j][i - 1].getMoving() != 0){
+                        cells[j][i].setAnim(1);
+                        if(cells[j][i].getId() == cells[j][i - 2].getMoving()){
+                            cells[j][i].setAnim(cells[j][i].getAnim() + 1);
+                            if(cells[j][i].getId() == cells[j][i - 3].getMoving()){
+                                cells[j][i].setAnim(cells[j][i].getAnim() + 1);
                             }
                         }
                     }
                 }
                 if(i==2){
-                    if(cells[j][i].getId() == cells[j][i-1].moving && cells[j][i-1].moving != 0){
-                        cells[j][i].anim = 1;
-                        if(cells[j][i].getId() == cells[j][i-2].moving){
-                            cells[j][i].anim = cells[j][i].anim + 1;
+                    if(cells[j][i].getId() == cells[j][i - 1].getMoving() && cells[j][i - 1].getMoving() != 0){
+                        cells[j][i].setAnim(1);
+                        if(cells[j][i].getId() == cells[j][i - 2].getMoving()){
+                            cells[j][i].setAnim(cells[j][i].getAnim() + 1);
                         }
                     }
                 }
                 if(i==1){
-                    if(cells[j][i].getId() == cells[j][i-1].moving && cells[j][i-1].moving != 0){
-                        cells[j][i].anim = 1;
+                    if(cells[j][i].getId() == cells[j][i - 1].getMoving() && cells[j][i - 1].getMoving() != 0){
+                        cells[j][i].setAnim(1);
                     }
                 }
             }
@@ -126,7 +126,7 @@ public class CellMergeSortHandler {
                     && lastID[j][1] != 0
                     && lastID[j][2] == 0
                     && lastID[j][3] == 0){
-                cells[j][3].anim = 2;
+                cells[j][3].setAnim(2);
             }
         }
     }
@@ -135,27 +135,27 @@ public class CellMergeSortHandler {
         for (int j = 0; j < 4; j++) {
             for (int i = 0; i < 4; i++) {
                 if(i==0){
-                    if(cells[j][i].getId() == cells[j][i+1].moving && cells[j][i+1].moving != 0){
-                        cells[j][i].anim = 1;
-                        if(cells[j][i].getId() == cells[j][i+2].moving){
-                            cells[j][i].anim = cells[j][i].anim + 1;
-                            if(cells[j][i].getId() == cells[j][i+3].moving){
-                                cells[j][i].anim = cells[j][i].anim + 1;
+                    if(cells[j][i].getId() == cells[j][i + 1].getMoving() && cells[j][i + 1].getMoving() != 0){
+                        cells[j][i].setAnim(1);
+                        if(cells[j][i].getId() == cells[j][i + 2].getMoving()){
+                            cells[j][i].setAnim(cells[j][i].getAnim() + 1);
+                            if(cells[j][i].getId() == cells[j][i + 3].getMoving()){
+                                cells[j][i].setAnim(cells[j][i].getAnim() + 1);
                             }
                         }
                     }
                 }
                 if(i==1){
-                    if(cells[j][i].getId() == cells[j][i+1].moving && cells[j][i+1].moving != 0){
-                        cells[j][i].anim = 1;
-                        if(cells[j][i].getId() == cells[j][i+2].moving){
-                            cells[j][i].anim = cells[j][i].anim + 1;
+                    if(cells[j][i].getId() == cells[j][i + 1].getMoving() && cells[j][i + 1].getMoving() != 0){
+                        cells[j][i].setAnim(1);
+                        if(cells[j][i].getId() == cells[j][i + 2].getMoving()){
+                            cells[j][i].setAnim(cells[j][i].getAnim() + 1);
                         }
                     }
                 }
                 if(i==2){
-                    if(cells[j][i].getId() == cells[j][i+1].moving && cells[j][i+1].moving != 0){
-                        cells[j][i].anim = 1;
+                    if(cells[j][i].getId() == cells[j][i + 1].getMoving() && cells[j][i + 1].getMoving() != 0){
+                        cells[j][i].setAnim(1);
                     }
                 }
             }
@@ -163,7 +163,7 @@ public class CellMergeSortHandler {
                     && lastID[j][1] == 0
                     && lastID[j][2] != 0
                     && lastID[j][3] != 0){
-                cells[j][0].anim = 2;
+                cells[j][0].setAnim(2);
             }
         }
     }
@@ -175,10 +175,10 @@ public class CellMergeSortHandler {
             int moveCount = 0;
             int mergePosition = 0;
             for (int i = 0; i < 4; i++) {
-                if(cells[i][j].merged != 0){
+                if(cells[i][j].getMerged() != 0){
                     mergeCount = mergeCount + 1;
                 }
-                if(cells[i][j].moving != 0){
+                if(cells[i][j].getMoving() != 0){
                     moveCount = moveCount + 1;
                 }
             }
@@ -186,14 +186,14 @@ public class CellMergeSortHandler {
                 case 2:
 //                    System.out.println("Ця комбінація: |x|x|y|y|");
                     //////////////////////////
-                    cells[2][j].anim = 2;
-                    cells[3][j].anim = 1;
+                    cells[2][j].setAnim(2);
+                    cells[3][j].setAnim(1);
 
                     /////////////////////////
                     break;
                 case 1:
                     for (int i = 0; i < 4; i++) {
-                        if(cells[i][j].merged != 0){
+                        if(cells[i][j].getMerged() != 0){
                             mergePosition = i;
                         }
                     }
@@ -201,85 +201,85 @@ public class CellMergeSortHandler {
                         case 3:
                             switch(moveCount){
                                 case 3:
-                                    if(cells[3][j].merged == (cells[2][j].moving*2)
-                                            && cells[0][j].moving == cells[2][j].getId()
-                                            && cells[1][j].moving == cells[2][j].getId()){
+                                    if(cells[3][j].getMerged() == (cells[2][j].getMoving() *2)
+                                            && cells[0][j].getMoving() == cells[2][j].getId()
+                                            && cells[1][j].getMoving() == cells[2][j].getId()){
 //                                        Log.d("animLog","[вправо]|y|x|x| |");
                                         //////////////////////////
-                                        cells[3][j].anim = 2;
-                                        cells[2][j].anim = 2;
+                                        cells[3][j].setAnim(2);
+                                        cells[2][j].setAnim(2);
 
                                         /////////////////////////
-                                    } else if((lastID[0][j]*2) == cells[3][j].merged
-                                            && (lastID[2][j]*2) == cells[3][j].merged){
+                                    } else if((lastID[0][j]*2) == cells[3][j].getMerged()
+                                            && (lastID[2][j]*2) == cells[3][j].getMerged()){
 //                                        Log.d("animLog","[вправо]|x| |x| |");
                                         //////////////////////////
-                                        cells[3][j].anim = 3;
+                                        cells[3][j].setAnim(3);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]|x|x| | |");
                                         //////////////////////////
-                                        cells[3][j].anim = 3;
+                                        cells[3][j].setAnim(3);
 
                                         /////////////////////////
                                     }
                                     break;
                                 case 2:
-                                    if((cells[1][j].moving*2) == cells[3][j].merged
-                                            && (cells[2][j].moving*2) == cells[3][j].merged){
+                                    if((cells[1][j].getMoving() *2) == cells[3][j].getMerged()
+                                            && (cells[2][j].getMoving() *2) == cells[3][j].getMerged()){
 //                                        Log.d("animLog","[вправо]| |x|x| |");
                                         //////////////////////////
-                                        cells[3][j].anim = 2;
+                                        cells[3][j].setAnim(2);
 
                                         /////////////////////////
-                                    } else if(cells[0][j].moving != cells[1][j].moving){
+                                    } else if(cells[0][j].getMoving() != cells[1][j].getMoving()){
 //                                        Log.d("animLog","[вправо]|z|y|x|x|");
                                         //////////////////////////
-                                        cells[3][j].anim = 1;
-                                        cells[2][j].anim = 1;
-                                        cells[1][j].anim = 1;
+                                        cells[3][j].setAnim(1);
+                                        cells[2][j].setAnim(1);
+                                        cells[1][j].setAnim(1);
                                         /////////////////////////
-                                    } else if((lastID[2][j]*2) == cells[3][j].merged
-                                            && (lastID[3][j]*2) == cells[3][j].merged){
+                                    } else if((lastID[2][j]*2) == cells[3][j].getMerged()
+                                            && (lastID[3][j]*2) == cells[3][j].getMerged()){
 //                                        Log.d("animLog","[вправо]|y| |x|x|");
                                         //////////////////////////
-                                        cells[3][j].anim = 1;
-                                        cells[2][j].anim = 2;
+                                        cells[3][j].setAnim(1);
+                                        cells[2][j].setAnim(2);
 
                                         /////////////////////////
-                                    } else if((lastID[1][j]*2) == cells[3][j].merged
-                                            && (lastID[3][j]*2) == cells[3][j].merged){
+                                    } else if((lastID[1][j]*2) == cells[3][j].getMerged()
+                                            && (lastID[3][j]*2) == cells[3][j].getMerged()){
 //                                        Log.d("animLog","[вправо]|y|x| |x|");
                                         //////////////////////////
-                                        cells[3][j].anim = 2;
-                                        cells[2][j].anim = 2;
+                                        cells[3][j].setAnim(2);
+                                        cells[2][j].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]|x| | |x|");
                                         //////////////////////////
-                                        cells[3][j].anim = 3;
+                                        cells[3][j].setAnim(3);
 
                                         /////////////////////////
                                     }
                                     break;
                                 case 1:
-                                    if((cells[1][j].moving != 0)
-                                            && ((cells[1][j].moving*2) == cells[3][j].merged)
+                                    if((cells[1][j].getMoving() != 0)
+                                            && ((cells[1][j].getMoving() *2) == cells[3][j].getMerged())
                                             && (cells[0][j].getId() == 0)
                                             && (cells[1][j].getId() == 0)
                                             && (cells[2][j].getId() == 0)){
 //                                        Log.d("animLog","[вправо]| |x| |x|");
                                         //////////////////////////
-                                        cells[3][j].anim = 2;
+                                        cells[3][j].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]| |y|x|x|");
                                         //////////////////////////
-                                        cells[3][j].anim = 1;
-                                        cells[2][j].anim = 1;
+                                        cells[3][j].setAnim(1);
+                                        cells[2][j].setAnim(1);
 
                                         /////////////////////////
                                     }
@@ -287,7 +287,7 @@ public class CellMergeSortHandler {
                                 case 0:
 //                                    Log.d("animLog","[вправо]| | |x|x|");
                                     //////////////////////////
-                                    cells[3][j].anim = 1;
+                                    cells[3][j].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -298,34 +298,34 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вправо]|x|x|y| |");
                                     //////////////////////////
-                                    cells[3][j].anim = 1;
-                                    cells[2][j].anim = 2;
+                                    cells[3][j].setAnim(1);
+                                    cells[2][j].setAnim(2);
 
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вправо]|x|x| |y|");
                                     //////////////////////////
-                                    cells[2][j].anim = 2;
+                                    cells[2][j].setAnim(2);
 
                                     /////////////////////////
                                     break;
                                 case 1:
-                                    if((cells[0][j].moving != 0)
-                                            && (cells[1][j].moving == 0)
-                                            && (cells[2][j].moving == 0)
-                                            && (cells[2][j].moving == 0)
-                                            && ((cells[0][j].moving*2) == cells[2][j].merged)){
+                                    if((cells[0][j].getMoving() != 0)
+                                            && (cells[1][j].getMoving() == 0)
+                                            && (cells[2][j].getMoving() == 0)
+                                            && (cells[2][j].getMoving() == 0)
+                                            && ((cells[0][j].getMoving() *2) == cells[2][j].getMerged())){
 //                                        Log.d("animLog","[вправо]|x| |x|y|");
                                         //////////////////////////
-                                        cells[2][j].anim = 2;
+                                        cells[2][j].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вправо]|y|x|x|z|");
                                         //////////////////////////
-                                        cells[1][j].anim = 1;
-                                        cells[2][j].anim = 1;
+                                        cells[1][j].setAnim(1);
+                                        cells[2][j].setAnim(1);
 
                                         /////////////////////////
                                     }
@@ -333,7 +333,7 @@ public class CellMergeSortHandler {
                                 case 0:
 //                                    Log.d("animLog","[вправо]| |x|x|y|");
                                     //////////////////////////
-                                    cells[2][j].anim = 1;
+                                    cells[2][j].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -342,7 +342,7 @@ public class CellMergeSortHandler {
                         case 1:
 //                            Log.d("animLog","[вправо]|x|x|y|z|");
                             //////////////////////////
-                            cells[1][j].anim = 1;
+                            cells[1][j].setAnim(1);
 
                             /////////////////////////
                             break;
@@ -363,10 +363,10 @@ public class CellMergeSortHandler {
             int moveCount = 0;
             int mergePosition = 0;
             for (int i = 0; i < 4; i++) {
-                if(cells[i][j].merged != 0){
+                if(cells[i][j].getMerged() != 0){
                     mergeCount = mergeCount + 1;
                 }
-                if(cells[i][j].moving != 0){
+                if(cells[i][j].getMoving() != 0){
                     moveCount = moveCount + 1;
                 }
             }
@@ -374,14 +374,14 @@ public class CellMergeSortHandler {
                 case 2:
 //                    Log.d("animLog","[вліво]|y|y|x|x|");
                     //////////////////////////
-                    cells[0][j].anim = 1;
-                    cells[1][j].anim = 2;
+                    cells[0][j].setAnim(1);
+                    cells[1][j].setAnim(2);
 
                     /////////////////////////
                     break;
                 case 1:
                     for (int i = 0; i < 4; i++) {
-                        if(cells[i][j].merged != 0){
+                        if(cells[i][j].getMerged() != 0){
                             mergePosition = i;
                         }
                     }
@@ -389,89 +389,89 @@ public class CellMergeSortHandler {
                         case 0:
                             switch(moveCount){
                                 case 3:
-                                    if(cells[0][j].merged == (cells[1][j].moving*2)
-                                            && cells[3][j].moving == cells[1][j].getId()
-                                            && cells[2][j].moving == cells[1][j].getId()){
+                                    if(cells[0][j].getMerged() == (cells[1][j].getMoving() *2)
+                                            && cells[3][j].getMoving() == cells[1][j].getId()
+                                            && cells[2][j].getMoving() == cells[1][j].getId()){
 //                                        Log.d("animLog","[вліво]| |x|x|y|");
                                         //////////////////////////
-                                        cells[0][j].anim = 2;
-                                        cells[1][j].anim = 2;
+                                        cells[0][j].setAnim(2);
+                                        cells[1][j].setAnim(2);
 
                                         /////////////////////////
-                                    } else if((lastID[3][j]*2) == cells[0][j].merged
-                                            && (lastID[1][j]*2) == cells[0][j].merged){
+                                    } else if((lastID[3][j]*2) == cells[0][j].getMerged()
+                                            && (lastID[1][j]*2) == cells[0][j].getMerged()){
 //                                        Log.d("animLog","[вліво]| |x| |x|");
                                         //////////////////////////
-                                        cells[0][j].anim = 3;
+                                        cells[0][j].setAnim(3);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]| | |x|x|");
                                         //////////////////////////
-                                        cells[0][j].anim = 3;
+                                        cells[0][j].setAnim(3);
 
                                         /////////////////////////
                                     }
                                     break;
                                 case 2:
-                                    if((cells[2][j].moving*2) == cells[0][j].merged
-                                            && (cells[1][j].moving*2) == cells[0][j].merged){
+                                    if((cells[2][j].getMoving() *2) == cells[0][j].getMerged()
+                                            && (cells[1][j].getMoving() *2) == cells[0][j].getMerged()){
 //                                        Log.d("animLog","[вліво]| |x|x| |");
                                         //////////////////////////
-                                        cells[0][j].anim = 2;
+                                        cells[0][j].setAnim(2);
 
                                         /////////////////////////
-                                    } else if(cells[3][j].moving != cells[2][j].moving){
+                                    } else if(cells[3][j].getMoving() != cells[2][j].getMoving()){
 //                                        Log.d("animLog","[вліво]|x|x|y|z|");
                                         //////////////////////////
-                                        cells[0][j].anim = 1;
-                                        cells[1][j].anim = 1;
-                                        cells[2][j].anim = 1;
+                                        cells[0][j].setAnim(1);
+                                        cells[1][j].setAnim(1);
+                                        cells[2][j].setAnim(1);
                                         /////////////////////////
-                                    } else if((lastID[1][j]*2) == cells[0][j].merged
-                                            && (lastID[0][j]*2) == cells[0][j].merged){
+                                    } else if((lastID[1][j]*2) == cells[0][j].getMerged()
+                                            && (lastID[0][j]*2) == cells[0][j].getMerged()){
 //                                        Log.d("animLog","[вліво]|x|x| |y|");
                                         //////////////////////////
-                                        cells[0][j].anim = 1;
-                                        cells[1][j].anim = 2;
+                                        cells[0][j].setAnim(1);
+                                        cells[1][j].setAnim(2);
                                         /////////////////////////
-                                    } else if((lastID[2][j]*2) == cells[0][j].merged
-                                            && (lastID[0][j]*2) == cells[0][j].merged){
+                                    } else if((lastID[2][j]*2) == cells[0][j].getMerged()
+                                            && (lastID[0][j]*2) == cells[0][j].getMerged()){
 //                                        Log.d("animLog","[вліво]|x| |x|y|");
                                         //////////////////////////
-                                        cells[0][j].anim = 2;
-                                        cells[1][j].anim = 2;
+                                        cells[0][j].setAnim(2);
+                                        cells[1][j].setAnim(2);
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]|x| | |x|");
                                         //////////////////////////
-                                        cells[0][j].anim = 3;
+                                        cells[0][j].setAnim(3);
                                         /////////////////////////
                                     }
                                     break;
                                 case 1:
-                                    if((cells[2][j].moving != 0)
-                                            && ((cells[2][j].moving*2) == cells[0][j].merged)
+                                    if((cells[2][j].getMoving() != 0)
+                                            && ((cells[2][j].getMoving() *2) == cells[0][j].getMerged())
                                             && (cells[3][j].getId() == 0)
                                             && (cells[2][j].getId() == 0)
                                             && (cells[1][j].getId() == 0)){
 //                                        Log.d("animLog","[вліво]|x| |x| |");
                                         //////////////////////////
-                                        cells[0][j].anim = 2;
+                                        cells[0][j].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]|x|x|y| |");
                                         //////////////////////////
-                                        cells[0][j].anim = 1;
-                                        cells[1][j].anim = 1;
+                                        cells[0][j].setAnim(1);
+                                        cells[1][j].setAnim(1);
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вліво]|x|x| | |");
                                     //////////////////////////
-                                    cells[0][j].anim = 1;
+                                    cells[0][j].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -482,40 +482,40 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вліво]| |y|x|x|");
                                     //////////////////////////
-                                    cells[0][j].anim = 1;
-                                    cells[1][j].anim = 2;
+                                    cells[0][j].setAnim(1);
+                                    cells[1][j].setAnim(2);
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вліво]|y| |x|x|");
                                     //////////////////////////
-                                    cells[1][j].anim = 2;
+                                    cells[1][j].setAnim(2);
 
                                     /////////////////////////
                                     break;
                                 case 1:
-                                    if((cells[3][j].moving != 0)
-                                            && (cells[2][j].moving == 0)
-                                            && (cells[1][j].moving == 0)
-                                            && (cells[1][j].moving == 0)
-                                            && ((cells[3][j].moving*2) == cells[1][j].merged)){
+                                    if((cells[3][j].getMoving() != 0)
+                                            && (cells[2][j].getMoving() == 0)
+                                            && (cells[1][j].getMoving() == 0)
+                                            && (cells[1][j].getMoving() == 0)
+                                            && ((cells[3][j].getMoving() *2) == cells[1][j].getMerged())){
 //                                        Log.d("animLog","[вліво]|y|x| |x|");
                                         //////////////////////////
-                                        cells[1][j].anim = 2;
+                                        cells[1][j].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вліво]|z|x|x|y|");
                                         //////////////////////////
-                                        cells[1][j].anim = 1;
-                                        cells[2][j].anim = 1;
+                                        cells[1][j].setAnim(1);
+                                        cells[2][j].setAnim(1);
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вліво]|y|x|x| |");
                                     //////////////////////////
-                                    cells[1][j].anim = 1;
+                                    cells[1][j].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -524,7 +524,7 @@ public class CellMergeSortHandler {
                         case 2:
 //                            Log.d("animLog","[вліво]|z|y|x|x|");
                             //////////////////////////
-                            cells[2][j].anim = 1;
+                            cells[2][j].setAnim(1);
 
                             /////////////////////////
                             break;
@@ -545,10 +545,10 @@ public class CellMergeSortHandler {
             int moveCount = 0;
             int mergePosition = 0;
             for (int i = 0; i < 4; i++) {
-                if(cells[j][i].merged != 0){
+                if(cells[j][i].getMerged() != 0){
                     mergeCount = mergeCount + 1;
                 }
-                if(cells[j][i].moving != 0){
+                if(cells[j][i].getMoving() != 0){
                     moveCount = moveCount + 1;
                 }
             }
@@ -556,14 +556,14 @@ public class CellMergeSortHandler {
                 case 2:
 //                    Log.d("animLog","[вниз]|x|x|y|y|");
                     //////////////////////////
-                    cells[j][3].anim = 1;
-                    cells[j][2].anim = 2;
+                    cells[j][3].setAnim(1);
+                    cells[j][2].setAnim(2);
 
                     /////////////////////////
                     break;
                 case 1:
                     for (int i = 0; i < 4; i++) {
-                        if(cells[j][i].merged != 0){
+                        if(cells[j][i].getMerged() != 0){
                             mergePosition = i;
                         }
                     }
@@ -571,93 +571,93 @@ public class CellMergeSortHandler {
                         case 3:
                             switch(moveCount){
                                 case 3:
-                                    if(cells[j][3].merged == (cells[j][2].moving*2)
-                                            && cells[j][0].moving == cells[j][2].getId()
-                                            && cells[j][1].moving == cells[j][2].getId()){
+                                    if(cells[j][3].getMerged() == (cells[j][2].getMoving() *2)
+                                            && cells[j][0].getMoving() == cells[j][2].getId()
+                                            && cells[j][1].getMoving() == cells[j][2].getId()){
 //                                        Log.d("animLog","[вниз]|y|x|x| |");
                                         //////////////////////////
-                                        cells[j][3].anim = 2;
-                                        cells[j][2].anim = 2;
+                                        cells[j][3].setAnim(2);
+                                        cells[j][2].setAnim(2);
 
                                         /////////////////////////
-                                    } else if((lastID[j][0]*2) == cells[j][3].merged
-                                            && (lastID[j][2]*2) == cells[j][3].merged){
+                                    } else if((lastID[j][0]*2) == cells[j][3].getMerged()
+                                            && (lastID[j][2]*2) == cells[j][3].getMerged()){
 //                                        Log.d("animLog","[вниз]|x| |x| |");
                                         //////////////////////////
-                                        cells[j][3].anim = 3;
+                                        cells[j][3].setAnim(3);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]|x|x| | |");
                                         //////////////////////////
-                                        cells[j][3].anim = 3;
+                                        cells[j][3].setAnim(3);
 
                                         /////////////////////////
                                     }
                                     break;
                                 case 2:
-                                    if((cells[j][1].moving*2) == cells[j][3].merged
-                                            && (cells[j][2].moving*2) == cells[j][3].merged){
+                                    if((cells[j][1].getMoving() *2) == cells[j][3].getMerged()
+                                            && (cells[j][2].getMoving() *2) == cells[j][3].getMerged()){
 //                                        Log.d("animLog","[вниз]| |x|x| |");
                                         //////////////////////////
-                                        cells[j][3].anim = 2;
+                                        cells[j][3].setAnim(2);
 
                                         /////////////////////////
-                                    } else if(cells[j][0].moving != cells[j][1].moving){
+                                    } else if(cells[j][0].getMoving() != cells[j][1].getMoving()){
 //                                        System.out.println("4. Ця комбінація: |z|y|x|x|");
 //                                        Log.d("animLog","[вниз]|z|y|x|x|");
                                         //////////////////////////
-                                        cells[j][3].anim = 1;
-                                        cells[j][2].anim = 1;
-                                        cells[j][1].anim = 1;
+                                        cells[j][3].setAnim(1);
+                                        cells[j][2].setAnim(1);
+                                        cells[j][1].setAnim(1);
 
                                         /////////////////////////
-                                    } else if((lastID[j][2]*2) == cells[j][3].merged
-                                            && (lastID[j][3]*2) == cells[j][3].merged){
+                                    } else if((lastID[j][2]*2) == cells[j][3].getMerged()
+                                            && (lastID[j][3]*2) == cells[j][3].getMerged()){
 //                                        Log.d("animLog","[вниз]|y| |x|x|");
                                         //////////////////////////
-                                        cells[j][3].anim = 1;
-                                        cells[j][2].anim = 2;
+                                        cells[j][3].setAnim(1);
+                                        cells[j][2].setAnim(2);
 
                                         /////////////////////////
-                                    } else if((lastID[j][1]*2) == cells[j][3].merged
-                                            && (lastID[j][3]*2) == cells[j][3].merged){
+                                    } else if((lastID[j][1]*2) == cells[j][3].getMerged()
+                                            && (lastID[j][3]*2) == cells[j][3].getMerged()){
 //                                        Log.d("animLog","[вниз]|y|x| |x|");
                                         //////////////////////////
-                                        cells[j][3].anim = 2;
-                                        cells[j][2].anim = 2;
+                                        cells[j][3].setAnim(2);
+                                        cells[j][2].setAnim(2);
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]|x| | |x|");
                                         //////////////////////////
-                                        cells[j][3].anim = 3;
+                                        cells[j][3].setAnim(3);
 
                                         /////////////////////////
                                     }
                                     break;
                                 case 1:
-                                    if((cells[j][1].moving != 0)
-                                            && ((cells[j][1].moving*2) == cells[j][3].merged)
+                                    if((cells[j][1].getMoving() != 0)
+                                            && ((cells[j][1].getMoving() *2) == cells[j][3].getMerged())
                                             && (cells[j][0].getId() == 0)
                                             && (cells[j][1].getId() == 0)
                                             && (cells[j][2].getId() == 0)){
 //                                        Log.d("animLog","[вниз]| |x| |x|");
                                         //////////////////////////
-                                        cells[j][3].anim = 2;
+                                        cells[j][3].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]| |y|x|x|");
                                         //////////////////////////
-                                        cells[j][3].anim = 1;
-                                        cells[j][2].anim = 1;
+                                        cells[j][3].setAnim(1);
+                                        cells[j][2].setAnim(1);
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вниз]| | |x|x|");
                                     //////////////////////////
-                                    cells[j][3].anim = 1;
+                                    cells[j][3].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -668,40 +668,40 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вниз]|x|x|y| |");
                                     //////////////////////////
-                                    cells[j][3].anim = 1;
-                                    cells[j][2].anim = 2;
+                                    cells[j][3].setAnim(1);
+                                    cells[j][2].setAnim(2);
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вниз]|x|x| |y|");
                                     //////////////////////////
-                                    cells[j][2].anim = 2;
+                                    cells[j][2].setAnim(2);
 
                                     /////////////////////////
                                     break;
                                 case 1:
-                                    if((cells[j][0].moving != 0)
-                                            && (cells[j][1].moving == 0)
-                                            && (cells[j][2].moving == 0)
-                                            && (cells[j][3].moving == 0)
-                                            && ((cells[j][0].moving*2) == cells[j][2].merged)){
+                                    if((cells[j][0].getMoving() != 0)
+                                            && (cells[j][1].getMoving() == 0)
+                                            && (cells[j][2].getMoving() == 0)
+                                            && (cells[j][3].getMoving() == 0)
+                                            && ((cells[j][0].getMoving() *2) == cells[j][2].getMerged())){
 //                                        Log.d("animLog","[вниз]|x| |x|y|");
                                         //////////////////////////
-                                        cells[j][2].anim = 2;
+                                        cells[j][2].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вниз]|y|x|x|z|");
                                         //////////////////////////
-                                        cells[j][2].anim = 1;
-                                        cells[j][1].anim = 1;
+                                        cells[j][2].setAnim(1);
+                                        cells[j][1].setAnim(1);
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вниз]| |x|x|y|");
                                     //////////////////////////
-                                    cells[j][2].anim = 1;
+                                    cells[j][2].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -710,7 +710,7 @@ public class CellMergeSortHandler {
                         case 1:
 //                            Log.d("animLog","[вниз]|x|x|y|z|");
                             //////////////////////////
-                            cells[j][1].anim = 1;
+                            cells[j][1].setAnim(1);
 
                             /////////////////////////
                             break;
@@ -731,10 +731,10 @@ public class CellMergeSortHandler {
             int moveCount = 0;
             int mergePosition = 0;
             for (int i = 0; i < 4; i++) {
-                if(cells[j][i].merged != 0){
+                if(cells[j][i].getMerged() != 0){
                     mergeCount = mergeCount + 1;
                 }
-                if(cells[j][i].moving != 0){
+                if(cells[j][i].getMoving() != 0){
                     moveCount = moveCount + 1;
                 }
             }
@@ -742,14 +742,14 @@ public class CellMergeSortHandler {
                 case 2:
 //                    Log.d("animLog","[вверх]|y|y|x|x|");
                     //////////////////////////
-                    cells[j][0].anim = 1;
-                    cells[j][1].anim = 2;
+                    cells[j][0].setAnim(1);
+                    cells[j][1].setAnim(2);
 
                     /////////////////////////
                     break;
                 case 1:
                     for (int i = 0; i < 4; i++) {
-                        if(cells[i][j].merged != 0){
+                        if(cells[i][j].getMerged() != 0){
                             mergePosition = i;
                         }
                     }
@@ -757,90 +757,90 @@ public class CellMergeSortHandler {
                         case 0:
                             switch(moveCount){
                                 case 3:
-                                    if(cells[j][0].merged == (cells[j][1].moving*2)
-                                            && cells[j][3].moving == cells[j][1].getId()
-                                            && cells[j][2].moving == cells[j][1].getId()){
+                                    if(cells[j][0].getMerged() == (cells[j][1].getMoving() *2)
+                                            && cells[j][3].getMoving() == cells[j][1].getId()
+                                            && cells[j][2].getMoving() == cells[j][1].getId()){
 //                                        Log.d("animLog","[вверх]| |x|x|y|");
                                         //////////////////////////
-                                        cells[j][0].anim = 2;
-                                        cells[j][1].anim = 2;
+                                        cells[j][0].setAnim(2);
+                                        cells[j][1].setAnim(2);
 
                                         /////////////////////////
-                                    } else if((lastID[j][3]*2) == cells[j][0].merged
-                                            && (lastID[j][1]*2) == cells[j][0].merged){
+                                    } else if((lastID[j][3]*2) == cells[j][0].getMerged()
+                                            && (lastID[j][1]*2) == cells[j][0].getMerged()){
 //                                        Log.d("animLog","[вверх]| |x| |x|");
                                         //////////////////////////
-                                        cells[j][0].anim = 3;
+                                        cells[j][0].setAnim(3);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вверх]| | |x|x|");
                                         //////////////////////////
-                                        cells[j][0].anim = 3;
+                                        cells[j][0].setAnim(3);
 
                                         /////////////////////////
                                     }
                                     break;
                                 case 2:
-                                    if((cells[j][2].moving*2) == cells[j][0].merged
-                                            && (cells[j][1].moving*2) == cells[j][0].merged){
+                                    if((cells[j][2].getMoving() *2) == cells[j][0].getMerged()
+                                            && (cells[j][1].getMoving() *2) == cells[j][0].getMerged()){
 //                                        Log.d("animLog","[вверх]| |x|x| |");
                                         //////////////////////////
-                                        cells[j][0].anim = 2;
+                                        cells[j][0].setAnim(2);
 
                                         /////////////////////////
-                                    } else if(cells[j][3].moving != cells[j][2].moving){
+                                    } else if(cells[j][3].getMoving() != cells[j][2].getMoving()){
 //                                        Log.d("animLog","[вверх]|x|x|y|z|");
                                         //////////////////////////
-                                        cells[j][0].anim = 1;
-                                        cells[j][1].anim = 1;
-                                        cells[j][2].anim = 1;
+                                        cells[j][0].setAnim(1);
+                                        cells[j][1].setAnim(1);
+                                        cells[j][2].setAnim(1);
                                         /////////////////////////
-                                    } else if((lastID[j][1]*2) == cells[j][0].merged
-                                            && (lastID[j][0]*2) == cells[j][0].merged){
+                                    } else if((lastID[j][1]*2) == cells[j][0].getMerged()
+                                            && (lastID[j][0]*2) == cells[j][0].getMerged()){
 //                                        Log.d("animLog","[вверх]|x|x| |y|");
                                         //////////////////////////
-                                        cells[j][0].anim = 1;
-                                        cells[j][1].anim = 2;
+                                        cells[j][0].setAnim(1);
+                                        cells[j][1].setAnim(2);
                                         /////////////////////////
-                                    } else if((lastID[j][2]*2) == cells[j][0].merged
-                                            && (lastID[j][0]*2) == cells[j][0].merged){
+                                    } else if((lastID[j][2]*2) == cells[j][0].getMerged()
+                                            && (lastID[j][0]*2) == cells[j][0].getMerged()){
 //                                        Log.d("animLog","[вверх]|x| |x|y|");
                                         //////////////////////////
-                                        cells[j][0].anim = 2;
-                                        cells[j][1].anim = 2;
+                                        cells[j][0].setAnim(2);
+                                        cells[j][1].setAnim(2);
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вверх]|x| | |x|");
                                         //////////////////////////
-                                        cells[j][0].anim = 3;
+                                        cells[j][0].setAnim(3);
 
                                         /////////////////////////
                                     }
                                     break;
                                 case 1:
-                                    if((cells[j][2].moving != 0)
-                                            && ((cells[j][2].moving*2) == cells[j][0].merged)
+                                    if((cells[j][2].getMoving() != 0)
+                                            && ((cells[j][2].getMoving() *2) == cells[j][0].getMerged())
                                             && (cells[j][3].getId() == 0)
                                             && (cells[j][2].getId() == 0)
                                             && (cells[j][1].getId() == 0)){
 //                                        Log.d("animLog","[вверх]|x| |x| |");
                                         //////////////////////////
-                                        cells[j][0].anim = 2;
+                                        cells[j][0].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вверх]|x|x|y| |");
                                         //////////////////////////
-                                        cells[j][0].anim = 1;
-                                        cells[j][1].anim = 1;
+                                        cells[j][0].setAnim(1);
+                                        cells[j][1].setAnim(1);
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вверх]|x|x| | |");
                                     //////////////////////////
-                                    cells[j][0].anim = 1;
+                                    cells[j][0].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -851,40 +851,40 @@ public class CellMergeSortHandler {
                                 case 3:
 //                                    Log.d("animLog","[вверх]| |y|x|x|");
                                     //////////////////////////
-                                    cells[j][0].anim = 1;
-                                    cells[j][1].anim = 2;
+                                    cells[j][0].setAnim(1);
+                                    cells[j][1].setAnim(2);
                                     /////////////////////////
                                     break;
                                 case 2:
 //                                    Log.d("animLog","[вверх]|y| |x|x|");
                                     //////////////////////////
-                                    cells[j][1].anim = 2;
+                                    cells[j][1].setAnim(2);
 
                                     /////////////////////////
                                     break;
                                 case 1:
-                                    if((cells[j][3].moving != 0)
-                                            && (cells[j][2].moving == 0)
-                                            && (cells[j][1].moving == 0)
-                                            && (cells[j][0].moving == 0)
-                                            && ((cells[j][3].moving*2) == cells[j][1].merged)){
+                                    if((cells[j][3].getMoving() != 0)
+                                            && (cells[j][2].getMoving() == 0)
+                                            && (cells[j][1].getMoving() == 0)
+                                            && (cells[j][0].getMoving() == 0)
+                                            && ((cells[j][3].getMoving() *2) == cells[j][1].getMerged())){
 //                                        Log.d("animLog","[вверх]|y|x| |x|");
                                         //////////////////////////
-                                        cells[j][1].anim = 2;
+                                        cells[j][1].setAnim(2);
 
                                         /////////////////////////
                                     } else {
 //                                        Log.d("animLog","[вверх]|z|x|x|y|");
                                         //////////////////////////
-                                        cells[j][1].anim = 1;
-                                        cells[j][2].anim = 1;
+                                        cells[j][1].setAnim(1);
+                                        cells[j][2].setAnim(1);
                                         /////////////////////////
                                     }
                                     break;
                                 case 0:
 //                                    Log.d("animLog","[вверх]|y|x|x| |");
                                     //////////////////////////
-                                    cells[j][1].anim = 1;
+                                    cells[j][1].setAnim(1);
 
                                     /////////////////////////
                                     break;
@@ -893,7 +893,7 @@ public class CellMergeSortHandler {
                         case 2:
 //                            Log.d("animLog","[вверх]|z|y|x|x|");
                             //////////////////////////
-                            cells[j][2].anim = 1;
+                            cells[j][2].setAnim(1);
 
                             /////////////////////////
                             break;
@@ -912,9 +912,9 @@ public class CellMergeSortHandler {
     private static void resetAnimValues(Cell[][] cells){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                cells[j][i].moving = 0;
-                cells[j][i].merged = 0;
-                cells[j][i].anim = 0;
+                cells[j][i].setMoving(0);
+                cells[j][i].setMerged(0);
+                cells[j][i].setAnim(0);
                 lastID[j][i] = 0;
             }
         }
@@ -923,10 +923,10 @@ public class CellMergeSortHandler {
     private static void moveCellsX(Cell[][] cells){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if(cells[j][i].anim != 0){
+                if(cells[j][i].getAnim() != 0){
                     cells[j][i].calculateMoveX();
                 } else {
-                    cells[j][i].moveX = 0;
+                    cells[j][i].setMoveX(0);
                 }
             }
         }
@@ -935,17 +935,17 @@ public class CellMergeSortHandler {
     private static void moveCellsY(Cell[][] cells){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                if (cells[j][i].anim != 0){
+                if (cells[j][i].getAnim() != 0){
                     cells[j][i].calculateMoveY();
                 } else{
-                    cells[j][i].moveY = 0;
+                    cells[j][i].setMoveY(0);
                 }
             }
         }
     }
 
     public static Cell[][] moveAllDown(Cell[][] cells, CellManager cellManager){
-        CellManager.swipeDirection = Direction.DOWN;
+        CellManager.setSwipeDirection(Direction.DOWN);
         resetAnimValues(cells);
         saveLastID(cells);
         for (int i = 0; i <cells.length ; i++) {
@@ -957,7 +957,7 @@ public class CellMergeSortHandler {
     }
 
     public static Cell[][] moveAllUp(Cell[][] cells, CellManager cellManager){
-        CellManager.swipeDirection = Direction.UP;
+        CellManager.setSwipeDirection(Direction.UP);
         resetAnimValues(cells);
         saveLastID(cells);
         for (int i = 0; i <cells.length ; i++) {
@@ -969,7 +969,7 @@ public class CellMergeSortHandler {
     }
 
     public static Cell[][] moveAllLeft(Cell[][] cells, CellManager cellManager){
-        CellManager.swipeDirection = Direction.LEFT;
+        CellManager.setSwipeDirection(Direction.LEFT);
         resetAnimValues(cells);
         saveLastID(cells);
         Cell[] line = new Cell[4];
@@ -988,7 +988,7 @@ public class CellMergeSortHandler {
     }
 
     public static Cell[][] moveAllRight(Cell[][] cells, CellManager cellManager){
-        CellManager.swipeDirection = Direction.RIGHT;
+        CellManager.setSwipeDirection(Direction.RIGHT);
         resetAnimValues(cells);
         saveLastID(cells);
         Cell[] line = new Cell[4];
@@ -1030,7 +1030,7 @@ public class CellMergeSortHandler {
                         int buf = line[j].getId();
                         line[j].setId(line[j - 1].getId()) ;
                         line[j - 1].setId(buf);
-                        line[j - 1].moving = line[j].getId();
+                        line[j - 1].setMoving(line[j].getId());
                     }
                 }
             }
@@ -1044,7 +1044,7 @@ public class CellMergeSortHandler {
                 if (line[j].getId() == line[j-1].getId()){
                     if(line[j-1].getId() != 0){
                         line[j].setId(line[j].getId() + line[j-1].getId());
-                        line[j].merged = line[j].getId();
+                        line[j].setMerged(line[j].getId());
                         if(line[j].getId() > 0){
                             line[j].setFresh(true);
                             line[j].setShearAnim(line[j].getShearMax());
@@ -1066,7 +1066,7 @@ public class CellMergeSortHandler {
                         int buf = line[j].getId();
                         line[j].setId(line[j + 1].getId()) ;
                         line[j + 1].setId(buf);
-                        line[j + 1].moving = line[j].getId();
+                        line[j + 1].setMoving(line[j].getId());
                     }
                 }
             }
@@ -1080,7 +1080,7 @@ public class CellMergeSortHandler {
                 if (line[j].getId() == line[j+1].getId()){
                     if(line[j+1].getId() != 0){
                         line[j].setId(line[j].getId() + line[j+1].getId());
-                        line[j].merged = line[j].getId();
+                        line[j].setMerged(line[j].getId());
                         if(line[j].getId() > 0){
                             line[j].setFresh(true);
                             line[j].setShearAnim(line[j].getShearMax());

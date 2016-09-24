@@ -56,7 +56,7 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
         }
         cellManager = null;
         if (drawThreat!=null){
-            drawThreat.isLoseDialogShow = false;
+            drawThreat.setLoseDialogShow(false);
         }
         drawThreat = null;
     }

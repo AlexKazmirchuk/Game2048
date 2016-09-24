@@ -62,13 +62,12 @@ public class Cell {
 
     //Свойства
     private GameActivity context;
-    private Typeface typeFace;
     private int id;
     private int[] colors = new int[3];
     private boolean locker = true;
     private boolean isFresh = false;
 
-    public int x,y;
+    private int x,y;
     private int posX, posY;  //resizable
     private int sizeX ;      //resizable
     private int sizeY ;      //resizable
@@ -78,11 +77,11 @@ public class Cell {
     private int cellPosY;
 
     //for anim
-    public int moving = 0;
-    public int merged = 0;
-    public int anim = 0;
-    public int moveX = 0;
-    public int moveY = 0;
+    private int moving = 0;
+    private int merged = 0;
+    private int anim = 0;
+    private int moveX = 0;
+    private int moveY = 0;
 
     //for paint
     private Paint rectPaint;
@@ -100,7 +99,7 @@ public class Cell {
     }
 
     private void initComp(GameActivity context) {
-        typeFace = context.getTypeface();
+        Typeface typeFace = context.getTypeface();
         rectPaint = new Paint();
         rightRombPaint = new Paint();
         bottomRombPaint = new Paint();
@@ -120,14 +119,14 @@ public class Cell {
         this.posX = cellPosX;
         this.posY = cellPosY;
 
-        if (CellManager.swipeDirection == Direction.RIGHT){
-            this.posX = cellPosX - moveX;
-        } else if(CellManager.swipeDirection == Direction.LEFT){
-            this.posX = cellPosX + moveX;
-        } else if(CellManager.swipeDirection == Direction.DOWN){
-            this.posY = cellPosY - moveY;
-        } else if(CellManager.swipeDirection == Direction.UP){
-            this.posY = cellPosY + moveY;
+        if (CellManager.getSwipeDirection() == Direction.RIGHT){
+            this.posX = cellPosX - getMoveX();
+        } else if(CellManager.getSwipeDirection() == Direction.LEFT){
+            this.posX = cellPosX + getMoveX();
+        } else if(CellManager.getSwipeDirection() == Direction.DOWN){
+            this.posY = cellPosY - getMoveY();
+        } else if(CellManager.getSwipeDirection() == Direction.UP){
+            this.posY = cellPosY + getMoveY();
         }
 
         if(this.id != 0){
@@ -313,23 +312,51 @@ public class Cell {
     }
 
     public void calculateMoveX(){
-        this.moveX = sizeX*anim + borderX*anim;
+        this.setMoveX(sizeX* getAnim() + borderX* getAnim());
     }
 
     public void calculateMoveY(){
-        this.moveY = sizeY*anim + borderY*anim;
+        this.setMoveY(sizeY* getAnim() + borderY* getAnim());
     }
 
-    public void setShearMax(int shearMax) {
-        this.shearMax = shearMax;
+    public int getMoving() {
+        return moving;
     }
 
-    public int getPosX() {
-        return posX;
+    public void setMoving(int moving) {
+        this.moving = moving;
     }
 
-    public int getPosY() {
-        return posY;
+    public int getMerged() {
+        return merged;
+    }
+
+    public void setMerged(int merged) {
+        this.merged = merged;
+    }
+
+    public int getAnim() {
+        return anim;
+    }
+
+    public void setAnim(int anim) {
+        this.anim = anim;
+    }
+
+    public int getMoveX() {
+        return moveX;
+    }
+
+    public void setMoveX(int moveX) {
+        this.moveX = moveX;
+    }
+
+    public int getMoveY() {
+        return moveY;
+    }
+
+    public void setMoveY(int moveY) {
+        this.moveY = moveY;
     }
 }
 
