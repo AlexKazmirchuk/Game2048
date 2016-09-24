@@ -83,7 +83,7 @@ public class DrawThreat extends Thread {
         canvas.drawColor(Color.parseColor("#137b82"));
         if (!getCellManager().isLose()){
             cellManager.draw(canvas);
-            if(2048 == cellManager.getTheLargestNumber() && isWinActivityShowed()){
+            if(32 == cellManager.getTheLargestNumber() && isWinActivityShowed()){
                 showWinDialog(cellManager.getScores());
                 setWinActivityShowed(false);
                 context.getGamePreferences().setWinDialogShowed(false);
