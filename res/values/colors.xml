@@ -55,6 +55,17 @@
     <color name="colorRight2048">#3d8a41</color>
     <color name="colorBottom2048">#3d8a41</color>
 
+    <color name="colorOwn4096">#B0BEC5</color>
+    <color name="colorRight4096">#78909C</color>
+    <color name="colorBottom4096">#455A64</color>
+
+    <color name="colorOwn8192">#D4E157</color>
+    <color name="colorRight8192">#C0CA33</color>
+    <color name="colorBottom8192">#9E9D24</color>
+
+    <color name="colorOwn16384">#C5E1A5</color>
+    <color name="colorRight16384">#9CCC65</color>
+    <color name="colorBottom16384">#689F38</color>
     ////////////////end///////////////
     <color name="info_panel_text_color">#EFC130</color>
     <color name="info_panel_text_color1">#e7eae8</color>

@@ -31,6 +31,7 @@ public class Cell {
     public static final int SIDE_SPACE_Y_DIVIDER = 5;
     public static final int SHEAR_MAX_DIVIDER = 7;
     public static final int SHEAR_DIVIDER = 7;
+    public static final int FIVE_SYMBOLS = 5;
 
     private int sideSpaceX; //resizable
     private int sideSpaceY; //resizable
@@ -49,12 +50,14 @@ public class Cell {
     public static final float SHEAR_FOR_TEXT_DIVIDER = 0.4286f;
     public static final float NORMAL_TEXT_SIZE_DIVIDER = 0.5289f;
     public static final float SMALL_TEXT_SIZE_DIVIDER = 0.4223f;
+    public static final float VERY_SMALL_TEXT_SIZE_DIVIDER = 0.3223f;
     public static final float LARGE_TEXT_SIZE_DIVIDER = 0.7512f;
 
     private int textShear = 5;      //resizable
     private int shearForText = 3;   //resizable
     private float normalTextSize = 35.0f; //resizable    35.0f
     private float smallTextSize = 29.0f;  //resizable    29.0f
+    private float verySmallTextSize = 29.0f;  //resizable    29.0f
     private float largeTextSize = 55.0f;  //resizable    55.0f
 
     //Свойства
@@ -262,6 +265,7 @@ public class Cell {
 
         normalTextSize = new BigDecimal(sizeX * NORMAL_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
         smallTextSize = new BigDecimal(sizeX * SMALL_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
+        verySmallTextSize = new BigDecimal(sizeX * VERY_SMALL_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
         largeTextSize = new BigDecimal(sizeX * LARGE_TEXT_SIZE_DIVIDER).setScale(0, RoundingMode.DOWN).floatValue();
     }
 
@@ -271,6 +275,8 @@ public class Cell {
                 return normalTextSize;
             } else if (textLength == FOUR_SYMBOLS){
                 return smallTextSize;
+            } else if (textLength == FIVE_SYMBOLS){
+                return verySmallTextSize;
             } else {
                 return largeTextSize;
             }
