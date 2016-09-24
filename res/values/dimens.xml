@@ -30,7 +30,7 @@
     <dimen name="menu_container_padding_right">17dp</dimen>
     <dimen name="menu_container_padding_top">12dp</dimen>
     <dimen name="resume_btn_padding_bottom">10dp</dimen>
-    <dimen name="menu_button_text_size">25sp</dimen>
+    <dimen name="menu_button_text_size">28sp</dimen>
     <dimen name="restart_btn_padding_bottom">10dp</dimen>
     <dimen name="mode_btn_padding_bottom">10dp</dimen>
     <dimen name="music_btn_padding_bottom">10dp</dimen>

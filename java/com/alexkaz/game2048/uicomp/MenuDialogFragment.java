@@ -45,6 +45,11 @@ public class MenuDialogFragment extends DialogFragment implements View.OnClickLi
         clearResultsBtn.setOnClickListener(this);
         musicBtn.setOnClickListener(this);
 
+        resumeBtn.setTypeface(gameActivity.getTypeface());
+        restartBtn.setTypeface(gameActivity.getTypeface());
+        clearResultsBtn.setTypeface(gameActivity.getTypeface());
+        musicBtn.setTypeface(gameActivity.getTypeface());
+
         gamePreferences = new GamePreferences(getActivity());
     }
 
