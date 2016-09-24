@@ -13,6 +13,7 @@ public class GamePreferences {
     public static final String GAME_SCORES = "gameScores";
     public static final String CELLS_ID = "cellsID";
     public static final String CELLS_ID_DEFAULT = "0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0";
+    public static final String WIN_DIALOG_SHOWED = "isWinDialogShowed";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -29,6 +30,7 @@ public class GamePreferences {
             editor.putInt(MODE_SWITCH,0);
             editor.putInt(GAME_SCORES,0);
             editor.putInt(BEST_SCORES,0);
+            editor.putBoolean(WIN_DIALOG_SHOWED,true);
             editor.putString(CELLS_ID,CELLS_ID_DEFAULT);
             editor.apply();
         }
@@ -80,5 +82,14 @@ public class GamePreferences {
     public void setMode(int mode){
         editor.putInt(MODE_SWITCH,mode);
         editor.commit();
+    }
+
+    public void setWinDialogShowed(boolean value){
+        editor.putBoolean(WIN_DIALOG_SHOWED,value);
+        editor.commit();
+    }
+
+    public boolean getWinDialogShowed(){
+        return preferences.getBoolean(WIN_DIALOG_SHOWED,true);
     }
 }

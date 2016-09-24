@@ -12,7 +12,7 @@ public class DrawThreat extends Thread {
 
     private GameActivity context;
     private CellManager cellManager;
-    private boolean isWinActivityShowed  = true;
+    public boolean isWinActivityShowed  = true;
     public boolean isLoseDialogShow = false;
 
     private boolean runFlag = false;
@@ -22,6 +22,7 @@ public class DrawThreat extends Thread {
     public DrawThreat(GameActivity context, SurfaceHolder surfaceHolder){
         this.surfaceHolder = surfaceHolder;
         this.context = context;
+        isWinActivityShowed = context.gamePreferences.getWinDialogShowed();
         prevTime = System.currentTimeMillis();
         cellManager = new CellManager(context);
     }
@@ -85,6 +86,7 @@ public class DrawThreat extends Thread {
             if(2048 == cellManager.getTheLargestNumber() && isWinActivityShowed){
                 showWinDialog(cellManager.getScores());
                 isWinActivityShowed = false;
+                context.gamePreferences.setWinDialogShowed(false);
             }
         }
         else {

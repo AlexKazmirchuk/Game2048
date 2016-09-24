@@ -211,6 +211,8 @@ public class GameActivity extends AppCompatActivity {
 
     public  void restartGame(){
         gameSurfaceView.getDrawThreat().getCellManager().startNewGame();
+        gameSurfaceView.getDrawThreat().isWinActivityShowed = true;
+        gamePreferences.setWinDialogShowed(true);
         setScores(0);
     }
 
