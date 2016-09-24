@@ -1,5 +1,6 @@
 package com.alexkaz.game2048.uicomp;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -11,6 +12,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.alexkaz.game2048.GameActivity;
 import com.alexkaz.game2048.R;
 import com.alexkaz.game2048.gamelogic.CellManager;
 import com.alexkaz.game2048.gamelogic.DrawThreat;
@@ -19,6 +21,7 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
 
     public static final String SCORES = "scores";
     public static final float DIM_AMOUNT = 0.8f;
+    private GameActivity gameActivity;
     private CellManager cellManager;
     private DrawThreat drawThreat;
 
@@ -37,13 +40,17 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setDimAmount(DIM_AMOUNT);
-        View v = inflater.inflate(R.layout.activity_lose,null);
+        View v = inflater.inflate(R.layout.activity_lose,container);
 
         TextView loseTxtScores = (TextView) v.findViewById(R.id.loseTxtScores);
         Button loseRestartBtn = (Button) v.findViewById(R.id.loseRestartBtn);
         loseRestartBtn.setOnClickListener(this);
-        String txtScores = "YOUR SCORE:" + String.valueOf(getArguments().getInt(SCORES, 0));
+        String txtScores = gameActivity.getString(R.string.dialog_text_score) + String.valueOf(getArguments().getInt(SCORES, 0));
         loseTxtScores.setText(txtScores);
+
+        loseTxtScores.setTypeface(gameActivity.getTypeface());
+        loseRestartBtn.setTypeface(gameActivity.getTypeface());
+        ((TextView)v.findViewById(R.id.titleLose)).setTypeface(gameActivity.getTypeface());
 
         return v;
     }
@@ -68,4 +75,12 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
     public void setDrawThreat(DrawThreat drawThreat) {
         this.drawThreat = drawThreat;
     }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        this.gameActivity = (GameActivity) activity;
+    }
+
+
 }
