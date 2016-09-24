@@ -47,9 +47,8 @@ public class Cell {
     public static final String RESOURCE_TYPE = "color";
     public static final float TEXT_SHEAR_DIVIDER = 0.7143f;
     public static final float SHEAR_FOR_TEXT_DIVIDER = 0.4286f;
-    public static final float NORMAL_TEXT_SIZE_DIVIDER = 0.3889f;
-    public static final float SMALL_TEXT_SIZE_DIVIDER = 0.3223f;
-//    public static final float LARGE_TEXT_SIZE_DIVIDER = 0.6112f;
+    public static final float NORMAL_TEXT_SIZE_DIVIDER = 0.5289f;
+    public static final float SMALL_TEXT_SIZE_DIVIDER = 0.4223f;
     public static final float LARGE_TEXT_SIZE_DIVIDER = 0.7512f;
 
     private int textShear = 5;      //resizable
