@@ -1,6 +1,5 @@
 package com.alexkaz.game2048.gamelogic;
 
-
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.view.SurfaceHolder;
@@ -18,6 +17,7 @@ public class DrawThreat extends Thread {
     private boolean runFlag = false;
     private final SurfaceHolder surfaceHolder;
     private long prevTime;
+    private int fieldColor;
 
     public DrawThreat(GameActivity context, SurfaceHolder surfaceHolder){
         this.surfaceHolder = surfaceHolder;
@@ -25,6 +25,7 @@ public class DrawThreat extends Thread {
         setWinActivityShowed(context.getGamePreferences().getWinDialogShowed());
         prevTime = System.currentTimeMillis();
         cellManager = new CellManager(context);
+        fieldColor = Color.parseColor("#137b82");
     }
 
     private void showLoseDialog(int scores) {
@@ -80,7 +81,7 @@ public class DrawThreat extends Thread {
     }
 
     private void drawField(Canvas canvas){
-        canvas.drawColor(Color.parseColor("#137b82"));
+        canvas.drawColor(fieldColor);
         if (!getCellManager().isLose()){
             cellManager.draw(canvas);
             if(2048 == cellManager.getTheLargestNumber() && isWinActivityShowed()){

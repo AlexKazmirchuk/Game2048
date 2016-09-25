@@ -85,8 +85,8 @@ public class Cell {
 
     //for paint
     private Paint rectPaint;
-    private Paint rightRombPaint;
-    private Paint bottomRombPaint;
+    private Paint rightRectPaint;
+    private Paint bottomRectPaint;
     private Paint numberPaint;
 
     //Конструктор
@@ -101,8 +101,8 @@ public class Cell {
     private void initComp(GameActivity context) {
         Typeface typeFace = context.getTypeface();
         rectPaint = new Paint();
-        rightRombPaint = new Paint();
-        bottomRombPaint = new Paint();
+        rightRectPaint = new Paint();
+        bottomRectPaint = new Paint();
         numberPaint = new Paint();
         numberPaint.setTypeface(typeFace);
         numberPaint.setStyle(Paint.Style.FILL);
@@ -137,8 +137,8 @@ public class Cell {
     private void drawMyCell(Canvas g) {
         setColorFromRes(this.id);
         drawRect(g);
-        drawRightRomb(g);
-        drawBottomRomb(g);
+        drawRightRect(g);
+        drawBottomRect(g);
     }
 
     private void drawRect(Canvas g){
@@ -154,8 +154,8 @@ public class Cell {
         drawNumbers(g);
     }
 
-    private void drawRightRomb(Canvas g){
-        rightRombPaint.setColor(colors[COLOR_RIGHT]);
+    private void drawRightRect(Canvas g){
+        rightRectPaint.setColor(colors[COLOR_RIGHT]);
         Path path = new Path();
 
         path.moveTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
@@ -164,11 +164,11 @@ public class Cell {
         path.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY + shearAnim - sideSpaceY);      // left  bottom
         path.lineTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
 
-        g.drawPath(path,rightRombPaint);
+        g.drawPath(path, rightRectPaint);
     }
 
-    private void drawBottomRomb(Canvas g){
-        bottomRombPaint.setColor(colors[COLOR_BOTTOM]);
+    private void drawBottomRect(Canvas g){
+        bottomRectPaint.setColor(colors[COLOR_BOTTOM]);
         Path path = new Path();
 
         path.moveTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
@@ -177,7 +177,7 @@ public class Cell {
         path.lineTo(posX+shear, posY+sizeY+shear- sideSpaceY);                                        // left  bottom
         path.lineTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
 
-        g.drawPath(path,bottomRombPaint);
+        g.drawPath(path, bottomRectPaint);
     }
 
     private void drawNumbers(Canvas g){

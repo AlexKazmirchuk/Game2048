@@ -1,5 +1,6 @@
 package com.alexkaz.game2048.gamelogic;
 
+import android.content.Context;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import com.alexkaz.game2048.GameActivity;
@@ -9,9 +10,9 @@ public class GameSurfaceView extends SurfaceView implements SurfaceHolder.Callba
     private DrawThreat drawThreat;
     private GameActivity context;
 
-    public GameSurfaceView(GameActivity context) {
+    public GameSurfaceView(Context context) {
         super(context);
-        this.context = context;
+        this.context = (GameActivity) context;
         getHolder().addCallback(this);
     }
 

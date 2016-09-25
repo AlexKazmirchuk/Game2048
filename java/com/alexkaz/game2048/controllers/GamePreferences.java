@@ -75,15 +75,6 @@ public class GamePreferences {
         return cellsID;
     }
 
-    public int getMode(){
-        return preferences.getInt(MODE_SWITCH,0);
-    }
-
-    public void setMode(int mode){
-        editor.putInt(MODE_SWITCH,mode);
-        editor.commit();
-    }
-
     public void setWinDialogShowed(boolean value){
         editor.putBoolean(WIN_DIALOG_SHOWED,value);
         editor.commit();
@@ -91,5 +82,14 @@ public class GamePreferences {
 
     public boolean getWinDialogShowed(){
         return preferences.getBoolean(WIN_DIALOG_SHOWED,true);
+    }
+
+    public int getMode(){
+        return preferences.getInt(MODE_SWITCH,0);
+    }
+
+    public void setMode(int mode){
+        editor.putInt(MODE_SWITCH,mode);
+        editor.commit();
     }
 }

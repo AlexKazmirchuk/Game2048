@@ -87,9 +87,16 @@ public class CellManager {
     }
 
     public boolean verifyCells(){
-        for (int i = 0; i <cells.length ; i++) {
-            for (int j = 0; j <cells[i].length ; j++) {
-                if(cells[i][j].getId() == 0){
+//        for (int i = 0; i <cells.length ; i++) {
+//            for (int j = 0; j <cells[i].length ; j++) {
+//                if(cells[i][j].getId() == 0){
+//                    return true;
+//                }
+//            }
+//        }
+        for (Cell[] cell : cells) {
+            for (Cell aCell : cell) {
+                if (aCell.getId() == 0) {
                     return true;
                 }
             }

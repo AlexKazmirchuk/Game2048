@@ -6,7 +6,6 @@ import android.graphics.Path;
 import android.support.v4.content.ContextCompat;
 import com.alexkaz.game2048.GameActivity;
 
-
 public class CellForBG {
 
     //for cell
@@ -40,15 +39,14 @@ public class CellForBG {
     private int borderY ;      //resizable
     private int pivotX ;      //resizable
     private int pivotY ;      //resizable
-    private int left,top,right,bottom;
 
     private Paint rectPaint;
-    private Paint rightRombPaint;
-    private Paint bottomRombPaint;
+    private Paint rightRectPaint;
+    private Paint bottomRectPaint;
 
     private Path rectPath;
-    private Path rightRombPath ;
-    private Path bottomRombPath;
+    private Path rightRectPath;
+    private Path bottomRectPath;
     private Path buff1;
     private Path buff2;
 
@@ -60,12 +58,12 @@ public class CellForBG {
 
     private void initComp() {
         rectPaint = new Paint();
-        rightRombPaint = new Paint();
-        bottomRombPaint = new Paint();
+        rightRectPaint = new Paint();
+        bottomRectPaint = new Paint();
 
         rectPath = new Path();
-        rightRombPath = new Path();
-        bottomRombPath = new Path();
+        rightRectPath = new Path();
+        bottomRectPath = new Path();
 
         buff1 = new Path();
         buff2 = new Path();
@@ -78,8 +76,8 @@ public class CellForBG {
 
             setColorFromRes();
             rectPaint.setColor(colors[COLOR_OWN]);
-            rightRombPaint.setColor(colors[COLOR_RIGHT]);
-            bottomRombPaint.setColor(colors[COLOR_BOTTOM]);
+            rightRectPaint.setColor(colors[COLOR_RIGHT]);
+            bottomRectPaint.setColor(colors[COLOR_BOTTOM]);
 
             initPaths();
             locker = false;
@@ -89,8 +87,8 @@ public class CellForBG {
 
     private void drawMyCell(Canvas g) {
         g.drawPath(rectPath,rectPaint);
-        g.drawPath(rightRombPath,rightRombPaint);
-        g.drawPath(bottomRombPath,bottomRombPaint);
+        g.drawPath(rightRectPath, rightRectPaint);
+        g.drawPath(bottomRectPath, bottomRectPaint);
     }
 
     private void initPaths(){
@@ -101,11 +99,11 @@ public class CellForBG {
                 posY = sizeY*y + borderY*y + pivotY;
 
                 int shearAnim = 0;
-                left = posX + shearAnim;
-                top = posY + shearAnim;
-                right = posX + sizeX - sideSpaceX + shearAnim;
-                bottom = posY+sizeY - sideSpaceY + shearAnim;
-                rectPath.addRect(left,top,right,bottom, Path.Direction.CCW);
+                int left = posX + shearAnim;
+                int top = posY + shearAnim;
+                int right = posX + sizeX - sideSpaceX + shearAnim;
+                int bottom = posY + sizeY - sideSpaceY + shearAnim;
+                rectPath.addRect(left, top, right, bottom, Path.Direction.CCW);
 
                 buff1.reset();
                 buff1.moveTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);                        // left  top
@@ -113,7 +111,7 @@ public class CellForBG {
                 buff1.lineTo(posX+sizeX+shear - sideSpaceX, posY+sizeY + shear - sideSpaceY);               // right bottom
                 buff1.lineTo(posX+sizeX+ shearAnim - sideSpaceX, posY+sizeY + shearAnim - sideSpaceY);      // left  bottom
                 buff1.lineTo(posX + sizeX + shearAnim - sideSpaceX, posY + shearAnim);
-                rightRombPath.addPath(buff1);
+                rightRectPath.addPath(buff1);
 
                 buff2.reset();
                 buff2.moveTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);                           // left  top
@@ -121,7 +119,7 @@ public class CellForBG {
                 buff2.lineTo(posX+sizeX+shear- sideSpaceX, posY+sizeY+shear- sideSpaceY);                    // right bottom
                 buff2.lineTo(posX+shear, posY+sizeY+shear- sideSpaceY);                                        // left  bottom
                 buff2.lineTo(posX + shearAnim, posY+sizeY + shearAnim - sideSpaceY);
-                bottomRombPath.addPath(buff2);
+                bottomRectPath.addPath(buff2);
             }
         }
     }

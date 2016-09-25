@@ -98,11 +98,11 @@ public class SoundController {
         playSound(swipeSound);
     }
 
-    public boolean isMusicEnabled() {
-        return isMusicEnabled;
-    }
-
     public void setMusicEnabled(boolean musicEnabled) {
         isMusicEnabled = musicEnabled;
+    }
+
+    public boolean isMusicEnabled() {
+        return isMusicEnabled;
     }
 }
