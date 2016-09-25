@@ -1,23 +1,26 @@
 <resources>
     <string name="app_name">Game2048</string>
+    <string name="menu_btn_image_content_description">Menu</string>
+    <string name="activity_win_image_content_description">Winning image</string>
+    <string name="activity_lose_image_content_description">Losing image</string>
     <string name="txt_scores_text">SCORES:34765</string>
     <string name="txt_best_scores_text">BEST SCORES:42341</string>
-    <string name="menu_btn_image_content_description">Menu</string>
-    <string name="resume_btn_text">RESUME</string>
-    <string name="restart_btn_text">RESTART</string>
-    <string name="clear_results_btn_text">CLEAR RESULTS</string>
-    <string name="music_btn_text">MUSIC:ON</string>
-    <string name="activity_win_title_text">YOU WON!!!</string>
-    <string name="activity_win_image_content_description">Winning image</string>
     <string name="win_txt_scores_text">YOUR SCORE: 5436</string>
-    <string name="win_ok_btn_text">OK</string>
-    <string name="activity_lose_title_text">YOU LOSE...</string>
-    <string name="activity_lose_image_content_description">Losing image</string>
     <string name="lose_txt_scores_text">YOUR SCORE: 5436</string>
+
+    <!--       for translate       -->
     <string name="lose_restart_btn_text">RESTART</string>
     <string name="music_btn_text_on">MUSIC:ON</string>
+    <string name="activity_lose_title_text">YOU LOSE…</string>
+    <string name="win_ok_btn_text">OK</string>
     <string name="music_btn_text_off">MUSIC:OFF</string>
+    <string name="activity_win_title_text">YOU WON!!!</string>
     <string name="txt_scores_default_text">SCORES:</string>
+    <string name="music_btn_text">MUSIC:ON</string>
     <string name="txt_best_scores_default_text">BEST SCORES:</string>
+    <string name="clear_results_btn_text">CLEAR RESULTS</string>
+    <string name="resume_btn_text">RESUME</string>
+    <string name="restart_btn_text">RESTART</string>
     <string name="dialog_text_score">YOUR SCORE:</string>
+    <!--            end            -->
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="activity_lose_title_text">ВЫ ПРОИГРАЛИ</string>
+    <string name="activity_win_title_text">ВЫ ВЫИГРАЛИ</string>
+    <string name="clear_results_btn_text">ОЧИСТИТЬ</string>
+    <string name="dialog_text_score">ВАШ РЕЗУЛЬТАТ:</string>
+    <string name="lose_restart_btn_text">НОВАЯ ИГРА</string>
+    <string name="music_btn_text">ЗВУК:Вкл</string>
+    <string name="music_btn_text_off">ЗВУК:Выкл</string>
+    <string name="music_btn_text_on">ЗВУК:Вкл</string>
+    <string name="restart_btn_text">НОВАЯ ИГРА</string>
+    <string name="resume_btn_text">ПРОДОЛЖИТЬ</string>
+    <string name="txt_best_scores_default_text">ВАШ РЕКОРД:</string>
+    <string name="txt_scores_default_text">ОЧКИ:</string>
+    <string name="win_ok_btn_text">ОК</string>
+</resources>
