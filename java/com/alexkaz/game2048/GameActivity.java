@@ -1,5 +1,6 @@
 package com.alexkaz.game2048;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.view.GestureDetector;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 import com.alexkaz.game2048.controllers.GamePreferences;
@@ -35,6 +38,7 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game);
         initComp();
         readPrefs();
+        startAnim();
     }
 
     private void initComp(){
@@ -46,12 +50,12 @@ public class GameActivity extends AppCompatActivity {
         txtScores.setTypeface(typeface);
         txtBestScores = (TextView) findViewById(R.id.txtBestScores);
         txtBestScores.setTypeface(typeface);
-        gameSurfaceView = new GameSurfaceView(this);
-        initGameSurface(gameSurfaceView);
+        initGameSurface();
         setSoundController(new SoundController(this));
     }
 
-    private void initGameSurface(GameSurfaceView gameSurfaceView){
+    private void initGameSurface(){
+        gameSurfaceView = new GameSurfaceView(this);
         FrameLayout gameFieldWrapper = (FrameLayout) findViewById(R.id.gameFieldWrapper);
         gameFieldWrapper.addView(gameSurfaceView, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         gameSurfaceView.setOnTouchListener(new View.OnTouchListener() {
@@ -71,6 +75,28 @@ public class GameActivity extends AppCompatActivity {
         txtScores.setText(scoresValue);
         String bestScoresValue = getString(R.string.txt_best_scores_default_text) + bestScores;
         txtBestScores.setText(bestScoresValue);
+    }
+
+    private void startAnim() {
+        FrameLayout gameTitle = (FrameLayout) findViewById(R.id.titleGame);
+        Animation gameTitleAnim = AnimationUtils.loadAnimation(this,R.anim.game_title_anim);
+        gameTitle.startAnimation(gameTitleAnim);
+
+        FrameLayout infoPanel = (FrameLayout) findViewById(R.id.infoPanel);
+        Animation infoPanelAnim = AnimationUtils.loadAnimation(this, R.anim.info_panel_anim);
+        infoPanel.startAnimation(infoPanelAnim);
+
+        FrameLayout txtScoresWrapper = (FrameLayout) findViewById(R.id.txtScoresWrapper);
+        Animation txtScoresAnim = AnimationUtils.loadAnimation(this, R.anim.txt_scores_anim);
+        txtScoresWrapper.startAnimation(txtScoresAnim);
+
+        FrameLayout menuBtnWrapper = (FrameLayout) findViewById(R.id.menuBtnWrapper);
+        Animation menuBtnAnim = AnimationUtils.loadAnimation(this, R.anim.menu_btn_anim);
+        menuBtnWrapper.startAnimation(menuBtnAnim);
+
+        FrameLayout txtBestScoresWrapper = (FrameLayout) findViewById(R.id.txtBestScoresWrapper);
+        Animation txtBestScoresAnim = AnimationUtils.loadAnimation(this, R.anim.txt_best_scores_anim);
+        txtBestScoresWrapper.startAnimation(txtBestScoresAnim);
     }
 
     @Override

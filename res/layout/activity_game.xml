@@ -24,94 +24,13 @@
         android:background="@color/transparent_black">
 
         <FrameLayout
-            android:id="@+id/title"
+            android:id="@+id/titleGame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/title_margin_bottom"
             android:layout_weight="@integer/title_weight"
             android:background="@drawable/title_bg">
         </FrameLayout>
-
-        <!--<android.support.v7.widget.GridLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-
-            <!--android:paddingTop="@dimen/info_panel_padding_top"-->
-            <!--android:paddingLeft="@dimen/info_panel_padding_left"-->
-            <!--android:paddingStart="@dimen/info_panel_padding_left"-->
-            <!--android:paddingBottom="@dimen/bottom"-->
-            <!--android:paddingRight="@dimen/info_panel_padding_right"-->
-            <!--android:paddingEnd="@dimen/info_panel_padding_right"-->
-
-            <!--android:layout_weight="@integer/info_panel_weight"-->
-            <!--app:columnCount="2"-->
-            <!--app:rowCount="2"-->
-            <!--app:orientation="horizontal"-->
-            <!--android:id="@+id/infoPanel"-->
-            <!--android:layout_marginBottom="@dimen/info_panel_margin_bottom"-->
-            <!--android:background="@drawable/info_panel_bg">-->
-            <!--<FrameLayout-->
-                <!--android:layout_marginRight="@dimen/txt_scores_container_margin_right"-->
-                <!--android:layout_marginEnd="@dimen/txt_scores_container_margin_right"-->
-                <!--android:minWidth="@dimen/txt_scores_container_min_width"-->
-                <!--app:layout_rowWeight="@integer/txt_scores_container_row_weight"-->
-                <!--app:layout_columnWeight="@integer/txt_scores_container_column_weight"-->
-                <!--app:layout_gravity="fill_horizontal|fill_vertical">-->
-                <!--<TextView-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:text="@string/txt_scores_text"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:textSize="@dimen/txt_scores_text_size"-->
-                    <!--android:textColor="@color/info_panel_text_color"-->
-
-                    <!--android:shadowColor="@color/info_panel_text_shadow_color"-->
-                    <!--android:shadowDx="@integer/text_shadow_x"-->
-                    <!--android:shadowDy="@integer/text_shadow_y"-->
-                    <!--android:shadowRadius="@integer/text_shadow_radius"-->
-
-                    <!--android:gravity="center_horizontal|center_vertical"-->
-                    <!--android:id="@+id/txtScores" />-->
-            <!--</FrameLayout>-->
-            <!--<FrameLayout-->
-                <!--android:layout_marginLeft="@dimen/menu_btn_container_margin_left"-->
-                <!--android:layout_marginStart="@dimen/menu_btn_container_margin_left"-->
-                <!--android:minWidth="@dimen/menu_btn_container_min_width"-->
-                <!--app:layout_rowWeight="@integer/menu_btn_container_row_weight"-->
-                <!--app:layout_columnWeight="@integer/menu_btn_container_column_weight"-->
-                <!--app:layout_gravity="fill_horizontal|fill_vertical">-->
-                <!--<ImageButton-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_gravity="center"-->
-                    <!--android:contentDescription="@string/menu_btn_image_content_description"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:background="@drawable/menu_btn_selector"-->
-                    <!--android:id="@+id/menuBtn"-->
-                    <!--android:onClick="onClickMenuBtn"/>-->
-            <!--</FrameLayout>-->
-            <!--<FrameLayout-->
-                <!--android:layout_marginTop="@dimen/txt_best_scores_container_margin_top"-->
-                <!--app:layout_rowWeight="@integer/txt_best_scores_container_row_weight"-->
-                <!--app:layout_columnSpan="2"-->
-                <!--app:layout_gravity="fill_horizontal|fill_vertical">-->
-                <!--<TextView-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:text="@string/txt_best_scores_text"-->
-                    <!--android:textColor="@color/info_panel_text_color"-->
-                    <!--android:textStyle="bold"-->
-                    <!--android:textSize="@dimen/txt_best_scores_text_size"-->
-
-                    <!--android:shadowColor="@color/info_panel_text_shadow_color"-->
-                    <!--android:shadowDx="@integer/text_shadow_x"-->
-                    <!--android:shadowDy="@integer/text_shadow_y"-->
-                    <!--android:shadowRadius="@integer/text_shadow_radius"-->
-
-                    <!--android:gravity="center_horizontal|center_vertical"-->
-                    <!--android:id="@+id/txtBestScores"/>-->
-            <!--</FrameLayout>-->
-        <!--</android.support.v7.widget.GridLayout>-->
 
         <FrameLayout
             android:id="@+id/infoPanel"
@@ -187,6 +106,7 @@
                 </LinearLayout>
 
                 <FrameLayout
+                    android:id="@+id/txtBestScoresWrapper"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/divider"
