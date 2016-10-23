@@ -1,7 +1,7 @@
 package com.alexkaz.game2048.gamelogic;
 
 
-public class CellMergeSortHandler {
+class CellMergeSortHandler {
 
     private static int[][] lastID = new int[4][4];
 
@@ -944,7 +944,7 @@ public class CellMergeSortHandler {
         }
     }
 
-    public static Cell[][] moveAllDown(Cell[][] cells, CellManager cellManager){
+    static Cell[][] moveAllDown(Cell[][] cells, CellManager cellManager){
         CellManager.setSwipeDirection(Direction.DOWN);
         resetAnimValues(cells);
         saveLastID(cells);
@@ -956,7 +956,7 @@ public class CellMergeSortHandler {
         return cells;
     }
 
-    public static Cell[][] moveAllUp(Cell[][] cells, CellManager cellManager){
+    static Cell[][] moveAllUp(Cell[][] cells, CellManager cellManager){
         CellManager.setSwipeDirection(Direction.UP);
         resetAnimValues(cells);
         saveLastID(cells);
@@ -968,7 +968,7 @@ public class CellMergeSortHandler {
         return cells;
     }
 
-    public static Cell[][] moveAllLeft(Cell[][] cells, CellManager cellManager){
+    static Cell[][] moveAllLeft(Cell[][] cells, CellManager cellManager){
         CellManager.setSwipeDirection(Direction.LEFT);
         resetAnimValues(cells);
         saveLastID(cells);
@@ -987,7 +987,7 @@ public class CellMergeSortHandler {
         return cells;
     }
 
-    public static Cell[][] moveAllRight(Cell[][] cells, CellManager cellManager){
+    static Cell[][] moveAllRight(Cell[][] cells, CellManager cellManager){
         CellManager.setSwipeDirection(Direction.RIGHT);
         resetAnimValues(cells);
         saveLastID(cells);
@@ -1008,21 +1008,21 @@ public class CellMergeSortHandler {
 
 
 
-    public static Cell[] moveLineRight(Cell[] line,CellManager cellManager){
+    private static Cell[] moveLineRight(Cell[] line, CellManager cellManager){
         line = sortLineRight(line);
         line = mergeLineRight(line, cellManager);
         line = sortLineRight(line);
         return line;
     }
 
-    public static Cell[] moveLineLeft(Cell[] line, CellManager cellManager){
+    private static Cell[] moveLineLeft(Cell[] line, CellManager cellManager){
         line = sortLineLeft(line);
         line = mergeLineLeft(line, cellManager);
         line = sortLineLeft(line);
         return line;
     }
 
-    public static Cell[] sortLineRight(Cell[] line){
+    private static Cell[] sortLineRight(Cell[] line){
         for (int i = 3; i >= 0; i--) {
             for (int j = 3; j >= 0; j--) {
                 if(j != 0) {
@@ -1038,7 +1038,7 @@ public class CellMergeSortHandler {
         return line;
     }
 
-    public static Cell[] mergeLineRight(Cell[] line, CellManager cellManager){
+    private static Cell[] mergeLineRight(Cell[] line, CellManager cellManager){
         for (int i = 1; i > 0; i--) {
             for (int j = 3; j > 0; j--) {
                 if (line[j].getId() == line[j-1].getId()){
@@ -1058,7 +1058,7 @@ public class CellMergeSortHandler {
         return line;
     }
 
-    public static Cell[] sortLineLeft(Cell[] line){
+    private static Cell[] sortLineLeft(Cell[] line){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if(j != 3) {
@@ -1074,7 +1074,7 @@ public class CellMergeSortHandler {
         return line;
     }
 
-    public static Cell[] mergeLineLeft(Cell[] line, CellManager cellManager){
+    private static Cell[] mergeLineLeft(Cell[] line, CellManager cellManager){
         for (int j = 0; j < 4; j++) {
             if(j != 3) {
                 if (line[j].getId() == line[j+1].getId()){

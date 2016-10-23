@@ -37,7 +37,9 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        if(getDialog().getWindow() != null){
+            getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
         getDialog().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getDialog().getWindow().setDimAmount(DIM_AMOUNT);
         View v = inflater.inflate(R.layout.activity_lose,container);
@@ -58,14 +60,6 @@ public class LoseDialogFragment extends DialogFragment implements View.OnClickLi
     @Override
     public void onClick(View v) {
         getDialog().cancel();
-//        if (cellManager!=null){
-//            cellManager.startNewGame();
-//        }
-//        cellManager = null;
-//        if (drawThreat!=null){
-//            drawThreat.setLoseDialogShow(false);
-//        }
-//        drawThreat = null;
     }
 
     public void setCellManager(CellManager cellManager) {

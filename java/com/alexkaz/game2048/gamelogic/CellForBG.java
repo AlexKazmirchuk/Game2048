@@ -6,23 +6,23 @@ import android.graphics.Path;
 import android.support.v4.content.ContextCompat;
 import com.alexkaz.game2048.GameActivity;
 
-public class CellForBG {
+class CellForBG {
 
     //for cell
-    public static final int COLOR_OWN = 0;
-    public static final int COLOR_RIGHT = 1;
-    public static final int COLOR_BOTTOM = 2;
-    public static final int DEFAULT_WIDTH = 400;
-    public static final int CELL_SIDE_X_DIVIDER = 88;
-    public static final int CELL_BORDER_X_DIVIDER = 10;
-    public static final int CELL_PIVOT_X_DIVIDER = 10;
-    public static final int CELL_SIDE_Y_DIVIDER = 88;
-    public static final int CELL_BORDER_Y_DIVIDER = 11;
-    public static final int CELL_PIVOT_Y_DIVIDER = 10;
-    public static final int SIDE_SPACE_X_DIVIDER = 5;
-    public static final int SIDE_SPACE_Y_DIVIDER = 5;
-    public static final int SHEAR_DIVIDER = 7;
-    public static final String RESOURCE_TYPE = "color";
+    private static final int COLOR_OWN = 0;
+    private static final int COLOR_RIGHT = 1;
+    private static final int COLOR_BOTTOM = 2;
+    private static final int DEFAULT_WIDTH = 400;
+    private static final int CELL_SIDE_X_DIVIDER = 88;
+    private static final int CELL_BORDER_X_DIVIDER = 10;
+    private static final int CELL_PIVOT_X_DIVIDER = 10;
+    private static final int CELL_SIDE_Y_DIVIDER = 88;
+    private static final int CELL_BORDER_Y_DIVIDER = 11;
+    private static final int CELL_PIVOT_Y_DIVIDER = 10;
+    private static final int SIDE_SPACE_X_DIVIDER = 5;
+    private static final int SIDE_SPACE_Y_DIVIDER = 5;
+    private static final int SHEAR_DIVIDER = 7;
+    private static final String RESOURCE_TYPE = "color";
 
     private int sideSpaceX; //resizable
     private int sideSpaceY; //resizable
@@ -51,7 +51,7 @@ public class CellForBG {
     private Path buff2;
 
     //Конструктор
-    public CellForBG(GameActivity context){
+    CellForBG(GameActivity context){
         this.context = context;
         initComp();
     }
@@ -70,7 +70,7 @@ public class CellForBG {
     }
 
     // Методи
-    public void draw(Canvas g){
+    void draw(Canvas g){
         if (locker){
             getSizes(g.getHeight(),g.getWidth());
 

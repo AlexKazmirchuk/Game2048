@@ -20,21 +20,21 @@ public class CellManager {
     private Random rand = new Random();
 
     //Конструктор
-    public CellManager(GameActivity context){
+    CellManager(GameActivity context){
         this.context = context;
         initComp();
     }
 
-    public static Direction getSwipeDirection() {
+    static Direction getSwipeDirection() {
         return swipeDirection;
     }
 
-    public static void setSwipeDirection(Direction swipeDirection) {
+    static void setSwipeDirection(Direction swipeDirection) {
         CellManager.swipeDirection = swipeDirection;
     }
 
     //Методи
-    public void initComp(){
+    private void initComp(){
         cellsForBG = new CellForBG(this.context);
         for (int i = 0; i < cells.length; i++) {
             cells[i] = new Cell[4];
@@ -55,11 +55,11 @@ public class CellManager {
         return scores;
     }
 
-    public void setScores(int scores) {
+    void setScores(int scores) {
         this.scores = scores;
     }
 
-    public void draw(Canvas g){
+    void draw(Canvas g){
         cellsForBG.draw(g);
         for (int i = 0; i < cells.length; i++) {
             for (int j = 0; j < cells[i].length ; j++) {
@@ -86,14 +86,7 @@ public class CellManager {
         }
     }
 
-    public boolean verifyCells(){
-//        for (int i = 0; i <cells.length ; i++) {
-//            for (int j = 0; j <cells[i].length ; j++) {
-//                if(cells[i][j].getId() == 0){
-//                    return true;
-//                }
-//            }
-//        }
+    private boolean verifyCells(){
         for (Cell[] cell : cells) {
             for (Cell aCell : cell) {
                 if (aCell.getId() == 0) {
@@ -104,7 +97,7 @@ public class CellManager {
         return false;
     }
 
-    public void moveCells(Direction direction){
+    void moveCells(Direction direction){
 
         saveCellId();
 
@@ -166,7 +159,7 @@ public class CellManager {
 
     }
 
-    public void spawnCell(){
+    private void spawnCell(){
         int x = rand.nextInt(4);
         int y = rand.nextInt(4);
         if (cells[x][y].getId() == 0){
@@ -187,7 +180,7 @@ public class CellManager {
         this.isFull = new int[]{0,0,0,0};
     }
 
-    public int getTheLargestNumber(){
+    int getTheLargestNumber(){
         int largestNumber = 0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
@@ -201,7 +194,7 @@ public class CellManager {
         return largestNumber;
     }
 
-    public static void spawnCellAnimation(Cell[][] cell){
+    static void spawnCellAnimation(Cell[][] cell){
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
                 if (cell[i][j] == null){
@@ -223,7 +216,7 @@ public class CellManager {
         }
     }
 
-    public Cell[][] getCells() {
+    Cell[][] getCells() {
         return cells;
     }
 
@@ -257,7 +250,7 @@ public class CellManager {
         return cellsID;
     }
 
-    public void setCellsIDFromString(String cellsID){
+    void setCellsIDFromString(String cellsID){
         String[] strArr = cellsID.split(" ");
         if (strArr.length == 16){
             for (int i = 0; i < 4; i++) {
@@ -268,11 +261,11 @@ public class CellManager {
         }
     }
 
-    public boolean isLose() {
+    boolean isLose() {
         return lose;
     }
 
-    public void setLose(boolean lose) {
+    private void setLose(boolean lose) {
         this.lose = lose;
     }
 }

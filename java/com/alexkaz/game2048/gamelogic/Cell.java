@@ -13,25 +13,25 @@ import com.alexkaz.game2048.GameActivity;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Cell {
+class Cell {
 
     //for cell
-    public static final int DEFAULT_ID = 0;
-    public static final int COLOR_OWN = 0;
-    public static final int COLOR_RIGHT = 1;
-    public static final int COLOR_BOTTOM = 2;
-    public static final int DEFAULT_WIDTH = 400;
-    public static final int CELL_SIDE_X_DIVIDER = 88;
-    public static final int CELL_BORDER_X_DIVIDER = 10;
-    public static final int CELL_PIVOT_X_DIVIDER = 10;
-    public static final int CELL_SIDE_Y_DIVIDER = 88;
-    public static final int CELL_BORDER_Y_DIVIDER = 11;
-    public static final int CELL_PIVOT_Y_DIVIDER = 10;
-    public static final int SIDE_SPACE_X_DIVIDER = 5;
-    public static final int SIDE_SPACE_Y_DIVIDER = 5;
-    public static final int SHEAR_MAX_DIVIDER = 7;
-    public static final int SHEAR_DIVIDER = 7;
-    public static final int FIVE_SYMBOLS = 5;
+    private static final int DEFAULT_ID = 0;
+    private static final int COLOR_OWN = 0;
+    private static final int COLOR_RIGHT = 1;
+    private static final int COLOR_BOTTOM = 2;
+    private static final int DEFAULT_WIDTH = 400;
+    private static final int CELL_SIDE_X_DIVIDER = 88;
+    private static final int CELL_BORDER_X_DIVIDER = 10;
+    private static final int CELL_PIVOT_X_DIVIDER = 10;
+    private static final int CELL_SIDE_Y_DIVIDER = 88;
+    private static final int CELL_BORDER_Y_DIVIDER = 11;
+    private static final int CELL_PIVOT_Y_DIVIDER = 10;
+    private static final int SIDE_SPACE_X_DIVIDER = 5;
+    private static final int SIDE_SPACE_Y_DIVIDER = 5;
+    private static final int SHEAR_MAX_DIVIDER = 7;
+    private static final int SHEAR_DIVIDER = 7;
+    private static final int FIVE_SYMBOLS = 5;
 
     private int sideSpaceX; //resizable
     private int sideSpaceY; //resizable
@@ -40,18 +40,18 @@ public class Cell {
     private int shearAnim = 0;
 
     //for text
-    public static final int START_TEXT_POSITION = 0;
-    public static final String TEXT_SHADOW_COLOR = "#741111";
-    public static final String TEXT_COLOR = "#fa1515";
-    public static final int THREE_SYMBOLS = 3;
-    public static final int FOUR_SYMBOLS = 4;
-    public static final String RESOURCE_TYPE = "color";
-    public static final float TEXT_SHEAR_DIVIDER = 0.7143f;
-    public static final float SHEAR_FOR_TEXT_DIVIDER = 0.4286f;
-    public static final float NORMAL_TEXT_SIZE_DIVIDER = 0.5289f;
-    public static final float SMALL_TEXT_SIZE_DIVIDER = 0.4223f;
-    public static final float VERY_SMALL_TEXT_SIZE_DIVIDER = 0.3223f;
-    public static final float LARGE_TEXT_SIZE_DIVIDER = 0.7512f;
+    private static final int START_TEXT_POSITION = 0;
+    private static final String TEXT_SHADOW_COLOR = "#741111";
+    private static final String TEXT_COLOR = "#fa1515";
+    private static final int THREE_SYMBOLS = 3;
+    private static final int FOUR_SYMBOLS = 4;
+    private static final String RESOURCE_TYPE = "color";
+    private static final float TEXT_SHEAR_DIVIDER = 0.7143f;
+    private static final float SHEAR_FOR_TEXT_DIVIDER = 0.4286f;
+    private static final float NORMAL_TEXT_SIZE_DIVIDER = 0.5289f;
+    private static final float SMALL_TEXT_SIZE_DIVIDER = 0.4223f;
+    private static final float VERY_SMALL_TEXT_SIZE_DIVIDER = 0.3223f;
+    private static final float LARGE_TEXT_SIZE_DIVIDER = 0.7512f;
 
     private int textShear = 5;      //resizable
     private int shearForText = 3;   //resizable
@@ -90,7 +90,7 @@ public class Cell {
     private Paint numberPaint;
 
     //Конструктор
-    public Cell(GameActivity context, int x, int y){
+    Cell(GameActivity context, int x, int y){
         this.context = context;
         this.x = x;
         this.y = y;
@@ -110,7 +110,7 @@ public class Cell {
     }
 
     // Методи
-    public void draw(Canvas g){
+    void draw(Canvas g){
         if (locker){
             getSizes(g.getHeight(),g.getWidth());
             locker = false;
@@ -291,47 +291,47 @@ public class Cell {
         return id;
     }
 
-    public int getShearAnim() {
+    int getShearAnim() {
         return shearAnim;
     }
 
-    public void setShearAnim(int shearAnim) {
+    void setShearAnim(int shearAnim) {
         this.shearAnim = shearAnim;
     }
 
-    public boolean isFresh() {
+    boolean isFresh() {
         return isFresh;
     }
 
-    public void setFresh(boolean fresh) {
+    void setFresh(boolean fresh) {
         isFresh = fresh;
     }
 
-    public int getShearMax() {
+    int getShearMax() {
         return shearMax;
     }
 
-    public void calculateMoveX(){
+    void calculateMoveX(){
         this.setMoveX(sizeX* getAnim() + borderX* getAnim());
     }
 
-    public void calculateMoveY(){
+    void calculateMoveY(){
         this.setMoveY(sizeY* getAnim() + borderY* getAnim());
     }
 
-    public int getMoving() {
+    int getMoving() {
         return moving;
     }
 
-    public void setMoving(int moving) {
+    void setMoving(int moving) {
         this.moving = moving;
     }
 
-    public int getMerged() {
+    int getMerged() {
         return merged;
     }
 
-    public void setMerged(int merged) {
+    void setMerged(int merged) {
         this.merged = merged;
     }
 
@@ -343,19 +343,19 @@ public class Cell {
         this.anim = anim;
     }
 
-    public int getMoveX() {
+    int getMoveX() {
         return moveX;
     }
 
-    public void setMoveX(int moveX) {
+    void setMoveX(int moveX) {
         this.moveX = moveX;
     }
 
-    public int getMoveY() {
+    int getMoveY() {
         return moveY;
     }
 
-    public void setMoveY(int moveY) {
+    void setMoveY(int moveY) {
         this.moveY = moveY;
     }
 }

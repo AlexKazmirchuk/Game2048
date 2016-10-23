@@ -19,7 +19,7 @@ public class DrawThreat extends Thread {
     private long prevTime;
     private int fieldColor;
 
-    public DrawThreat(GameActivity context, SurfaceHolder surfaceHolder){
+    DrawThreat(GameActivity context, SurfaceHolder surfaceHolder){
         this.surfaceHolder = surfaceHolder;
         this.context = context;
         setWinActivityShowed(context.getGamePreferences().getWinDialogShowed());
@@ -46,7 +46,7 @@ public class DrawThreat extends Thread {
         return cellManager;
     }
 
-    public void moveCells(Direction direction){
+    void moveCells(Direction direction){
         cellManager.moveCells(direction);
     }
 
@@ -76,7 +76,7 @@ public class DrawThreat extends Thread {
         }
     }
 
-    public void setRunning(boolean run){
+    void setRunning(boolean run){
         runFlag = run;
     }
 
@@ -99,7 +99,7 @@ public class DrawThreat extends Thread {
         }
     }
 
-    public boolean isWinActivityShowed() {
+    private boolean isWinActivityShowed() {
         return isWinActivityShowed;
     }
 
@@ -107,7 +107,7 @@ public class DrawThreat extends Thread {
         isWinActivityShowed = winActivityShowed;
     }
 
-    public boolean isLoseDialogShow() {
+    private boolean isLoseDialogShow() {
         return isLoseDialogShow;
     }
 

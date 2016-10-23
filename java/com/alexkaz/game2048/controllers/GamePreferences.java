@@ -6,14 +6,14 @@ import android.content.SharedPreferences;
 
 public class GamePreferences {
 
-    public static final String MY_PREFS = "MyPreferences";
-    public static final String MUSIC_SWITCH = "musicSwitch";
-    public static final String MODE_SWITCH = "modeSwitch";
-    public static final String BEST_SCORES = "bestScores";
-    public static final String GAME_SCORES = "gameScores";
-    public static final String CELLS_ID = "cellsID";
-    public static final String CELLS_ID_DEFAULT = "0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0";
-    public static final String WIN_DIALOG_SHOWED = "isWinDialogShowed";
+    private static final String MY_PREFS = "MyPreferences";
+    private static final String MUSIC_SWITCH = "musicSwitch";
+    private static final String MODE_SWITCH = "modeSwitch";
+    private static final String BEST_SCORES = "bestScores";
+    private static final String GAME_SCORES = "gameScores";
+    private static final String CELLS_ID = "cellsID";
+    private static final String CELLS_ID_DEFAULT = "0 0 0 0 0 0 0 0 2 0 0 0 0 0 0 0";
+    private static final String WIN_DIALOG_SHOWED = "isWinDialogShowed";
 
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -82,14 +82,5 @@ public class GamePreferences {
 
     public boolean getWinDialogShowed(){
         return preferences.getBoolean(WIN_DIALOG_SHOWED,true);
-    }
-
-    public int getMode(){
-        return preferences.getInt(MODE_SWITCH,0);
-    }
-
-    public void setMode(int mode){
-        editor.putInt(MODE_SWITCH,mode);
-        editor.commit();
     }
 }
