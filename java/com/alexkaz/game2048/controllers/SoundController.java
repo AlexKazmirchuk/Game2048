@@ -12,9 +12,9 @@ import java.io.IOException;
 
 public class SoundController {
 
-    public static final String GAME_OVER_SOUND = "game_over_sound.mp3";
-    public static final String SWIPE_SOUND = "swipe_sound.mp3";
-    public static final String WIN_SOUND = "win_sound.mp3";
+    private static final String GAME_OVER_SOUND = "game_over_sound.mp3";
+    private static final String SWIPE_SOUND = "swipe_sound.mp3";
+    private static final String WIN_SOUND = "win_sound.mp3";
 
     private SoundPool mSoundPool;
     private AssetManager mAssetManager;
