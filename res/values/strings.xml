@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Game2048</string>
+    <string name="app_name">2048</string>
     <string name="menu_btn_image_content_description">Menu</string>
     <string name="activity_win_image_content_description">Winning image</string>
     <string name="activity_lose_image_content_description">Losing image</string>

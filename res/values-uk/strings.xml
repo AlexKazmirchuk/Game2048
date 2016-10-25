@@ -1,4 +1,13 @@
 <resources>
+    <string name="app_name">2048</string>
+    <string name="menu_btn_image_content_description">Меню</string>
+    <string name="activity_win_image_content_description">Зображення виграшу</string>
+    <string name="activity_lose_image_content_description">Зображення програшу</string>
+    <string name="txt_scores_text">Очки:34765</string>
+    <string name="txt_best_scores_text">ВАШ РЕКОРД:42341</string>
+    <string name="win_txt_scores_text">ВАШ РЕЗУЛЬТАТ: 5436</string>
+    <string name="lose_txt_scores_text">ВАШ РЕЗУЛЬТАТ: 5436</string>
+
     <!--       for translate       -->
     <string name="lose_restart_btn_text">НОВА ГРА</string>
     <string name="music_btn_text_on">ЗВУК:Вмк</string>
